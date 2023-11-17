@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -9,27 +10,32 @@ export default {
     methods: {
         OcultarInicio() {
             this.EnviarData();
-            this.$emit('oculta-inicio', !this.inicioProp);
-            this.$router.push('../App');
+            this.$emit('oculta-inicio', false);
         },
-        EnviarData() {
-            console.log(`Email: ${this.email}, Password: ${this.password}`);
-        }
-    },
-    props: {
-        inicioProp: {
-            type: Boolean,
-            required: true,
-        }
-    },
+        async EnviarData() {
+            try {
+                const response = await axios.post('https://your-api-url.com', {
+                    email: this.email,
+                    password: this.password
+                });
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    }
 };
 </script>
 
 <template>
-    <div id="inicio" class="booking-cta">
+    <div id="inicio" class="booking-cta m-0 p-0">
         <h1 class="text-uppercase text-center">INICIO DE SESION</h1>
-        <div id="bloque-white">
-            <form class="row g-3 mt-1 w-100 h-100" @submit.prevent="EnviarData()">
+        <div id="bloque-white" class="w-100 h-100">
+
+            <picture>
+                <img src="../img/person.jpg" class="rounded mx-auto d-block" id="size" alt="person">
+            </picture>
+            <form class="row g-3 mt-1 w-100 h-100">
 
                 <div class="col-sm-6">
                     <input class="form-control form-control-lg" type="email" placeholder="email"
@@ -54,6 +60,10 @@ export default {
 </template>
 
 <style scoped>
+img#size {
+    width: 20%;
+    height: auto;
+}
 #btn {
     text-align: center;
 }

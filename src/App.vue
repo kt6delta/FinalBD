@@ -5,8 +5,15 @@ export default {
   data() {
     return {
       cont: 1,
-      contacto: [],
+      direccion: {},
+      contacto: {},
       inicio: true,
+      tabla: true,
+      TipeUser: "",
+      Name: "",
+      Apellido: "",
+      nDoc: "",
+      tipoDoc: "",
     };
   },
   methods: {
@@ -22,23 +29,33 @@ export default {
         this.cont = this.cont - 1;
       }
     },
-    OcultarInicio(nuevoValor){
+    OcultarInicio(nuevoValor) {
       this.inicio = nuevoValor;
+    },
+    HideAll(){
+      this.tabla = false;
+      this.OcultarInicio(false);
+    },
+    Bd_put() {
+      console.log('put');
+      this.HideAll();
+      this.$router.push('/Tabla');
+    },
+    Bd_post() {
+      // this.$router.push('/Tabla');
     }
   },
   components: {
     Inicio,
-    Contacto
+    Contacto,
   },
 };
 </script>
 
 <template>
-  <div id="booking" class="section">
-
-   
-    <router-view></router-view>
-    <Inicio :inicioProp="inicio" @oculta-inicio="OcultarInicio()" v-if="this.inicio" />
+  <router-view></router-view>
+  <div id="booking" class="section" v-show="tabla">
+    <Inicio @oculta-inicio="OcultarInicio()" v-if="this.inicio" />
     <div v-else>
       <div class="section-center">
         <div class="container">
@@ -46,22 +63,24 @@ export default {
             <div class="col-md-7 col-md-push-5">
               <div class="booking-cta">
                 <h1>Para Usar el Servicio</h1>
-                <p style="font-size: 20px;">Porfavor llenar el siguiente formulario para ingresar o actualizar datos en la
+                <p id="text">Porfavor llenar el siguiente formulario para ingresar o actualizar datos en la
                   base de datos, en caso
                   de que exista el ususario se le dara un aviso
                 </p>
               </div>
               <!--alert-->
-              <div class="alert alert-danger" id="alerta-d" role="alert" style="font-size: 20px;"><strong>¡Error!</strong>
+              <div class="alert alert-danger alerta" id="alerta-d" role="alert"><strong>¡Error!</strong>
                 Información faltante
               </div>
-              <div class="alert alert-warning" id="alerta-w" role="alert" style="font-size: 20px;">
+              <div class="alert alert-warning alerta" id="alerta-w" role="alert">
                 <strong>¡Peligro!</strong> El usuario ya existe,
                 ¿desea
-                actulizar?<a href="#" onclick="Bd_put()" class="alert-link text-center"> SI</a><br>En caso contrario por
+                actulizar?
+                <a @click="Bd_put()" class="alert-link text-center">SI</a>
+                <br>En caso contrario por
                 favor ingrese un documento que no este repetido.
               </div>
-              <div class="alert alert-success" id="alerta-s" role="alert" style="font-size: 20px;">
+              <div class="alert alert-success alerta" id="alerta-s" role="alert">
                 <strong>¡Exito!</strong>
                 Persona creada correctamente
               </div>
@@ -69,6 +88,7 @@ export default {
             </div>
             <div class="col-md-5 col-md-pull-7">
               <div class="booking-form">
+
                 <form>
                   <div class="row">
                     <div class="col-sm-8">
@@ -81,7 +101,7 @@ export default {
                     <div class="col-sm-4">
                       <div class="form-group">
                         <span class="form-label">Tipo usuario</span>
-                        <select id="tipos" class="form-control" name="tipoDoc" required="required">
+                        <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="TipeUser">
                           <option value="cliente">cliente</option>
                           <option value="provedor">provedor</option>
                         </select>
@@ -94,13 +114,15 @@ export default {
                     <div class="col-sm-6">
                       <div class="form-group">
                         <span class="form-label">Nombre</span>
-                        <input class="form-control" type="text" placeholder="Nombre" name="nombre" required>
+                        <input class="form-control" type="text" placeholder="Nombre" name="nombre" required
+                          v-model="Name">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <span class="form-label">Apellido</span>
-                        <input class="form-control" type="text" placeholder="Apellido" name="apellido" required>
+                        <input class="form-control" type="text" placeholder="Apellido" name="apellido" required
+                          v-model="Apellido">
                       </div>
                     </div>
                   </div>
@@ -108,14 +130,15 @@ export default {
                     <div class="col-sm-8">
                       <div class="form-group">
                         <span class="form-label">Numero de documento</span>
-                        <input class="form-control" type="text" name="nDoc" placeholder="Numero de documento" required>
+                        <input class="form-control" type="text" name="nDoc" placeholder="Numero de documento" required
+                          v-model="nDoc">
                       </div>
                     </div>
 
                     <div class="col-sm-4">
                       <div class="form-group">
                         <span class="form-label">Tipo</span>
-                        <select id="tipos" class="form-control" name="tipoDoc" required="required">
+                        <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="tipoDoc">
                           <option value="id">id</option>
                           <option value="cc">cc</option>
                         </select>
@@ -127,13 +150,14 @@ export default {
                     <Contacto />
                   </div>
                   <div id="add" class="form-btn text-end">
-                    <button type="button" class="btn btn-primary me-2" @click="AgregarContacto()">+</button>
-                    <button type="button" class="btn btn-primary" @click="QuitarContacto()">-</button>
+                    <button type="button" class="btn btn-primary me-2 fs-4 px-2 py-0"
+                      @click="AgregarContacto()">+</button>
+                    <button type="button" class="btn btn-primary fs-4 px-2 py-0" @click="QuitarContacto()">-</button>
                   </div>
 
                   <div class="form-btn text-center">
-                    <button class="submit-btn me-3">Agregar</button>
-                    <button type="button" class="submit-btn">Volver</button>
+                    <button @click="Bd_post()" class="submit-btn me-3">Agregar</button>
+                    <button @click="OcultarInicio(true)" tag="button" class="submit-btn">Volver</button>
                   </div>
                 </form>
               </div>
@@ -244,4 +268,11 @@ export default {
     src: url(./fonts/montserrat.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
-</style>
+
+  .alerta {
+    font-size: 20px;
+  }
+
+  p#text {
+    font-size: 20px;
+  }</style>
