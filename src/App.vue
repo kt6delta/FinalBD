@@ -5,7 +5,8 @@ export default {
   data() {
     return {
       cont: 1,
-      contacto: []
+      contacto: [],
+      inicio: true,
     };
   },
   methods: {
@@ -20,6 +21,9 @@ export default {
       if (this.cont > 1) {
         this.cont = this.cont - 1;
       }
+    },
+    OcultarInicio(nuevoValor){
+      this.inicio = nuevoValor;
     }
   },
   components: {
@@ -31,8 +35,10 @@ export default {
 
 <template>
   <div id="booking" class="section">
+
+   
     <router-view></router-view>
-    <Inicio v-if="false" />
+    <Inicio :inicioProp="inicio" @oculta-inicio="OcultarInicio()" v-if="this.inicio" />
     <div v-else>
       <div class="section-center">
         <div class="container">

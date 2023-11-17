@@ -1,39 +1,56 @@
 <script>
-
+export default {
+    data() {
+        return {
+            email: "",
+            password: "",
+        };
+    },
+    methods: {
+        OcultarInicio() {
+            this.EnviarData();
+            this.$emit('oculta-inicio', !this.inicioProp);
+            this.$router.push('../App');
+        },
+        EnviarData() {
+            console.log(`Email: ${this.email}, Password: ${this.password}`);
+        }
+    },
+    props: {
+        inicioProp: {
+            type: Boolean,
+            required: true,
+        }
+    },
+};
 </script>
 
 <template>
     <div id="inicio" class="booking-cta">
         <h1 class="text-uppercase text-center">INICIO DE SESION</h1>
         <div id="bloque-white">
-            <form class="row g-3 mt-1 w-100 h-100">
+            <form class="row g-3 mt-1 w-100 h-100" @submit.prevent="EnviarData()">
 
                 <div class="col-sm-6">
                     <input class="form-control form-control-lg" type="email" placeholder="email"
-                        aria-label=".form-control-lg example">
+                        aria-label=".form-control-lg example" v-model="email">
                 </div>
 
 
                 <div class="col-sm-6">
                     <input class="form-control form-control-lg" type="password" placeholder="password"
-                        aria-label=".form-control-lg example">
+                        aria-label=".form-control-lg example" v-model="password">
                 </div>
 
                 <div id="btn" class="row g-3 m-auto">
                     <div class="col align-self-center">
-                        <button type="submit" class="btn btn-primary me-3">Enviar</button>
-                        <button type="button" class="btn btn-primary">Volver</button>
-                        <router-link to="../App" tag="button" @click="mostrarContenido = false"
-                            class="w-28 h-14 ml-14 mt-5 xl:h-14 xl:mt-5 bg-septenary rounded-md shadow-md">
-                            <span
-                                class="text-black-0 font-Fuente_terciaria font-bold text-lg flex items-center justify-center ">Alquila<br>&thinsp;&thinsp;Aquí</span>
-                        </router-link>
-
+                        <button @click="OcultarInicio" class="btn btn-primary me-3">Enviar</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <router-view></router-view>
 </template>
 
 <style scoped>
