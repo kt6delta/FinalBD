@@ -1,4 +1,4 @@
-<script setup>
+<script>
 
 </script>
 
@@ -23,6 +23,12 @@
                     <div class="col align-self-center">
                         <button type="submit" class="btn btn-primary me-3">Enviar</button>
                         <button type="button" class="btn btn-primary">Volver</button>
+                        <router-link to="../App" tag="button" @click="mostrarContenido = false"
+                            class="w-28 h-14 ml-14 mt-5 xl:h-14 xl:mt-5 bg-septenary rounded-md shadow-md">
+                            <span
+                                class="text-black-0 font-Fuente_terciaria font-bold text-lg flex items-center justify-center ">Alquila<br>&thinsp;&thinsp;Aquí</span>
+                        </router-link>
+
                     </div>
                 </div>
             </form>
@@ -31,9 +37,10 @@
 </template>
 
 <style scoped>
-#btn{
+#btn {
     text-align: center;
 }
+
 #inicio {
     position: absolute;
     top: 20%;

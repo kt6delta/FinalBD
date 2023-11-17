@@ -1,26 +1,37 @@
 <script>
 import Inicio from './components/Inicio.vue';
+import Contacto from './components/Contacto.vue';
 export default {
   data() {
     return {
-      contacto: "correo",
-      mostrarCorreo: true,
+      cont: 1,
+      contacto: []
     };
   },
   methods: {
-    CambiarContacto() {
-      if(this.contacto == "correo"){
-        this.mostrarCorreo = true;
-      }else{
-        this.mostrarCorreo = false;
-      }
+    AgregarContacto() {
+      this.cont = this.cont + 1;
+      // this.contacto.push({
+      //   contacto: 'correo',
+      //   mostrarCorreo: true,
+      // });
     },
+    QuitarContacto() {
+      if (this.cont > 1) {
+        this.cont = this.cont - 1;
+      }
+    }
+  },
+  components: {
+    Inicio,
+    Contacto
   },
 };
 </script>
 
 <template>
   <div id="booking" class="section">
+    <router-view></router-view>
     <Inicio v-if="false" />
     <div v-else>
       <div class="section-center">
@@ -98,44 +109,25 @@ export default {
                     <div class="col-sm-4">
                       <div class="form-group">
                         <span class="form-label">Tipo</span>
-                        <select id="tipos" class="form-control" name="tipoDoc" required="required"></select>
-                        <span class="select-arrow"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-8" v-show=mostrarCorreo>
-                      <div class="form-group">
-                        <span class="form-label">Correo</span>
-                        <input class="form-control" type="email" placeholder="Correo" name="correo" required>
-                      </div>
-                    </div>
-                    <div class="col-sm-8" v-show=!mostrarCorreo>
-                      <div class="form-group">
-                        <span class="form-label">Celular</span>
-                        <input class="form-control" type="number" name="celular" placeholder="Celular">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <span class="form-label">Contacto</span>
-                        <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="contacto" @change="CambiarContacto()">
-                          <option value="correo">correo</option>
-                          <option value="numero">celular</option>
+                        <select id="tipos" class="form-control" name="tipoDoc" required="required">
+                          <option value="id">id</option>
+                          <option value="cc">cc</option>
                         </select>
                         <span class="select-arrow"></span>
                       </div>
                     </div>
                   </div>
-
+                  <div v-for="i in cont" v-bind:key="i">
+                    <Contacto />
+                  </div>
                   <div id="add" class="form-btn text-end">
-                    <button type="button" class="btn btn-primary">+</button>
+                    <button type="button" class="btn btn-primary me-2" @click="AgregarContacto()">+</button>
+                    <button type="button" class="btn btn-primary" @click="QuitarContacto()">-</button>
                   </div>
 
                   <div class="form-btn text-center">
                     <button class="submit-btn me-3">Agregar</button>
-                    <button type="button" class="submit-btn" onclick="location.href = './tabla.html'">Volver</button>
+                    <button type="button" class="submit-btn">Volver</button>
                   </div>
                 </form>
               </div>
