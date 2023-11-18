@@ -3,6 +3,7 @@ export default {
     data() {
         return {
             contador: 0,
+            tabla: true,
         };
     },
     methods: {
@@ -75,6 +76,10 @@ export default {
             for (let i = 0; i < data.length; i++) {
                 miTabla.innerHTML += crearPersona(data[i])
             }
+        },
+        Back(){
+            this.tabla = false;
+            this.$router.push('/App');
         }
     }
 };
@@ -83,9 +88,7 @@ export default {
 </script>
 
 <template>
-
-    
-    <div id="contenedor">
+    <div id="contenedor" v-show="this.tabla">
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
@@ -103,9 +106,9 @@ export default {
                         <span class="select-arrow"></span>
                     </div>
                 </form>
-                <button @onclick="traerPersona()" class="btn btn-primary">Buscar</button>
-                <button @onclick="traerPersonas()" class="btn btn-info ">Todos</button>
-                <button @onclick="location.href = './index.html'" class="btn btn-success">Agregar</button>
+                <button @click="traerPersona()" class="btn btn-primary me-2">Buscar</button>
+                <button @click="traerPersonas()" class="btn btn-info me-2">Todos</button>
+                <button @click="Back()" class="btn btn-success">Agregar</button>
             </div>
 
             <!-- Table -->

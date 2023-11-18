@@ -11,6 +11,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/tabla', component: Tabla },
+        {path: '/app', component: App}
     ]
 })
 
