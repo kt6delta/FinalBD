@@ -1,12 +1,13 @@
 <script>
 import Inicio from './components/Inicio.vue';
 import Contacto from './components/Contacto.vue';
-import axios from 'axios';
+import Direcciones from './components/Direcciones.vue';
 export default {
   data() {
     return {
       //atributos del formulario
       cont: 1,
+      cont2: 1,
       direccion: {},
       contacto: {},
       inicio: true,
@@ -19,6 +20,19 @@ export default {
     };
   },
   methods: {
+    AddDireccion() {
+      this.cont2 = this.cont2 + 1;
+      // this.direccion.push({
+      //   
+      //   
+      // });
+    },
+    //se encarga de agregar varios contactos
+    LessDireccion() {
+      if (this.cont2 > 1) {
+        this.cont2 = this.cont2 - 1;
+      }
+    },
     AgregarContacto() {
       this.cont = this.cont + 1;
       // this.contacto.push({
@@ -56,6 +70,7 @@ export default {
   components: {
     Inicio,
     Contacto,
+    Direcciones,
   },
 };
 </script>
@@ -67,7 +82,7 @@ export default {
     <!--Conserva Fondo azul y agrega formulario de registro-->
     <Inicio @oculta-inicio="OcultarInicio()" v-if="this.inicio" />
     <div v-else>
-      <div class="section-center">
+      <div class="section-center pt-2">
         <div class="container">
           <div class="row">
             <div class="col-md-7 col-md-push-5">
@@ -97,19 +112,17 @@ export default {
 
             </div>
             <div class="col-md-5 col-md-pull-7">
-              <div class="booking-form">
-                <!--Formulario para ingresar/ actualizar la info-->
+              <div class="booking-form px-4 py-3">
+                <!--Formulario para ingresar/actualizar la info-->
                 <form>
-                  <!--ingresar info de Direccion-->
+                  <!--agrega en el html varios espacios de direccion-->
+                  <div v-for="i in cont2" v-bind:key="i">
+                    <Direcciones :cont2Pop="i" />
+                  </div>
+
+                  <!--ingresar info de tipo Usuario-->
                   <div class="row">
                     <div class="col-sm-8">
-                      <div class="form-group">
-                        <span class="form-label">Direccion</span>
-                        <input class="form-control" type="text" name="direccion" placeholder="Direccion">
-                      </div>
-                    </div>
-                    <!--ingresar info de tipo Usuario-->
-                    <div class="col-sm-4">
                       <div class="form-group">
                         <span class="form-label">Tipo usuario</span>
                         <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="TipeUser">
@@ -119,8 +132,19 @@ export default {
                         <span class="select-arrow"></span>
                       </div>
                     </div>
-                    <!--ingresar info de Nombre-->
+                    <!--botones para controlar cantidad de direcciones-->
+                    <div class="col-sm-4 d-flex justify-content-center align-items-start">
+                      <div class="form-group">
+                        <div id="add" class="form-btn text-end">
+                          <button type="button" class="btn btn-primary me-2 fs-4 px-2 py-0"
+                            @click="AddDireccion()">+</button>
+                          <button type="button" class="btn btn-primary fs-4 px-2 py-0" @click="LessDireccion()">-</button>
+                        </div>
+                      </div>
+                    </div>         
                   </div>
+
+                  <!--ingresar info de Nombre-->
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -163,7 +187,7 @@ export default {
                   <div v-for="i in cont" v-bind:key="i">
                     <Contacto />
                   </div>
-                  <div id="add" class="form-btn text-end">
+                  <div id="add" class="form-btn text-end mb-2">
                     <button type="button" class="btn btn-primary me-2 fs-4 px-2 py-0"
                       @click="AgregarContacto()">+</button>
                     <button type="button" class="btn btn-primary fs-4 px-2 py-0" @click="QuitarContacto()">-</button>
@@ -183,108 +207,7 @@ export default {
   </div>
 </template>
 
-<style scoped> 
-/* Estilo de la paguina de fondos*/
- /* cyrillic-ext */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
- }
-
- /* cyrillic */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
- }
-
- /* vietnamese */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
- }
-
- /* latin-ext */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
- }
-
- /* latin */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 400;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
- }
-
- /* cyrillic-ext */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 700;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
- }
-
- /* cyrillic */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 700;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
- }
-
- /* vietnamese */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 700;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
- }
-
- /* latin-ext */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 700;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
- }
-
- /* latin */
- @font-face {
-   font-family: 'Montserrat';
-   font-style: normal;
-   font-weight: 700;
-   font-display: swap;
-   src: url(./fonts/montserrat.woff2) format('woff2');
-   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
- }
-
+<style scoped>
  .alerta {
    font-size: 20px;
  }

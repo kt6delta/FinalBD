@@ -9,7 +9,7 @@ export default {
     },
     methods: {
         OcultarInicio() {
-            this.EnviarData();
+            //this.EnviarData();
             this.$emit('oculta-inicio', false);
         },
         async EnviarData() {
@@ -88,4 +88,5 @@ img#size {
     width: 100%;
     height: 30vh;
 }
+
 </style>
