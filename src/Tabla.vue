@@ -83,6 +83,8 @@ export default {
 </script>
 
 <template>
+
+    
     <div id="contenedor">
         <div class="panel panel-default">
             <!-- Default panel contents -->
