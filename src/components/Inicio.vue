@@ -3,7 +3,8 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            codigo: ''
+            email: "",
+            password: "",
         };
     },
     methods: {
@@ -34,11 +35,17 @@ export default {
             <picture>
                 <img src="../img/person.jpg" class="rounded mx-auto d-block" id="size" alt="person">
             </picture>
-            <form class="row g-3 mt-1 w-50 h-100 d-flex justify-contend-center">
+            <form class="row g-3 mt-1 w-100 h-100">
 
-                <div class="col-sm-12">
-                    <input class="form-control form-control-lg" type="text" placeholder="codigo Empleado"
+                <div class="col-sm-6">
+                    <input class="form-control form-control-lg" type="email" placeholder="email"
                         aria-label=".form-control-lg example" v-model="email">
+                </div>
+
+
+                <div class="col-sm-6">
+                    <input class="form-control form-control-lg" type="password" placeholder="password"
+                        aria-label=".form-control-lg example" v-model="password">
                 </div>
 
                 <div id="btn" class="row g-3 m-auto">

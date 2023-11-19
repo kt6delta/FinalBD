@@ -6,6 +6,7 @@ import componenteProducto from './components/componenteProducto.vue';
 import { onMounted, ref } from 'vue';
 
 export default {
+
     setup() {
         const pruebas = ref([])
         onMounted(async () => {
@@ -18,17 +19,44 @@ export default {
     },
     data() {
         return {
-            contador: 0,
-            tabla: true,
             personas: [],
             tipoPersona: [],
             productos: [],
             tipoFactura: '',
             persona: [],
             listaProd: [],
+            contador: 0,
+            tabla: true
+
         };
     },
     methods: {
+        async traerTipo() {
+            const response = await fetch('http://localhost:3000/api/tipodoc')
+            const data = await response.json()
+
+            console.log(data)
+            var miTipo = document.getElementById('tipos');
+
+            for (let i = 0; i < data.length; i++) {
+                miTipo.innerHTML += crearTipo(data[i])
+            }
+        },
+        crearTipo(tipo) {
+            return `<option value="${tipo[0]}">${tipo[1]}</option>`
+        },
+        async traerPersonas() {
+            const response = await fetch('http://localhost:3000/api/personas')
+            const data = await response.json()
+            console.log(data)
+            var miTabla = document.getElementById('tabla');
+            while (miTabla.firstChild) {
+                miTabla.removeChild(miTabla.firstChild);
+            }
+            for (let i = 0; i < data.length; i++) {
+                miTabla.innerHTML += crearPersona(data[i])
+            }
+        },
         evaluarFactura() {
             if (cargo == 'auxiliar de compras') {
                 this.tipoFactura = 'CO'
@@ -59,11 +87,11 @@ export default {
 
             }
         },
-        traerPersona(datos){
+        traerPersona(datos) {
             this.persona = datos
             console.log(this.persona[0])
         },
-        cantidadProd(){
+        cantidadProd() {
             console.log(this.$refs.prod0.$props.productos)
         }
     },
@@ -74,7 +102,10 @@ export default {
         componenteProducto
     }
 }
+// Llama a la función cuando se carga la página
+//window.onload = traerPersonas();
 </script>
+
 <template>
     <div id="contenedor" v-show="this.tabla">
         <div class="container">
@@ -82,7 +113,7 @@ export default {
                 <div class="col-12">
                     <h1 class="text-center">Busqueda</h1>
                     <h4 class="text-center">por </h4>
-                    <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona"/>
+                    <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona" />
                 </div>
     
                 <div class="col-6">
@@ -90,32 +121,19 @@ export default {
                     <p>los datos recibidos son: {{ productos }}</p>
     
                 </div>
-                <div class="panel-body">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label class="sr-only" for="documento">Documento</label>
-                            <input type="number" class="form-control" id="documento" placeholder="Documento" name="documento">
-                        </div>
-                        <div class="form-group" id="group">
-                            <span class="form-label">Tipo</span>
-                            <select id="tipos" class="form-control" name="tipoDoc"></select>
-                            <span class="select-arrow"></span>
-                        </div>
-                    </form>
-                    <button @onclick="traerPersona()" class="btn btn-primary">Buscar</button>
-                    <button @onclick="traerPersonas()" class="btn btn-info ">Todos</button>
-                    <button @onclick="location.href = './index.html'" class="btn btn-success">Agregar</button>
+    
+                <div class="col-6 d-flex justify-content-center align-items-center bg-success p-0">
+                    <button type="button" class="btn btn-primary" @click="cantidadProd()">Total</button>
                 </div>
     
                 <div class="col-12 overflow-auto" style="max-height: 700px;">
                     <div class="col-12" v-for="(producto, index) in productos">
-                        <componenteProducto :productos="producto" :label="labelComp" :key="index" :ref="`prod${index}`"/>
+                        <componenteProducto :productos="producto" :label="labelComp" :key="index" :ref="`prod${index}`" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-  
-<style></style>
-  
+
+<style> </style>

@@ -9,12 +9,9 @@ productoRouter.get('/:cod', async (req, res) => {
   try {
     connection = await db.abrirConexion()
     result = await connection.execute(
-      `SELECT C.desCatProducto, P.refProducto, P.nomProducto, H.valor
-      FROM producto P, catProducto C, historicoPrecio H
-      WHERE P.refProducto = ${req.params.cod} and
-          H.fechaFin is NULL and
-          H.refProductoFK = P.refProducto and
-          P.idCatProductoFK = idCatProducto`
+      `SELECT *
+      FROM producto P
+      WHERE P.refProducto = ${req.params.cod}`
     )
   } catch (err) {
     return res.send(err.message);
@@ -46,7 +43,7 @@ productoRouter.get('/existencia/:cod', async (req, res) => {
   } finally {
     await db.cerrarConexion(connection)
     if (result.rows.length == 0) {
-      return res.send([0])
+      return res.send("Sin existencia")
     } else {
       return res.send(result.rows[0])
     }

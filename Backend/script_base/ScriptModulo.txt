@@ -260,299 +260,299 @@ INSERT INTO Producto VALUES ('22', '55', 'Pimientos rojos');
 -- Precios
 -- Categoría 'Licores'
 -- Cerveza artesanal
-INSERT INTO HistoricoPrecio VALUES ('2', '1', '1', '01-01-2023', '15-01-2023', 5000);
-INSERT INTO HistoricoPrecio VALUES ('2', '1', '2', '16-01-2023', '28-02-2023', 5500);
-INSERT INTO HistoricoPrecio VALUES ('2', '1', '3', '01-03-2023', NULL, 6000);
+INSERT INTO HistoricoPrecio VALUES ('2', '1', '1', '01-JAN-2023', '15-JAN-2023', 5000);
+INSERT INTO HistoricoPrecio VALUES ('2', '1', '2', '16-JAN-2023', '28-FEB-2023', 5500);
+INSERT INTO HistoricoPrecio VALUES ('2', '1', '3', '01-MAR-2023', NULL, 6000);
 
 -- Vino blanco
-INSERT INTO HistoricoPrecio VALUES ('2', '2', '1', '01-01-2023', '15-01-2023', 12000);
-INSERT INTO HistoricoPrecio VALUES ('2', '2', '2', '16-01-2023', '28-02-2023', 12500);
-INSERT INTO HistoricoPrecio VALUES ('2', '2', '3', '01-03-2023', NULL, 13000);
+INSERT INTO HistoricoPrecio VALUES ('2', '2', '1', '01-JAN-2023', '15-JAN-2023', 12000);
+INSERT INTO HistoricoPrecio VALUES ('2', '2', '2', '16-JAN-2023', '28-FEB-2023', 12500);
+INSERT INTO HistoricoPrecio VALUES ('2', '2', '3', '01-MAR-2023', NULL, 13000);
 
 -- Vino tinto
-INSERT INTO HistoricoPrecio VALUES ('2', '3', '1', '01-01-2023', '15-01-2023', 15000);
-INSERT INTO HistoricoPrecio VALUES ('2', '3', '2', '16-01-2023', '28-02-2023', 15500);
-INSERT INTO HistoricoPrecio VALUES ('2', '3', '3', '01-03-2023', NULL, 16000);
+INSERT INTO HistoricoPrecio VALUES ('2', '3', '1', '01-JAN-2023', '15-JAN-2023', 15000);
+INSERT INTO HistoricoPrecio VALUES ('2', '3', '2', '16-JAN-2023', '28-FEB-2023', 15500);
+INSERT INTO HistoricoPrecio VALUES ('2', '3', '3', '01-MAR-2023', NULL, 16000);
 
 -- Whisky
-INSERT INTO HistoricoPrecio VALUES ('2', '4', '1', '01-01-2023', '15-01-2023', 30000);
-INSERT INTO HistoricoPrecio VALUES ('2', '4', '2', '16-01-2023', '28-02-2023', 32000);
-INSERT INTO HistoricoPrecio VALUES ('2', '4', '3', '01-03-2023', NULL, 34000);
+INSERT INTO HistoricoPrecio VALUES ('2', '4', '1', '01-JAN-2023', '15-JAN-2023', 30000);
+INSERT INTO HistoricoPrecio VALUES ('2', '4', '2', '16-JAN-2023', '28-FEB-2023', 32000);
+INSERT INTO HistoricoPrecio VALUES ('2', '4', '3', '01-MAR-2023', NULL, 34000);
 
 -- Categoría 'Automotriz'
 -- Aceite para motor
-INSERT INTO HistoricoPrecio VALUES ('3', '5', '1', '01-01-2023', '15-01-2023', 25000);
-INSERT INTO HistoricoPrecio VALUES ('3', '5', '2', '16-01-2023', '28-02-2023', 26000);
-INSERT INTO HistoricoPrecio VALUES ('3', '5', '3', '01-03-2023', NULL, 27000);
+INSERT INTO HistoricoPrecio VALUES ('3', '5', '1', '01-JAN-2023', '15-JAN-2023', 25000);
+INSERT INTO HistoricoPrecio VALUES ('3', '5', '2', '16-JAN-2023', '28-FEB-2023', 26000);
+INSERT INTO HistoricoPrecio VALUES ('3', '5', '3', '01-MAR-2023', NULL, 27000);
 
 -- Llantas
-INSERT INTO HistoricoPrecio VALUES ('3', '6', '1', '01-01-2023', '15-01-2023', 150000);
-INSERT INTO HistoricoPrecio VALUES ('3', '6', '2', '16-01-2023', '28-02-2023', 155000);
-INSERT INTO HistoricoPrecio VALUES ('3', '6', '3', '01-03-2023', NULL, 160000);
+INSERT INTO HistoricoPrecio VALUES ('3', '6', '1', '01-JAN-2023', '15-JAN-2023', 150000);
+INSERT INTO HistoricoPrecio VALUES ('3', '6', '2', '16-JAN-2023', '28-FEB-2023', 155000);
+INSERT INTO HistoricoPrecio VALUES ('3', '6', '3', '01-MAR-2023', NULL, 160000);
 
 -- Categoría 'Electrónicos'
 -- Smartphone
-INSERT INTO HistoricoPrecio VALUES ('4', '7', '1', '01-01-2023', '15-01-2023', 800000);
-INSERT INTO HistoricoPrecio VALUES ('4', '7', '2', '16-01-2023', '28-02-2023', 820000);
-INSERT INTO HistoricoPrecio VALUES ('4', '7', '3', '01-03-2023', NULL, 850000);
+INSERT INTO HistoricoPrecio VALUES ('4', '7', '1', '01-JAN-2023', '15-JAN-2023', 800000);
+INSERT INTO HistoricoPrecio VALUES ('4', '7', '2', '16-JAN-2023', '28-FEB-2023', 820000);
+INSERT INTO HistoricoPrecio VALUES ('4', '7', '3', '01-MAR-2023', NULL, 850000);
 
 -- Laptop
-INSERT INTO HistoricoPrecio VALUES ('4', '8', '1', '01-01-2023', '15-01-2023', 1500000);
-INSERT INTO HistoricoPrecio VALUES ('4', '8', '2', '16-01-2023', '28-02-2023', 1550000);
-INSERT INTO HistoricoPrecio VALUES ('4', '8', '3', '01-03-2023', NULL, 1600000);
+INSERT INTO HistoricoPrecio VALUES ('4', '8', '1', '01-JAN-2023', '15-JAN-2023', 1500000);
+INSERT INTO HistoricoPrecio VALUES ('4', '8', '2', '16-JAN-2023', '28-FEB-2023', 1550000);
+INSERT INTO HistoricoPrecio VALUES ('4', '8', '3', '01-MAR-2023', NULL, 1600000);
 
 -- Categoría 'Moda y accesorios'
 -- Vestido elegante
-INSERT INTO HistoricoPrecio VALUES ('5', '9', '1', '01-01-2023', '15-01-2023', 80000);
-INSERT INTO HistoricoPrecio VALUES ('5', '9', '2', '16-01-2023', '28-02-2023', 85000);
-INSERT INTO HistoricoPrecio VALUES ('5', '9', '3', '01-03-2023', NULL, 90000);
+INSERT INTO HistoricoPrecio VALUES ('5', '9', '1', '01-JAN-2023', '15-JAN-2023', 80000);
+INSERT INTO HistoricoPrecio VALUES ('5', '9', '2', '16-JAN-2023', '28-FEB-2023', 85000);
+INSERT INTO HistoricoPrecio VALUES ('5', '9', '3', '01-MAR-2023', NULL, 90000);
 
 -- Reloj de pulsera
-INSERT INTO HistoricoPrecio VALUES ('5', '10', '1', '01-01-2023', '15-01-2023', 50000);
-INSERT INTO HistoricoPrecio VALUES ('5', '10', '2', '16-01-2023', '28-02-2023', 55000);
-INSERT INTO HistoricoPrecio VALUES ('5', '10', '3', '01-03-2023', NULL, 60000);
+INSERT INTO HistoricoPrecio VALUES ('5', '10', '1', '01-JAN-2023', '15-JAN-2023', 50000);
+INSERT INTO HistoricoPrecio VALUES ('5', '10', '2', '16-JAN-2023', '28-FEB-2023', 55000);
+INSERT INTO HistoricoPrecio VALUES ('5', '10', '3', '01-MAR-2023', NULL, 60000);
 
 -- Categoría 'Ferretería'
 -- Martillo
-INSERT INTO HistoricoPrecio VALUES ('6', '11', '1', '01-01-2023', '15-01-2023', 15000);
-INSERT INTO HistoricoPrecio VALUES ('6', '11', '2', '16-01-2023', '28-02-2023', 16000);
-INSERT INTO HistoricoPrecio VALUES ('6', '11', '3', '01-03-2023', NULL, 17000);
+INSERT INTO HistoricoPrecio VALUES ('6', '11', '1', '01-JAN-2023', '15-JAN-2023', 15000);
+INSERT INTO HistoricoPrecio VALUES ('6', '11', '2', '16-JAN-2023', '28-FEB-2023', 16000);
+INSERT INTO HistoricoPrecio VALUES ('6', '11', '3', '01-MAR-2023', NULL, 17000);
 
 -- Destornillador
-INSERT INTO HistoricoPrecio VALUES ('6', '12', '1', '01-01-2023', '15-01-2023', 10000);
-INSERT INTO HistoricoPrecio VALUES ('6', '12', '2', '16-01-2023', '28-02-2023', 11000);
-INSERT INTO HistoricoPrecio VALUES ('6', '12', '3', '01-03-2023', NULL, 12000);
+INSERT INTO HistoricoPrecio VALUES ('6', '12', '1', '01-JAN-2023', '15-JAN-2023', 10000);
+INSERT INTO HistoricoPrecio VALUES ('6', '12', '2', '16-JAN-2023', '28-FEB-2023', 11000);
+INSERT INTO HistoricoPrecio VALUES ('6', '12', '3', '01-MAR-2023', NULL, 12000);
 
 -- Categoría 'Salud y Belleza'
 -- Crema antiarrugas
-INSERT INTO HistoricoPrecio VALUES ('7', '13', '1', '01-01-2023', '15-01-2023', 30000);
-INSERT INTO HistoricoPrecio VALUES ('7', '13', '2', '16-01-2023', '28-02-2023', 32000);
-INSERT INTO HistoricoPrecio VALUES ('7', '13', '3', '01-03-2023', NULL, 34000);
+INSERT INTO HistoricoPrecio VALUES ('7', '13', '1', '01-JAN-2023', '15-JAN-2023', 30000);
+INSERT INTO HistoricoPrecio VALUES ('7', '13', '2', '16-JAN-2023', '28-FEB-2023', 32000);
+INSERT INTO HistoricoPrecio VALUES ('7', '13', '3', '01-MAR-2023', NULL, 34000);
 
 -- Perfume floral
-INSERT INTO HistoricoPrecio VALUES ('7', '14', '1', '01-01-2023', '15-01-2023', 50000);
-INSERT INTO HistoricoPrecio VALUES ('7', '14', '2', '16-01-2023', '28-02-2023', 55000);
-INSERT INTO HistoricoPrecio VALUES ('7', '14', '3', '01-03-2023', NULL, 60000);
+INSERT INTO HistoricoPrecio VALUES ('7', '14', '1', '01-JAN-2023', '15-JAN-2023', 50000);
+INSERT INTO HistoricoPrecio VALUES ('7', '14', '2', '16-JAN-2023', '28-FEB-2023', 55000);
+INSERT INTO HistoricoPrecio VALUES ('7', '14', '3', '01-MAR-2023', NULL, 60000);
 
 -- Subcategoría 'Oficina'
 -- Papel para impresora
-INSERT INTO HistoricoPrecio VALUES ('8', '15', '1', '01-01-2023', '15-01-2023', 5000);
-INSERT INTO HistoricoPrecio VALUES ('8', '15', '2', '16-01-2023', '28-02-2023', 5500);
-INSERT INTO HistoricoPrecio VALUES ('8', '15', '3', '01-03-2023', NULL, 6000);
+INSERT INTO HistoricoPrecio VALUES ('8', '15', '1', '01-JAN-2023', '15-JAN-2023', 5000);
+INSERT INTO HistoricoPrecio VALUES ('8', '15', '2', '16-JAN-2023', '28-FEB-2023', 5500);
+INSERT INTO HistoricoPrecio VALUES ('8', '15', '3', '01-MAR-2023', NULL, 6000);
 
 -- Lápices de colores
-INSERT INTO HistoricoPrecio VALUES ('8', '16', '1', '01-01-2023', '15-01-2023', 2000);
-INSERT INTO HistoricoPrecio VALUES ('8', '16', '2', '16-01-2023', '28-02-2023', 2200);
-INSERT INTO HistoricoPrecio VALUES ('8', '16', '3', '01-03-2023', NULL, 2500);
+INSERT INTO HistoricoPrecio VALUES ('8', '16', '1', '01-JAN-2023', '15-JAN-2023', 2000);
+INSERT INTO HistoricoPrecio VALUES ('8', '16', '2', '16-JAN-2023', '28-FEB-2023', 2200);
+INSERT INTO HistoricoPrecio VALUES ('8', '16', '3', '01-MAR-2023', NULL, 2500);
 
 -- Subcategoría 'Exteriores'
 -- Silla de jardín
-INSERT INTO HistoricoPrecio VALUES ('9', '17', '1', '01-01-2023', '15-01-2023', 80000);
-INSERT INTO HistoricoPrecio VALUES ('9', '17', '2', '16-01-2023', '28-02-2023', 85000);
-INSERT INTO HistoricoPrecio VALUES ('9', '17', '3', '01-03-2023', NULL, 90000);
+INSERT INTO HistoricoPrecio VALUES ('9', '17', '1', '01-JAN-2023', '15-JAN-2023', 80000);
+INSERT INTO HistoricoPrecio VALUES ('9', '17', '2', '16-JAN-2023', '28-FEB-2023', 85000);
+INSERT INTO HistoricoPrecio VALUES ('9', '17', '3', '01-MAR-2023', NULL, 90000);
 
 -- Manguera de jardín
-INSERT INTO HistoricoPrecio VALUES ('9', '18', '1', '01-01-2023', '15-01-2023', 30000);
-INSERT INTO HistoricoPrecio VALUES ('9', '18', '2', '16-01-2023', '28-02-2023', 32000);
-INSERT INTO HistoricoPrecio VALUES ('9', '18', '3', '01-03-2023', NULL, 34000);
+INSERT INTO HistoricoPrecio VALUES ('9', '18', '1', '01-JAN-2023', '15-JAN-2023', 30000);
+INSERT INTO HistoricoPrecio VALUES ('9', '18', '2', '16-JAN-2023', '28-FEB-2023', 32000);
+INSERT INTO HistoricoPrecio VALUES ('9', '18', '3', '01-MAR-2023', NULL, 34000);
 
 -- Categoría 'Muebles'
 -- Sofá modular
-INSERT INTO HistoricoPrecio VALUES ('10', '19', '1', '01-01-2023', '15-01-2023', 500000);
-INSERT INTO HistoricoPrecio VALUES ('10', '19', '2', '16-01-2023', '28-02-2023', 520000);
-INSERT INTO HistoricoPrecio VALUES ('10', '19', '3', '01-03-2023', NULL, 550000);
+INSERT INTO HistoricoPrecio VALUES ('10', '19', '1', '01-JAN-2023', '15-JAN-2023', 500000);
+INSERT INTO HistoricoPrecio VALUES ('10', '19', '2', '16-JAN-2023', '28-FEB-2023', 520000);
+INSERT INTO HistoricoPrecio VALUES ('10', '19', '3', '01-MAR-2023', NULL, 550000);
 
 -- Mesa de centro
-INSERT INTO HistoricoPrecio VALUES ('10', '20', '1', '01-01-2023', '15-01-2023', 300000);
-INSERT INTO HistoricoPrecio VALUES ('10', '20', '2', '16-01-2023', '28-02-2023', 320000);
-INSERT INTO HistoricoPrecio VALUES ('10', '20', '3', '01-03-2023', NULL, 340000);
+INSERT INTO HistoricoPrecio VALUES ('10', '20', '1', '01-JAN-2023', '15-JAN-2023', 300000);
+INSERT INTO HistoricoPrecio VALUES ('10', '20', '2', '16-JAN-2023', '28-FEB-2023', 320000);
+INSERT INTO HistoricoPrecio VALUES ('10', '20', '3', '01-MAR-2023', NULL, 340000);
 
 -- Categoría 'Hogar'
 -- Juego de toallas
-INSERT INTO HistoricoPrecio VALUES ('11', '21', '1', '01-01-2023', '15-01-2023', 15000);
-INSERT INTO HistoricoPrecio VALUES ('11', '21', '2', '16-01-2023', '28-02-2023', 16000);
-INSERT INTO HistoricoPrecio VALUES ('11', '21', '3', '01-03-2023', NULL, 17000);
+INSERT INTO HistoricoPrecio VALUES ('11', '21', '1', '01-JAN-2023', '15-JAN-2023', 15000);
+INSERT INTO HistoricoPrecio VALUES ('11', '21', '2', '16-JAN-2023', '28-FEB-2023', 16000);
+INSERT INTO HistoricoPrecio VALUES ('11', '21', '3', '01-MAR-2023', NULL, 17000);
 
 -- Vaso decorativo
-INSERT INTO HistoricoPrecio VALUES ('11', '22', '1', '01-01-2023', '15-01-2023', 5000);
-INSERT INTO HistoricoPrecio VALUES ('11', '22', '2', '16-01-2023', '28-02-2023', 5500);
-INSERT INTO HistoricoPrecio VALUES ('11', '22', '3', '01-03-2023', NULL, 6000);
+INSERT INTO HistoricoPrecio VALUES ('11', '22', '1', '01-JAN-2023', '15-JAN-2023', 5000);
+INSERT INTO HistoricoPrecio VALUES ('11', '22', '2', '16-JAN-2023', '28-FEB-2023', 5500);
+INSERT INTO HistoricoPrecio VALUES ('11', '22', '3', '01-MAR-2023', NULL, 6000);
 
 -- Subcategoría 'Dulces'
 -- Galletas
-INSERT INTO HistoricoPrecio VALUES ('12', '23', '1', '01-01-2023', '15-01-2023', 3000);
-INSERT INTO HistoricoPrecio VALUES ('12', '23', '2', '16-01-2023', '28-02-2023', 3200);
-INSERT INTO HistoricoPrecio VALUES ('12', '23', '3', '01-03-2023', NULL, 3400);
+INSERT INTO HistoricoPrecio VALUES ('12', '23', '1', '01-JAN-2023', '15-JAN-2023', 3000);
+INSERT INTO HistoricoPrecio VALUES ('12', '23', '2', '16-JAN-2023', '28-FEB-2023', 3200);
+INSERT INTO HistoricoPrecio VALUES ('12', '23', '3', '01-MAR-2023', NULL, 3400);
 
 -- Yogur natural
-INSERT INTO HistoricoPrecio VALUES ('12', '24', '1', '01-01-2023', '15-01-2023', 2500);
-INSERT INTO HistoricoPrecio VALUES ('12', '24', '2', '16-01-2023', '28-02-2023', 2600);
-INSERT INTO HistoricoPrecio VALUES ('12', '24', '3', '01-03-2023', NULL, 2700);
+INSERT INTO HistoricoPrecio VALUES ('12', '24', '1', '01-JAN-2023', '15-JAN-2023', 2500);
+INSERT INTO HistoricoPrecio VALUES ('12', '24', '2', '16-JAN-2023', '28-FEB-2023', 2600);
+INSERT INTO HistoricoPrecio VALUES ('12', '24', '3', '01-MAR-2023', NULL, 2700);
 
 -- Miel orgánica
-INSERT INTO HistoricoPrecio VALUES ('12', '25', '1', '01-01-2023', '15-01-2023', 8000);
-INSERT INTO HistoricoPrecio VALUES ('12', '25', '2', '16-01-2023', '28-02-2023', 8500);
-INSERT INTO HistoricoPrecio VALUES ('12', '25', '3', '01-03-2023', NULL, 9000);
+INSERT INTO HistoricoPrecio VALUES ('12', '25', '1', '01-JAN-2023', '15-JAN-2023', 8000);
+INSERT INTO HistoricoPrecio VALUES ('12', '25', '2', '16-JAN-2023', '28-FEB-2023', 8500);
+INSERT INTO HistoricoPrecio VALUES ('12', '25', '3', '01-MAR-2023', NULL, 9000);
 
 -- Subcategoría 'Chocolates'
 -- Chocolate con leche
-INSERT INTO HistoricoPrecio VALUES ('13', '26', '1', '01-01-2023', '15-01-2023', 4000);
-INSERT INTO HistoricoPrecio VALUES ('13', '26', '2', '16-01-2023', '28-02-2023', 4200);
-INSERT INTO HistoricoPrecio VALUES ('13', '26', '3', '01-03-2023', NULL, 4500);
+INSERT INTO HistoricoPrecio VALUES ('13', '26', '1', '01-JAN-2023', '15-JAN-2023', 4000);
+INSERT INTO HistoricoPrecio VALUES ('13', '26', '2', '16-JAN-2023', '28-FEB-2023', 4200);
+INSERT INTO HistoricoPrecio VALUES ('13', '26', '3', '01-MAR-2023', NULL, 4500);
 
 -- Chocolate amargo
-INSERT INTO HistoricoPrecio VALUES ('13', '27', '1', '01-01-2023', '15-01-2023', 4500);
-INSERT INTO HistoricoPrecio VALUES ('13', '27', '2', '16-01-2023', '28-02-2023', 4800);
-INSERT INTO HistoricoPrecio VALUES ('13', '27', '3', '01-03-2023', NULL, 5000);
+INSERT INTO HistoricoPrecio VALUES ('13', '27', '1', '01-JAN-2023', '15-JAN-2023', 4500);
+INSERT INTO HistoricoPrecio VALUES ('13', '27', '2', '16-JAN-2023', '28-FEB-2023', 4800);
+INSERT INTO HistoricoPrecio VALUES ('13', '27', '3', '01-MAR-2023', NULL, 5000);
 
 -- Chocolate blanco
-INSERT INTO HistoricoPrecio VALUES ('13', '28', '1', '01-01-2023', '15-01-2023', 5500);
-INSERT INTO HistoricoPrecio VALUES ('13', '28', '2', '16-01-2023', '28-02-2023', 5800);
-INSERT INTO HistoricoPrecio VALUES ('13', '28', '3', '01-03-2023', NULL, 6000);
+INSERT INTO HistoricoPrecio VALUES ('13', '28', '1', '01-JAN-2023', '15-JAN-2023', 5500);
+INSERT INTO HistoricoPrecio VALUES ('13', '28', '2', '16-JAN-2023', '28-FEB-2023', 5800);
+INSERT INTO HistoricoPrecio VALUES ('13', '28', '3', '01-MAR-2023', NULL, 6000);
 
 -- Subcategoría 'Chicles'
 -- Chicle de menta
-INSERT INTO HistoricoPrecio VALUES ('14', '29', '1', '01-01-2023', '15-01-2023', 500);
-INSERT INTO HistoricoPrecio VALUES ('14', '29', '2', '16-01-2023', '28-02-2023', 550);
-INSERT INTO HistoricoPrecio VALUES ('14', '29', '3', '01-03-2023', NULL, 600);
+INSERT INTO HistoricoPrecio VALUES ('14', '29', '1', '01-JAN-2023', '15-JAN-2023', 500);
+INSERT INTO HistoricoPrecio VALUES ('14', '29', '2', '16-JAN-2023', '28-FEB-2023', 550);
+INSERT INTO HistoricoPrecio VALUES ('14', '29', '3', '01-MAR-2023', NULL, 600);
 
 -- Chicle de fresa
-INSERT INTO HistoricoPrecio VALUES ('14', '30', '1', '01-01-2023', '15-01-2023', 450);
-INSERT INTO HistoricoPrecio VALUES ('14', '30', '2', '16-01-2023', '28-02-2023', 500);
-INSERT INTO HistoricoPrecio VALUES ('14', '30', '3', '01-03-2023', NULL, 550);
+INSERT INTO HistoricoPrecio VALUES ('14', '30', '1', '01-JAN-2023', '15-JAN-2023', 450);
+INSERT INTO HistoricoPrecio VALUES ('14', '30', '2', '16-JAN-2023', '28-FEB-2023', 500);
+INSERT INTO HistoricoPrecio VALUES ('14', '30', '3', '01-MAR-2023', NULL, 550);
 
 -- Chicle de sandía
-INSERT INTO HistoricoPrecio VALUES ('14', '31', '1', '01-01-2023', '15-01-2023', 600);
-INSERT INTO HistoricoPrecio VALUES ('14', '31', '2', '16-01-2023', '28-02-2023', 650);
-INSERT INTO HistoricoPrecio VALUES ('14', '31', '3', '01-03-2023', NULL, 700);
+INSERT INTO HistoricoPrecio VALUES ('14', '31', '1', '01-JAN-2023', '15-JAN-2023', 600);
+INSERT INTO HistoricoPrecio VALUES ('14', '31', '2', '16-JAN-2023', '28-FEB-2023', 650);
+INSERT INTO HistoricoPrecio VALUES ('14', '31', '3', '01-MAR-2023', NULL, 700);
 
 -- Subcategoría 'Snacks'
 -- Papas fritas
-INSERT INTO HistoricoPrecio VALUES ('15', '32', '1', '01-01-2023', '15-01-2023', 2000);
-INSERT INTO HistoricoPrecio VALUES ('15', '32', '2', '16-01-2023', '28-02-2023', 2200);
-INSERT INTO HistoricoPrecio VALUES ('15', '32', '3', '01-03-2023', NULL, 2500);
+INSERT INTO HistoricoPrecio VALUES ('15', '32', '1', '01-JAN-2023', '15-JAN-2023', 2000);
+INSERT INTO HistoricoPrecio VALUES ('15', '32', '2', '16-JAN-2023', '28-FEB-2023', 2200);
+INSERT INTO HistoricoPrecio VALUES ('15', '32', '3', '01-MAR-2023', NULL, 2500);
 
 -- Nachos de queso
-INSERT INTO HistoricoPrecio VALUES ('15', '33', '1', '01-01-2023', '15-01-2023', 1800);
-INSERT INTO HistoricoPrecio VALUES ('15', '33', '2', '16-01-2023', '28-02-2023', 2000);
-INSERT INTO HistoricoPrecio VALUES ('15', '33', '3', '01-03-2023', NULL, 2200);
+INSERT INTO HistoricoPrecio VALUES ('15', '33', '1', '01-JAN-2023', '15-JAN-2023', 1800);
+INSERT INTO HistoricoPrecio VALUES ('15', '33', '2', '16-JAN-2023', '28-FEB-2023', 2000);
+INSERT INTO HistoricoPrecio VALUES ('15', '33', '3', '01-MAR-2023', NULL, 2200);
 
 -- Snack de maíz
-INSERT INTO HistoricoPrecio VALUES ('15', '34', '1', '01-01-2023', '15-01-2023', 1500);
-INSERT INTO HistoricoPrecio VALUES ('15', '34', '2', '16-01-2023', '28-02-2023', 1600);
-INSERT INTO HistoricoPrecio VALUES ('15', '34', '3', '01-03-2023', NULL, 1700);
+INSERT INTO HistoricoPrecio VALUES ('15', '34', '1', '01-JAN-2023', '15-JAN-2023', 1500);
+INSERT INTO HistoricoPrecio VALUES ('15', '34', '2', '16-JAN-2023', '28-FEB-2023', 1600);
+INSERT INTO HistoricoPrecio VALUES ('15', '34', '3', '01-MAR-2023', NULL, 1700);
 
 -- Subcategoría 'Cereales y Granolas'
 -- Granola de frutas
-INSERT INTO HistoricoPrecio VALUES ('16', '35', '1', '01-01-2023', '15-01-2023', 3000);
-INSERT INTO HistoricoPrecio VALUES ('16', '35', '2', '16-01-2023', '28-02-2023', 3200);
-INSERT INTO HistoricoPrecio VALUES ('16', '35', '3', '01-03-2023', NULL, 3400);
+INSERT INTO HistoricoPrecio VALUES ('16', '35', '1', '01-JAN-2023', '15-JAN-2023', 3000);
+INSERT INTO HistoricoPrecio VALUES ('16', '35', '2', '16-JAN-2023', '28-FEB-2023', 3200);
+INSERT INTO HistoricoPrecio VALUES ('16', '35', '3', '01-MAR-2023', NULL, 3400);
 
 -- Cereal de avena
-INSERT INTO HistoricoPrecio VALUES ('16', '36', '1', '01-01-2023', '15-01-2023', 2500);
-INSERT INTO HistoricoPrecio VALUES ('16', '36', '2', '16-01-2023', '28-02-2023', 2600);
-INSERT INTO HistoricoPrecio VALUES ('16', '36', '3', '01-03-2023', NULL, 2700);
+INSERT INTO HistoricoPrecio VALUES ('16', '36', '1', '01-JAN-2023', '15-JAN-2023', 2500);
+INSERT INTO HistoricoPrecio VALUES ('16', '36', '2', '16-JAN-2023', '28-FEB-2023', 2600);
+INSERT INTO HistoricoPrecio VALUES ('16', '36', '3', '01-MAR-2023', NULL, 2700);
 
 -- Barra de cereales
-INSERT INTO HistoricoPrecio VALUES ('16', '37', '1', '01-01-2023', '15-01-2023', 2000);
-INSERT INTO HistoricoPrecio VALUES ('16', '37', '2', '16-01-2023', '28-02-2023', 2200);
-INSERT INTO HistoricoPrecio VALUES ('16', '37', '3', '01-03-2023', NULL, 2500);
+INSERT INTO HistoricoPrecio VALUES ('16', '37', '1', '01-JAN-2023', '15-JAN-2023', 2000);
+INSERT INTO HistoricoPrecio VALUES ('16', '37', '2', '16-JAN-2023', '28-FEB-2023', 2200);
+INSERT INTO HistoricoPrecio VALUES ('16', '37', '3', '01-MAR-2023', NULL, 2500);
 
 -- Subcategoría 'Café y Té'
 -- Café colombiano
-INSERT INTO HistoricoPrecio VALUES ('17', '38', '1', '01-01-2023', '15-01-2023', 15000);
-INSERT INTO HistoricoPrecio VALUES ('17', '38', '2', '16-01-2023', '28-02-2023', 16000);
-INSERT INTO HistoricoPrecio VALUES ('17', '38', '3', '01-03-2023', NULL, 17000);
+INSERT INTO HistoricoPrecio VALUES ('17', '38', '1', '01-JAN-2023', '15-JAN-2023', 15000);
+INSERT INTO HistoricoPrecio VALUES ('17', '38', '2', '16-JAN-2023', '28-FEB-2023', 16000);
+INSERT INTO HistoricoPrecio VALUES ('17', '38', '3', '01-MAR-2023', NULL, 17000);
 
 -- Té negro inglés
-INSERT INTO HistoricoPrecio VALUES ('17', '39', '1', '01-01-2023', '15-01-2023', 12000);
-INSERT INTO HistoricoPrecio VALUES ('17', '39', '2', '16-01-2023', '28-02-2023', 12500);
-INSERT INTO HistoricoPrecio VALUES ('17', '39', '3', '01-03-2023', NULL, 13000);
+INSERT INTO HistoricoPrecio VALUES ('17', '39', '1', '01-JAN-2023', '15-JAN-2023', 12000);
+INSERT INTO HistoricoPrecio VALUES ('17', '39', '2', '16-JAN-2023', '28-FEB-2023', 12500);
+INSERT INTO HistoricoPrecio VALUES ('17', '39', '3', '01-MAR-2023', NULL, 13000);
 
 -- Té verde japonés
-INSERT INTO HistoricoPrecio VALUES ('17', '40', '1', '01-01-2023', '15-01-2023', 10000);
-INSERT INTO HistoricoPrecio VALUES ('17', '40', '2', '16-01-2023', '28-02-2023', 11000);
-INSERT INTO HistoricoPrecio VALUES ('17', '40', '3', '01-03-2023', NULL, 12000);
+INSERT INTO HistoricoPrecio VALUES ('17', '40', '1', '01-JAN-2023', '15-JAN-2023', 10000);
+INSERT INTO HistoricoPrecio VALUES ('17', '40', '2', '16-JAN-2023', '28-FEB-2023', 11000);
+INSERT INTO HistoricoPrecio VALUES ('17', '40', '3', '01-MAR-2023', NULL, 12000);
 
 -- Subcategoría 'Aceites'
 -- Aceite de oliva extra virgen
-INSERT INTO HistoricoPrecio VALUES ('18', '41', '1', '01-01-2023', '15-01-2023', 25000);
-INSERT INTO HistoricoPrecio VALUES ('18', '41', '2', '16-01-2023', '28-02-2023', 26000);
-INSERT INTO HistoricoPrecio VALUES ('18', '41', '3', '01-03-2023', NULL, 27000);
+INSERT INTO HistoricoPrecio VALUES ('18', '41', '1', '01-JAN-2023', '15-JAN-2023', 25000);
+INSERT INTO HistoricoPrecio VALUES ('18', '41', '2', '16-JAN-2023', '28-FEB-2023', 26000);
+INSERT INTO HistoricoPrecio VALUES ('18', '41', '3', '01-MAR-2023', NULL, 27000);
 
 -- Aceite de coco
-INSERT INTO HistoricoPrecio VALUES ('18', '42', '1', '01-01-2023', '15-01-2023', 18000);
-INSERT INTO HistoricoPrecio VALUES ('18', '42', '2', '16-01-2023', '28-02-2023', 20000);
-INSERT INTO HistoricoPrecio VALUES ('18', '42', '3', '01-03-2023', NULL, 22000);
+INSERT INTO HistoricoPrecio VALUES ('18', '42', '1', '01-JAN-2023', '15-JAN-2023', 18000);
+INSERT INTO HistoricoPrecio VALUES ('18', '42', '2', '16-JAN-2023', '28-FEB-2023', 20000);
+INSERT INTO HistoricoPrecio VALUES ('18', '42', '3', '01-MAR-2023', NULL, 22000);
 
 -- Aceite de girasol
-INSERT INTO HistoricoPrecio VALUES ('18', '43', '1', '01-01-2023', '15-01-2023', 15000);
-INSERT INTO HistoricoPrecio VALUES ('18', '43', '2', '16-01-2023', '28-02-2023', 16000);
-INSERT INTO HistoricoPrecio VALUES ('18', '43', '3', '01-03-2023', NULL, 17000);
+INSERT INTO HistoricoPrecio VALUES ('18', '43', '1', '01-JAN-2023', '15-JAN-2023', 15000);
+INSERT INTO HistoricoPrecio VALUES ('18', '43', '2', '16-JAN-2023', '28-FEB-2023', 16000);
+INSERT INTO HistoricoPrecio VALUES ('18', '43', '3', '01-MAR-2023', NULL, 17000);
 
 -- Subcategoría 'Arinas'
 -- Harina de trigo
-INSERT INTO HistoricoPrecio VALUES ('19', '44', '1', '01-01-2023', '15-01-2023', 3000);
-INSERT INTO HistoricoPrecio VALUES ('19', '44', '2', '16-01-2023', '28-02-2023', 3200);
-INSERT INTO HistoricoPrecio VALUES ('19', '44', '3', '01-03-2023', NULL, 3400);
+INSERT INTO HistoricoPrecio VALUES ('19', '44', '1', '01-JAN-2023', '15-JAN-2023', 3000);
+INSERT INTO HistoricoPrecio VALUES ('19', '44', '2', '16-JAN-2023', '28-FEB-2023', 3200);
+INSERT INTO HistoricoPrecio VALUES ('19', '44', '3', '01-MAR-2023', NULL, 3400);
 
 -- Harina de maíz
-INSERT INTO HistoricoPrecio VALUES ('19', '45', '1', '01-01-2023', '15-01-2023', 2500);
-INSERT INTO HistoricoPrecio VALUES ('19', '45', '2', '16-01-2023', '28-02-2023', 2600);
-INSERT INTO HistoricoPrecio VALUES ('19', '45', '3', '01-03-2023', NULL, 2700);
+INSERT INTO HistoricoPrecio VALUES ('19', '45', '1', '01-JAN-2023', '15-JAN-2023', 2500);
+INSERT INTO HistoricoPrecio VALUES ('19', '45', '2', '16-JAN-2023', '28-FEB-2023', 2600);
+INSERT INTO HistoricoPrecio VALUES ('19', '45', '3', '01-MAR-2023', NULL, 2700);
 
 -- Harina de avena
-INSERT INTO HistoricoPrecio VALUES ('19', '46', '1', '01-01-2023', '15-01-2023', 2000);
-INSERT INTO HistoricoPrecio VALUES ('19', '46', '2', '16-01-2023', '28-02-2023', 2200);
-INSERT INTO HistoricoPrecio VALUES ('19', '46', '3', '01-03-2023', NULL, 2500);
+INSERT INTO HistoricoPrecio VALUES ('19', '46', '1', '01-JAN-2023', '15-JAN-2023', 2000);
+INSERT INTO HistoricoPrecio VALUES ('19', '46', '2', '16-JAN-2023', '28-FEB-2023', 2200);
+INSERT INTO HistoricoPrecio VALUES ('19', '46', '3', '01-MAR-2023', NULL, 2500);
 
 -- Subcategoría 'Condimentos'
 -- Sal de mar
-INSERT INTO HistoricoPrecio VALUES ('20', '47', '1', '01-01-2023', '15-01-2023', 1000);
-INSERT INTO HistoricoPrecio VALUES ('20', '47', '2', '16-01-2023', '28-02-2023', 1100);
-INSERT INTO HistoricoPrecio VALUES ('20', '47', '3', '01-03-2023', NULL, 1200);
+INSERT INTO HistoricoPrecio VALUES ('20', '47', '1', '01-JAN-2023', '15-JAN-2023', 1000);
+INSERT INTO HistoricoPrecio VALUES ('20', '47', '2', '16-JAN-2023', '28-FEB-2023', 1100);
+INSERT INTO HistoricoPrecio VALUES ('20', '47', '3', '01-MAR-2023', NULL, 1200);
 
 -- Pimienta negra
-INSERT INTO HistoricoPrecio VALUES ('20', '48', '1', '01-01-2023', '15-01-2023', 1200);
-INSERT INTO HistoricoPrecio VALUES ('20', '48', '2', '16-01-2023', '28-02-2023', 1300);
-INSERT INTO HistoricoPrecio VALUES ('20', '48', '3', '01-03-2023', NULL, 1400);
+INSERT INTO HistoricoPrecio VALUES ('20', '48', '1', '01-JAN-2023', '15-JAN-2023', 1200);
+INSERT INTO HistoricoPrecio VALUES ('20', '48', '2', '16-JAN-2023', '28-FEB-2023', 1300);
+INSERT INTO HistoricoPrecio VALUES ('20', '48', '3', '01-MAR-2023', NULL, 1400);
 
 -- Salsa de soja
-INSERT INTO HistoricoPrecio VALUES ('20', '49', '1', '01-01-2023', '15-01-2023', 1500);
-INSERT INTO HistoricoPrecio VALUES ('20', '49', '2', '16-01-2023', '28-02-2023', 1600);
-INSERT INTO HistoricoPrecio VALUES ('20', '49', '3', '01-03-2023', NULL, 1700);
+INSERT INTO HistoricoPrecio VALUES ('20', '49', '1', '01-JAN-2023', '15-JAN-2023', 1500);
+INSERT INTO HistoricoPrecio VALUES ('20', '49', '2', '16-JAN-2023', '28-FEB-2023', 1600);
+INSERT INTO HistoricoPrecio VALUES ('20', '49', '3', '01-MAR-2023', NULL, 1700);
 
 -- Subcategoría 'Frutas'
 -- Manzana verde
-INSERT INTO HistoricoPrecio VALUES ('21', '50', '1', '01-01-2023', '15-01-2023', 3000);
-INSERT INTO HistoricoPrecio VALUES ('21', '50', '2', '16-01-2023', '28-02-2023', 3200);
-INSERT INTO HistoricoPrecio VALUES ('21', '50', '3', '01-03-2023', NULL, 3400);
+INSERT INTO HistoricoPrecio VALUES ('21', '50', '1', '01-JAN-2023', '15-JAN-2023', 3000);
+INSERT INTO HistoricoPrecio VALUES ('21', '50', '2', '16-JAN-2023', '28-FEB-2023', 3200);
+INSERT INTO HistoricoPrecio VALUES ('21', '50', '3', '01-MAR-2023', NULL, 3400);
 
 -- Banana madura
-INSERT INTO HistoricoPrecio VALUES ('21', '51', '1', '01-01-2023', '15-01-2023', 2500);
-INSERT INTO HistoricoPrecio VALUES ('21', '51', '2', '16-01-2023', '28-02-2023', 2600);
-INSERT INTO HistoricoPrecio VALUES ('21', '51', '3', '01-03-2023', NULL, 2700);
+INSERT INTO HistoricoPrecio VALUES ('21', '51', '1', '01-JAN-2023', '15-JAN-2023', 2500);
+INSERT INTO HistoricoPrecio VALUES ('21', '51', '2', '16-JAN-2023', '28-FEB-2023', 2600);
+INSERT INTO HistoricoPrecio VALUES ('21', '51', '3', '01-MAR-2023', NULL, 2700);
 
 -- Uvas rojas
-INSERT INTO HistoricoPrecio VALUES ('21', '52', '1', '01-01-2023', '15-01-2023', 2000);
-INSERT INTO HistoricoPrecio VALUES ('21', '52', '2', '16-01-2023', '28-02-2023', 2200);
-INSERT INTO HistoricoPrecio VALUES ('21', '52', '3', '01-03-2023', NULL, 2500);
+INSERT INTO HistoricoPrecio VALUES ('21', '52', '1', '01-JAN-2023', '15-JAN-2023', 2000);
+INSERT INTO HistoricoPrecio VALUES ('21', '52', '2', '16-JAN-2023', '28-FEB-2023', 2200);
+INSERT INTO HistoricoPrecio VALUES ('21', '52', '3', '01-MAR-2023', NULL, 2500);
 
 -- Subcategoría 'Vegetales'
 -- Tomates frescos
-INSERT INTO HistoricoPrecio VALUES ('22', '53', '1', '01-01-2023', '15-01-2023', 1500);
-INSERT INTO HistoricoPrecio VALUES ('22', '53', '2', '16-01-2023', '28-02-2023', 1600);
-INSERT INTO HistoricoPrecio VALUES ('22', '53', '3', '01-03-2023', NULL, 1700);
+INSERT INTO HistoricoPrecio VALUES ('22', '53', '1', '01-JAN-2023', '15-JAN-2023', 1500);
+INSERT INTO HistoricoPrecio VALUES ('22', '53', '2', '16-JAN-2023', '28-FEB-2023', 1600);
+INSERT INTO HistoricoPrecio VALUES ('22', '53', '3', '01-MAR-2023', NULL, 1700);
 
 -- Zanahorias orgánicas
-INSERT INTO HistoricoPrecio VALUES ('22', '54', '1', '01-01-2023', '15-01-2023', 1200);
-INSERT INTO HistoricoPrecio VALUES ('22', '54', '2', '16-01-2023', '28-02-2023', 1300);
-INSERT INTO HistoricoPrecio VALUES ('22', '54', '3', '01-03-2023', NULL, 1400);
+INSERT INTO HistoricoPrecio VALUES ('22', '54', '1', '01-JAN-2023', '15-JAN-2023', 1200);
+INSERT INTO HistoricoPrecio VALUES ('22', '54', '2', '16-JAN-2023', '28-FEB-2023', 1300);
+INSERT INTO HistoricoPrecio VALUES ('22', '54', '3', '01-MAR-2023', NULL, 1400);
 
 -- Pimientos rojos
-INSERT INTO HistoricoPrecio VALUES ('22', '55', '1', '01-01-2023', '15-01-2023', 1000);
-INSERT INTO HistoricoPrecio VALUES ('22', '55', '2', '16-01-2023', '28-02-2023', 1100);
-INSERT INTO HistoricoPrecio VALUES ('22', '55', '3', '01-03-2023', NULL, 1200);
+INSERT INTO HistoricoPrecio VALUES ('22', '55', '1', '01-JAN-2023', '15-JAN-2023', 1000);
+INSERT INTO HistoricoPrecio VALUES ('22', '55', '2', '16-JAN-2023', '28-FEB-2023', 1100);
+INSERT INTO HistoricoPrecio VALUES ('22', '55', '3', '01-MAR-2023', NULL, 1200);
 
 
 -- Incluir en TipoFac asi: VE Venta; CO Compra; DV Devolución venta; DC Devolución Compra

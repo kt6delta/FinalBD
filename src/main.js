@@ -1,8 +1,5 @@
 import { createApp } from 'vue'
 import './style.css'
-//import App from './Tabla.vue'
-//import App from './components/Barra_busqueda.vue'
-//import App from './components/Caja_persona.vue'
 import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
