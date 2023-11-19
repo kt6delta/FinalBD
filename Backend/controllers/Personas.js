@@ -50,7 +50,7 @@ personaRouter.post('/', async (req, res, next) => {
 })
 
 //obtener los clientes
-personaRouter.get('/clientes', async (req, res) => {
+personaRouter.get('/:tipoP', async (req, res) => {
     let result;
     try {
         connection = await db.abrirConexion()
@@ -58,7 +58,7 @@ personaRouter.get('/clientes', async (req, res) => {
             `SELECT P.nombre||' '||P.apellido cliente, idTipoPersonaFK, idTipoDocFK, nDocumento
             FROM Persona P, tipoPersona TP
             WHERE P.idTipoPersonaFK = TP.idTipoPersona and
-            descTipoPersona = 'Cliente'`
+            descTipoPersona = '${req.params.tipoP}'`
         )
     } catch (err) {
         return res.send(err.message);
