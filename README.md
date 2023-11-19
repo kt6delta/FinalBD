@@ -12,3 +12,4 @@ npm install axios
 npm install vue-router@4
 npm install cors
 npm install bootstrap5
+npm install vue-select@latest --save

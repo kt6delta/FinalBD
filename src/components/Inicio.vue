@@ -8,7 +8,7 @@ export default {
     },
     methods: {
         OcultarInicio() {
-            this.EnviarData();
+            //this.EnviarData();
             this.$emit('oculta-inicio', false);
         },
         async EnviarData() {
@@ -30,7 +30,7 @@ export default {
     <div id="inicio" class="booking-cta m-0 p-0">
         <h1 class="text-uppercase text-center">INICIO DE SESION</h1>
         <div id="bloque-white" class="w-100 h-100">
-
+            <!--ICON de persona en negro-->
             <picture>
                 <img src="../img/person.jpg" class="rounded mx-auto d-block" id="size" alt="person">
             </picture>
@@ -49,7 +49,6 @@ export default {
             </form>
         </div>
     </div>
-    <router-view></router-view>
 </template>
 
 <style scoped>
@@ -82,4 +81,5 @@ img#size {
     width: 100%;
     height: 30vh;
 }
+
 </style>

@@ -18,13 +18,14 @@ export default {
     },
     data() {
         return {
+            contador: 0,
+            tabla: true,
             personas: [],
             tipoPersona: [],
             productos: [],
             tipoFactura: '',
             persona: [],
             listaProd: [],
-
         };
     },
     methods: {
@@ -75,27 +76,41 @@ export default {
 }
 </script>
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Busqueda</h1>
-                <h4 class="text-center">por </h4>
-                <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona"/>
-            </div>
-
-            <div class="col-6">
-                <componenteDetProd @Codigo="traerProducto" />
-                <p>los datos recibidos son: {{ productos }}</p>
-
-            </div>
-
-            <div class="col-6 d-flex justify-content-center align-items-center bg-success p-0">
-                <button type="button" class="btn btn-primary" @click="cantidadProd()">Total</button>
-            </div>
-
-            <div class="col-12 overflow-auto" style="max-height: 700px;">
-                <div class="col-12" v-for="(producto, index) in productos">
-                    <componenteProducto :productos="producto" :label="labelComp" :key="index" :ref="`prod${index}`"/>
+    <div id="contenedor" v-show="this.tabla">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Busqueda</h1>
+                    <h4 class="text-center">por </h4>
+                    <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona"/>
+                </div>
+    
+                <div class="col-6">
+                    <componenteDetProd @Codigo="traerProducto" />
+                    <p>los datos recibidos son: {{ productos }}</p>
+    
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only" for="documento">Documento</label>
+                            <input type="number" class="form-control" id="documento" placeholder="Documento" name="documento">
+                        </div>
+                        <div class="form-group" id="group">
+                            <span class="form-label">Tipo</span>
+                            <select id="tipos" class="form-control" name="tipoDoc"></select>
+                            <span class="select-arrow"></span>
+                        </div>
+                    </form>
+                    <button @onclick="traerPersona()" class="btn btn-primary">Buscar</button>
+                    <button @onclick="traerPersonas()" class="btn btn-info ">Todos</button>
+                    <button @onclick="location.href = './index.html'" class="btn btn-success">Agregar</button>
+                </div>
+    
+                <div class="col-12 overflow-auto" style="max-height: 700px;">
+                    <div class="col-12" v-for="(producto, index) in productos">
+                        <componenteProducto :productos="producto" :label="labelComp" :key="index" :ref="`prod${index}`"/>
+                    </div>
                 </div>
             </div>
         </div>
