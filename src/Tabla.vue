@@ -1,7 +1,7 @@
 <script>
 import Barra_busqueda from './components/Barra_busqueda.vue';
 import ComponentePer from './components/ComponentePer.vue';
-import componenteDetProd from './components/componentedetprod.vue';
+import componenteDetProd from './components/componenteDetProd.vue';
 import componenteProducto from './components/componenteProducto.vue';
 import { onMounted, ref } from 'vue';
 
