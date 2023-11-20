@@ -9,7 +9,7 @@ empleadoRouter.get('/:cod', async (req, res) => {
   try {
     connection = await db.abrirConexion()
     result = await connection.execute(
-      `SELECT C.nomCargo
+      `SELECT EC.codEmpleadoFk, C.nomCargo
       FROM cargo C, empleadoCargo EC
       WHERE EC.codCargoFK = C.codCargo and
       C.estadoCargo = 1 and
