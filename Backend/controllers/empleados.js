@@ -3,7 +3,7 @@ const db = require("../utils/Conexion")
 const empleadoRouter = require('express').Router()
 
 
-//obterner personas (todos)
+//obterner empleado (todos)
 empleadoRouter.get('/:cod', async (req, res) => {
   let result;
   try {

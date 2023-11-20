@@ -1,4 +1,6 @@
 <script>
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
 import Barra_busqueda from './components/Barra_busqueda.vue';
 import ComponentePer from './components/ComponentePer.vue';
 import componenteDetProd from './components/componentedetprod.vue';

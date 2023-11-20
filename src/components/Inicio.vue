@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 export default {
     data() {
         return {
@@ -7,29 +6,35 @@ export default {
         };
     },
     methods: {
-        OcultarInicio() {
-            //this.EnviarData();
-            this.$emit('oculta-inicio', false);
+        ejecutar(){
+            console.log('pwpsd')
+            
         },
         async EnviarData() {
+            let prueba = false
             try {
-                const response = await axios.post('https://your-api-url.com', {
-                    email: this.email,
-                    password: this.password
-                });
-                console.log(response.data);
+                const response = await fetch(`http://localhost:3000/api/empleados/${this.codigo}`);
+                const data = await response.json();
+                localStorage.setItem('empleado', JSON.stringify(data));
+                console.log(data)
+                prueba = true
+
             } catch (error) {
-                console.error(error);
+                window.alert(error)
+                prueba = false
+            } finally {
+                return prueba 
             }
-        },
+
+        }
     }
 };
 </script>
 
 <template>
-    <div id="inicio" class="booking-cta m-0 p-0">
+    <div id="inicio" class="booking-cta m-0 p-0 bg-primary">
         <h1 class="text-uppercase text-center">INICIO DE SESION</h1>
-        <div id="bloque-white" class="w-100 h-100">
+        <div  class="w-100 h-100 ">
             <!--ICON de persona en negro-->
             <picture>
                 <img src="../img/person.jpg" class="rounded mx-auto d-block" id="size" alt="person">
@@ -38,12 +43,14 @@ export default {
 
                 <div class="col-sm-12">
                     <input class="form-control form-control-lg" type="text" placeholder="codigo Empleado"
-                        aria-label=".form-control-lg example" v-model="email">
+                        aria-label=".form-control-lg example" v-model="codigo">
                 </div>
 
                 <div id="btn" class="row g-3 m-auto">
                     <div class="col align-self-center">
-                        <button @click="OcultarInicio" class="btn btn-primary me-3">Enviar</button>
+
+                        <!--<button @click="EnviarData" class="btn btn-primary me-3">Enviar</button>-->
+                        <button @click="ejecutar" class="btn btn-primary me-3">Ingresar</button>
                     </div>
                 </div>
             </form>
@@ -56,6 +63,7 @@ img#size {
     width: 20%;
     height: auto;
 }
+
 #btn {
     text-align: center;
 }
@@ -81,5 +89,4 @@ img#size {
     width: 100%;
     height: 30vh;
 }
-
 </style>
