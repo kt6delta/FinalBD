@@ -65,6 +65,9 @@ export default {
       console.log('post');
       this.HideAll();
       this.$router.push('/Tabla');
+    },
+    Direcciones(data){
+      console.log(data);
     }
   },
   components: {
@@ -117,7 +120,7 @@ export default {
                 <form>
                   <!--agrega en el html varios espacios de direccion-->
                   <div v-for="i in cont2" v-bind:key="i">
-                    <Direcciones :cont2Pop="i" />
+                    <Direcciones :cont2Pop="i" @direccion="Direcciones()" />
                   </div>
 
                   <!--ingresar info de tipo Usuario-->
