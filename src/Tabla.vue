@@ -111,35 +111,32 @@ export default {
         componenteProducto
     }
 };
-// Llama a la función cuando se carga la página
-//window.onload = traerPersonas();
 </script>
 <template>
-    <div id="contenedor" v-show="this.tabla">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center">{{ this.cargo }}</h1>
-                    <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona" />
-                </div>
+    <div class="bg-white">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">{{ this.cargo }}</h1>
+                <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona" />
+            </div>
 
-                <div class="col-6">
-                    <componenteDetProd @Codigo="traerProducto" />
+            <div class="col-6">
+                <componenteDetProd @Codigo="traerProducto" />
 
-                </div>
+            </div>
 
-                <div class="col-6 d-flex justify-content-center align-items-center bg-success p-0">
-                    <button type="button" class="btn btn-primary" @click="crearFactura()">Total</button>
-                </div>
+            <div class="col-6 d-flex justify-content-center align-items-center bg-success p-0">
+                <button type="button" class="btn btn-primary" @click="crearFactura()">Total</button>
+            </div>
 
-                <div class="col-12 overflow-auto" style="max-height: 700px;">
-                    <div class="col-12" v-for="(producto, index) in productos">
-                        <componenteProducto :productos="producto" :label="labelComp" :index="index"
-                            @datoCantidad="cantidadProd" />
-                    </div>
+            <div class="col-12 overflow-auto" style="max-height: 700px;">
+                <div class="col-12" v-for="(producto, index) in productos">
+                    <componenteProducto :productos="producto" :label="labelComp" :index="index"
+                        @datoCantidad="cantidadProd" />
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 <style></style>

@@ -1,8 +1,5 @@
 import { createApp } from 'vue'
 import './style.css'
-//import App from './Tabla.vue'
-//import App from './components/Barra_busqueda.vue'
-//import App from './components/Caja_persona.vue'
 import App from './App.vue'
 import Formulario from './components/Formulario.vue'
 import Inicio from './components/Inicio.vue';

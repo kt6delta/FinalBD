@@ -16,18 +16,13 @@
 
 /* Estilo de la paguina de fondos de form*/
 .section .section-center {
+    font-family: montserrat, sans-serif;
     position: absolute;
     left: 0;
     right: 0;
     background-image: url(./img/background.png);
     background-size: cover;
     background-position: center;
-}
-/* Estilo de la paguina de fondos de inicio */
-#booking {
-    font-family: montserrat, sans-serif;
-    background-image: url(./img/background.png);
-    background-size: cover;
 }
 
 /* color del form*/
