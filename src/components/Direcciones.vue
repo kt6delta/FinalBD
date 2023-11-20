@@ -5,8 +5,8 @@
             <div class="form-group">
                 <span class="form-label" v-if="this.cont2Pop == 1">Direccion</span>
                 <!-- Input que abre la subpestaña -->
-                <input class="form-control" type="text" name="direccion" placeholder="Direccion" @click="openModal"
-                    v-model="direccion" readonly>
+                <input class="form-control" type="text" name="direccion" placeholder="Direccion" @click="ControlModal(true)"
+                    v-model="txtDireccion" readonly>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                             <label class="visually-hidden" for="specificSizeSelect">Tipo Via</label>
                             <div class="input-group">
                                 <div class="input-group-text">Tipo Via</div>
-                                <v-select style="width: 68%;" aria-describedby="validationServer" required :options="[
+                                <v-select style="width: 68%;" aria-describedby="validationServer" :options="[
                                     { code: 'AU', Via: 'Autopista' },
                                     { code: 'AV', Via: 'Avenida' },
                                     { code: 'VI', Via: 'Via' },
@@ -56,7 +56,8 @@
                         <!--Selecciona # ó nombre Via-->
                         <div class="col-sm-2">
                             <label class="visually-hidden" for="txt">idNum</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" placeholder="# ó nombre Via" v-model="idNum">
+                            <input type="text" class="form-control" id="specificSizeInputName" placeholder="# ó nombre Via"
+                                v-model="idNum">
                         </div>
                         <!--Selecciona letra Via-->
                         <div class="col-sm-1">
@@ -84,7 +85,8 @@
                         <!--Selecciona Tipo Cuadrante-->
                         <div class="col-auto">
                             <label class="visually-hidden" for="specificSizeSelect">Cuadrante</label>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer" v-model="TipoCuadran">
+                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                v-model="TipoCuadran">
                                 <option selected>Cuadrante</option>
                                 <option value="ESTE">Este</option>
                                 <option value="NORTE">Norte</option>
@@ -130,7 +132,8 @@
                         <!--Selecciona Tipo Cuadrante-->
                         <div class="col-auto">
                             <label class="visually-hidden" for="specificSizeSelect">Cuadrante</label>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer" v-model="TipoCuadran2">
+                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                v-model="TipoCuadran2">
                                 <option selected>Cuadrante</option>
                                 <option value="ESTE">Este</option>
                                 <option value="NORTE">Norte</option>
@@ -141,7 +144,8 @@
                         <!--Selecciona Tipo Barrio-->
                         <div class="col-auto">
                             <label class="visually-hidden" for="specificSizeSelect">Barrio</label>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"  v-model="TipoBarrio">
+                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                v-model="TipoBarrio">
                                 <option value="BR" selected>Barrio</option>
                                 <option value="CD">Ciudadela</option>
                                 <option value="SM">Supermanzana</option>
@@ -156,7 +160,8 @@
                         <!--Selecciona Tipo Manzana-->
                         <div class="col-auto">
                             <label class="visually-hidden" for="specificSizeSelect">Manzana</label>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer" v-model="TipoManza">
+                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                v-model="TipoManza">
                                 <option value="MZ" selected>Manzana</option>
                                 <option value="CD">Interior</option>
                                 <option value="SM">Sector</option>
@@ -205,7 +210,7 @@
                             <label class="visually-hidden" for="specificSizeSelect">Predio</label>
                             <div class="input-group">
                                 <div class="input-group-text">Predio</div>
-                                <v-select style="width: 70%;" aria-describedby="validationServer" required :options="[
+                                <v-select style="width: 70%;" aria-describedby="validationServer" :options="[
                                     { code: 'AL', Tipo: 'Altillo' },
                                     { code: 'AP', Tipo: 'Apartamento' },
                                     { code: 'BG', Tipo: 'Bodega' },
@@ -306,14 +311,30 @@
                                 </v-select>
                             </div>
                         </div>
-
-
+                        <div class="row">
+                            <div class="col-auto mx-auto mt-4 fs-3">
+                                {{ this.selectedVia || '' }}
+                                {{ " " + idNum + " " + letraVia + " " + prefijo + " " +
+                                    letraPrefijo + " " + TipoCuadran + " " + NumViaG + " " + letraViaG + " " + sufijo + " "
+                                    +
+                                    letraSufijo + " " +
+                                    NumPlaca + " " + TipoCuadran2 + " " + TipoBarrio + " " + NameBarrio + " " +
+                                    TipoManza + " " + IdManzana + " " }}
+                                {{ selectedUrban || '' }}
+                                {{ " " + NameUrban + " " }}
+                                {{ selectedPredio || '' }}
+                                {{ " " + IdPredio + " " }}
+                                {{ selectedComple || '' }}
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    <button @click="SendDirec()" class="btn btn-primary">Guardar cambios</button>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -323,6 +344,7 @@ import { Modal } from 'bootstrap';
 export default {
     data() {
         return {
+            txtDireccion: "",
             direccion: {},
             selectedVia: null,
             idNum: "",
@@ -348,11 +370,50 @@ export default {
         };
     },
     methods: {
-        openModal() {
+        ControlModal(bol) {
             let modal = new Modal(document.getElementById('direccionModal'));
-            modal.show();
+            if (bol) {
+                modal.show();
+            } else {
+                modal.hide();
+            }
         },
 
+        SendDirec() {
+            this.direccion = {
+                selectedVia: this.selectedVia,
+                idNum: this.idNum,
+                prefijo: this.prefijo,
+                sufijo: this.sufijo,
+                letraVia: this.letraVia,
+                letraPrefijo: this.letraPrefijo,
+                TipoCuadran: this.TipoCuadran,
+                letraSufijo: this.letraSufijo,
+                letraViaG: this.letraViaG,
+                NumViaG: this.NumViaG,
+                NumPlaca: this.NumPlaca,
+                TipoCuadran2: this.TipoCuadran2,
+                TipoBarrio: this.TipoBarrio,
+                NameBarrio: this.NameBarrio,
+                TipoManza: this.TipoManza,
+                IdManzana: this.IdManzana,
+                selectedUrban: this.selectedUrban,
+                NameUrban: this.NameUrban,
+                selectedPredio: this.selectedPredio,
+                IdPredio: this.IdPredio,
+                selectedComple: this.selectedComple,
+            }
+            this.txtDireccion = this.txtDireccion = this.selectedVia || '' + " " + idNum + " " + letraVia + " " + prefijo + " " +
+                letraPrefijo + " " + TipoCuadran + " " + NumViaG + " " + letraViaG + " " + sufijo + " "
+                +
+                letraSufijo + " " +
+                NumPlaca + " " + TipoCuadran2 + " " + TipoBarrio + " " + NameBarrio + " " +
+                TipoManza + " " + IdManzana + " " + selectedUrban || '' + " " + NameUrban + " " + selectedPredio || '' +
+                " " + IdPredio + " " + selectedComple || '';
+            console.log(this.direccion);
+            this.ControlModal(false);
+
+        }
     },
     props: {
         cont2Pop: {
