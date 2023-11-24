@@ -16,6 +16,22 @@ export default {
                 const data = await response.json();
                 localStorage.setItem('empleado', JSON.stringify(data));
                 console.log(data)
+                let cargo = JSON.parse(localStorage.getItem('empleado'))[0][1]
+                let tipoFactura,tipoPersona = "Cliente"
+                if (cargo == 'auxiliar de compras') {
+                    tipoFactura = 'CO'
+                    tipoPersona = "Proveedor"
+                } else if (cargo == 'Gerente de compras') {
+                    tipoPersona = "Proveedor"
+                    tipoFactura = 'DC'
+                } else if (cargo == 'Representante de ventas') {
+                    tipoFactura = 'DV'
+                } else if (cargo == 'Vendedor') {
+                    tipoFactura = 'VE'
+                }
+                localStorage.setItem('tipoPersona', tipoPersona );
+                localStorage.setItem('tipoFactura', tipoFactura);
+
                 prueba = true
                 this.$router.push('./Tabla')
             } catch (error) {

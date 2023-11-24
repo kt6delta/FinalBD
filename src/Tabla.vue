@@ -21,9 +21,9 @@ export default {
     data() {
         return {
             personas: [],
-            tipoPersona: [],
+            tipoPersona: localStorage.getItem('tipoPersona'),
             productos: [],
-            tipoFactura: '',
+            tipoFactura: localStorage.getItem('tipoFactura'),
             persona: [],
             listaProd: [],
             contador: 0,
@@ -33,23 +33,6 @@ export default {
         };
     },
     methods: {
-        evaluarFactura() {
-            this.cargo = JSON.parse(localStorage.getItem('empleado'))[0][1]
-            if (this.cargo == 'auxiliar de compras') {
-                this.tipoFactura = 'CO'
-            } else if (this.cargo == 'Gerente de compras') {
-                this.tipoFactura = 'DC'
-            } else if (this.cargo == 'Representante de ventas') {
-                this.tipoFactura = 'DV'
-            } else if (this.cargo == 'Vendedor') {
-                this.tipoFactura = 'VE'
-            }
-        }, async traerTipoPersona() {
-            const response = await fetch('http://localhost:3000/api/tipopersona');
-            const data = await response.json();
-            console.log(data);
-            this.tipoPersona = data
-        },
         async traerProducto(datos) {
             const response = await fetch(`http://localhost:3000/api/productos/${datos}`);
             try {
@@ -72,7 +55,6 @@ export default {
             console.log(this.lisCant[0])
         },
         async crearFactura() {
-            this.evaluarFactura()
             const data = {
                 tipoFac: this.tipoFactura,
                 tipoPersona: this.persona[0][1],
@@ -84,6 +66,7 @@ export default {
 
             };
             const jsonData = JSON.stringify(data);
+            console.log(jsonData)
             const response = await fetch("http://localhost:3000/api/facturas",
                 {
                     method: "POST",
