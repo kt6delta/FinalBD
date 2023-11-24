@@ -33,17 +33,15 @@ export default {
 
 </script>
 <template>
-    <div class="container">
-        <div class="row p-3">
-            <article class="col-md-4">
-                <div class="input-group py-2">
+    <div class="">
+        <div class="">
+            <article class="">
+                <div class="input-group">
                     <input type="text" class="form-control" placeholder="Codigo producto" aria-label="Codigo producto"
                         aria-describedby="basic-addon2" v-model="codigo">
-                    <button type="button" class="btn btn-warning" @click="enviarCodigo()">Añadir</button>
+                    <button type="button" class="btn btn-info text-white" @click="enviarCodigo()">Añadir</button>
                 </div>
-
             </article>
-
         </div>
     </div>
 </template>

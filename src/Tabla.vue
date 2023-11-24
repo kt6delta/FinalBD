@@ -29,7 +29,8 @@ export default {
             contador: 0,
             tabla: true,
             cargo: JSON.parse(localStorage.getItem('empleado'))[0][1],
-            lisCant: []
+            lisCant: [],
+            productoDiv: false
         };
     },
     methods: {
@@ -47,7 +48,9 @@ export default {
             }
         },
         traerPersona(datos) {
-            this.persona = datos
+            this.persona = datos.personas[0]
+            this.productoDiv = datos.activacion
+            console.log(this.persona)
 
         },
         cantidadProd(datos) {
@@ -96,28 +99,56 @@ export default {
 };
 </script>
 <template>
-    <div class="bg-white">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">{{ this.cargo }}</h1>
-                <Barra_busqueda :tipoPersonas="pruebas" @datosPersona="traerPersona" />
-            </div>
-
-            <div class="col-6">
-                <componenteDetProd @Codigo="traerProducto" />
-
-            </div>
-
-            <div class="col-6 d-flex justify-content-center align-items-center bg-success p-0">
-                <button type="button" class="btn btn-primary" @click="crearFactura()">Total</button>
-            </div>
-
-            <div class="col-12 overflow-auto" style="max-height: 700px;">
-                <div class="col-12" v-for="(producto, index) in productos">
-                    <componenteProducto :productos="producto" :label="labelComp" :index="index"
-                        @datoCantidad="cantidadProd" />
+    <div class="bg-info vh-100 d-flex justify-content-center align-items-center ">
+        <div class="bg-light shadow-lg rounded-5" style="height: 90%; width: 80%">
+            <!--parte de busqueda-->
+            <div class="">
+                <div class="text-secondary py-4">
+                    <h1 class="text-center fw-bold">{{ this.cargo }}</h1>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <Barra_busqueda class="w-75" :tipoPersonas="pruebas" @datosPersona="traerPersona" />
                 </div>
             </div>
+            <div v-if="productoDiv">
+                <!--parte de agregacion de productos-->
+                <div class="d-flex justify-content-center pb-4">
+                    <div class="w-75 d-flex justify-content-center">
+                        <div class="w-50">
+                            <componenteDetProd @Codigo="traerProducto" />
+                        </div>
+                        <div class="w-50 d-flex justify-content-center">
+                            <div class="w-50 ">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">@</span>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGroup1"
+                                            placeholder="Username">
+                                        <label for="floatingInputGroup1">Username</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-50 d-flex justify-content-center">
+                                <button class="btn btn-warning w-25" @click="crearFactura()">Total</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--parte lista de producto-->
+                <div class="d-flex justify-content-center ">
+                    <div class="w-75">
+                        <div class=" overflow-auto rounded-5 border border-1 border-secondary" style="max-height: 590px;">
+                            <div class="c" v-for="(producto, index) in productos">
+                                <componenteProducto :productos="producto" :label="labelComp" :index="index"
+                                    @datoCantidad="cantidadProd" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
     </div>

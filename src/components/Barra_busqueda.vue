@@ -34,8 +34,15 @@ export default {
             }
         },
         enviarDatos() {
-            console.log(this.personas)
-            this.$emit('datosPersona', this.personas);
+            
+            let datos = {
+                personas: this.personas,
+                activacion: true
+
+            }
+            //console.log(datos.personas[0][0])
+            this.$emit('datosPersona', datos);
+            //this.$emit('datosPersona', this.personas);
         },
         enrutarPersona(){
             this.$router.push('./Formulario')
@@ -45,7 +52,7 @@ export default {
 }
 </script>
 <template>
-    <div class="container">
+    <div class="">
         <div>
             <div class="input-group mb-3 ">
                 <span class="input-group-text">{{ tipoPersona }}</span>

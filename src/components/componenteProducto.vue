@@ -48,34 +48,32 @@ export default {
 
 </script>
 <template>
-    <div class="container">
-        <div class="row bg-primary p-3">
-            <article class="col-md-7">
-                <div class="row">
-                    <div class="col-12 pb-2">
-                        <h2>{{ productos[0][2] }}</h2>
-                    </div>
-                    <div class="col-12 fs-3">
-                        <p><strong>Precio: </strong> ${{ productos[0][3] }}</p>
-                    </div>
-                    <div class="col-12">
-                        <p><strong>Referencia: </strong> {{ productos[0][1] }}</p>
-                    </div>
-                    <div class="col-12">
-                        <p><strong>Categoria: </strong> {{ productos[0][0] }} </p>
-                    </div>
+    <div class="w-100 d-flex border-bottom border-secondary">
+        <div class="w-50 px-5 py-1 text-secondary">
+            <div class="fs-3 fw-bold">
+                <p>{{ productos[0][2] }}</p>
+            </div>
+            <div class="fs-5">
+                <p><strong>Precio: </strong> ${{ productos[0][3] }}</p>
+            </div>
+            <div class="fs-6">
+                <div class="">
+                    <p><strong>Referencia: </strong> {{ productos[0][1] }}</p>
                 </div>
-            </article>
-            <article class="col-5 d-flex justify-content-end">
-                <div class="input-group w-25">
-                    <button type="button" class="btn btn-warning"
-                        @click="(cantidad != 0) ? cantidad = cantidad - 1 : cantidad = cantidad; enviarDatos()">-</button>
-                    <input type="text" class="form-control text-center" placeholder="" aria-label="Cantidad"
-                        aria-describedby="basic-addon2" v-model="cantidad" readonly>
-                    <button type="button" class="btn btn-warning" @click="validarcantidad()">+</button>
+                <div class="">
+                    <p><strong>Categoria: </strong> {{ productos[0][0] }} </p>
                 </div>
-            </article>
+            </div>
         </div>
+        <article class="w-50 d-flex justify-content-center align-items-center">
+            <div class="input-group w-25">
+                <button type="button" class="btn btn-info text-white"
+                    @click="(cantidad != 0) ? cantidad = cantidad - 1 : cantidad = cantidad; enviarDatos()">-</button>
+                <input type="text" class="form-control text-center" placeholder="" aria-label="Cantidad"
+                    aria-describedby="basic-addon2" v-model="cantidad" readonly>
+                <button type="button" class="btn btn-info text-white" @click="validarcantidad()">+</button>
+            </div>
+        </article>
     </div>
 </template>
 <style></style>
