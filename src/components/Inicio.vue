@@ -16,6 +16,22 @@ export default {
                 const data = await response.json();
                 localStorage.setItem('empleado', JSON.stringify(data));
                 console.log(data)
+                let cargo = JSON.parse(localStorage.getItem('empleado'))[0][1]
+                let tipoFactura,tipoPersona = "Cliente"
+                if (cargo == 'auxiliar de compras') {
+                    tipoFactura = 'CO'
+                    tipoPersona = "Proveedor"
+                } else if (cargo == 'Gerente de compras') {
+                    tipoPersona = "Proveedor"
+                    tipoFactura = 'DC'
+                } else if (cargo == 'Representante de ventas') {
+                    tipoFactura = 'DV'
+                } else if (cargo == 'Vendedor') {
+                    tipoFactura = 'VE'
+                }
+                localStorage.setItem('tipoPersona', tipoPersona );
+                localStorage.setItem('tipoFactura', tipoFactura);
+
                 prueba = true
                 this.$router.push('./Tabla')
             } catch (error) {
@@ -27,25 +43,27 @@ export default {
 </script>
 
 <template>
-    <div id="inicio" class="booking-cta m-0 p-0 bg-primary">
-        <h1 class="text-uppercase text-center">INICIO DE SESION</h1>
-        <div class="w-100 h-100 ">
-            <!--ICON de persona en negro-->
-            <picture>
-                <img src="../img/person.jpg" class="rounded mx-auto d-block" id="size" alt="person">
-            </picture>
+    <div id="booking">
+        <div id="inicio" class="booking-cta m-0 p-0 mt-5">
+            <h1 class="text-uppercase text-center">INICIO DE SESION</h1>
+            <div class="w-100 h-100 bg-white p-5" id="bloque">
+                <!--ICON de persona en negro-->
+                <picture>
+                    <img src="../img/person.jpg" class="rounded mx-auto d-block" id="size" alt="person">
+                </picture>
 
-            <div class="col-sm-12">
-                <input class="form-control form-control-lg" type="text" placeholder="codigo Empleado"
-                    aria-label=".form-control-lg example" v-model="codigo">
-            </div>
-
-            <div id="btn" class="row g-3 m-auto">
-                <div class="col align-self-center">
-                    <button @click="EnviarData" class="btn btn-primary me-3">Ingresar</button>
+                <div class="col-sm-12">
+                    <input class="form-control form-control-lg text-center mt-2" type="text" placeholder="codigo Empleado"
+                        aria-label=".form-control-lg example" v-model="codigo">
                 </div>
-            </div>
 
+                <div id="btn" class="row g-3 m-auto">
+                    <div class="col align-self-center">
+                        <button @click="EnviarData" class="btn btn-primary me-3">Ingresar</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
@@ -74,11 +92,15 @@ img#size {
     margin-bottom: 20px;
 }
 
-#bloque-white {
-    background-color: rgb(247, 247, 247);
-    padding: 20px;
+#bloque {
     border-radius: 10px;
-    width: 100%;
-    height: 30vh;
+}
+
+/* Estilo de la paguina de fondos de inicio */
+#booking {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./img/background.png);
+    background-size: cover;
 }
 </style>
