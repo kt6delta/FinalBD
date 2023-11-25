@@ -103,7 +103,7 @@ export default {
             <div class="col-sm-8">
               <div class="form-group">
                 <span class="form-label">Tipo usuario</span>
-                <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="TipeUser">
+                <select id="tipos" class="form-control" name="tipoDoc"  v-model="TipeUser">
                   <option value="cliente">cliente</option>
                   <option value="provedor">provedor</option>
                 </select>
@@ -126,14 +126,14 @@ export default {
             <div class="col-sm-6">
               <div class="form-group">
                 <span class="form-label">Nombre</span>
-                <input class="form-control" type="text" placeholder="Nombre" name="nombre" required v-model="Name">
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre"  v-model="Name">
               </div>
             </div>
             <!--ingresar info de Apellido-->
             <div class="col-sm-6">
               <div class="form-group">
                 <span class="form-label">Apellido</span>
-                <input class="form-control" type="text" placeholder="Apellido" name="apellido" required
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" 
                   v-model="Apellido">
               </div>
             </div>
@@ -143,7 +143,7 @@ export default {
             <div class="col-sm-8">
               <div class="form-group">
                 <span class="form-label">Numero de documento</span>
-                <input class="form-control" type="text" name="nDoc" placeholder="Numero de documento" required
+                <input class="form-control" type="text" name="nDoc" placeholder="Numero de documento" 
                   v-model="nDoc">
               </div>
             </div>
@@ -151,7 +151,7 @@ export default {
             <div class="col-sm-4">
               <div class="form-group">
                 <span class="form-label">Tipo</span>
-                <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="tipoDoc">
+                <select id="tipos" class="form-control" name="tipoDoc"  v-model="tipoDoc">
                   <option value="id">id</option>
                   <option value="cc">cc</option>
                 </select>

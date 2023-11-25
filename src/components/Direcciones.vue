@@ -95,13 +95,13 @@ export default {
                 IdPredio: this.IdPredio,
                 selectedComple: this.selectedComple,
             }
-            this.txtDireccion = this.txtDireccion = this.selectedVia || '' + " " + idNum + " " + letraVia + " " + prefijo + " " +
-                letraPrefijo + " " + TipoCuadran + " " + NumViaG + " " + letraViaG + " " + sufijo + " "
+            this.txtDireccion = this.txtDireccion = this.selectedVia || '' + " " + this.idNum + " " + this.letraVia + " " + this.prefijo + " " +
+            this.letraPrefijo + " " + this.TipoCuadran + " " + this.NumViaG + " " + this.letraViaG + " " + this.sufijo + " "
                 +
-                letraSufijo + " " +
-                NumPlaca + " " + TipoCuadran2 + " " + TipoBarrio + " " + NameBarrio + " " +
-                TipoManza + " " + IdManzana + " " + selectedUrban || '' + " " + NameUrban + " " + selectedPredio || '' +
-                " " + IdPredio + " " + selectedComple || '';
+                this.letraSufijo + " " +
+                this.NumPlaca + " " + this.TipoCuadran2 + " " + this.TipoBarrio + " " + this.NameBarrio + " " +
+                this.TipoManza + " " + this.IdManzana + " " + this.selectedUrban || '' + " " + this.NameUrban + " " + this.selectedPredio || '' +
+                " " + this.IdPredio + " " + this.selectedComple || '';
             console.log(this.direccion);
             this.ControlModal(false);
 
@@ -158,9 +158,6 @@ export default {
                                         i[2]
                                     }}</option>
                                 </select>
-                                <div class="invalid-feedback" v-if="selectedVia == null">
-                                    Porfavor seleccionar una opcion.
-                                </div>
                             </div>
                         </div>
                         <!--Selecciona # ó nombre Via-->
@@ -297,9 +294,6 @@ export default {
                                         i[2]
                                     }}</option>
                                 </select>
-                                <div class="invalid-feedback" v-if="selectedUrban == null">
-                                    Porfavor seleccionar una opcion.
-                                </div>
                             </div>
                         </div>
                         <!--Selecciona Urbanizacion-->
@@ -320,9 +314,6 @@ export default {
                                         i[2]
                                     }}</option>
                                 </select>
-                                <div class="invalid-feedback" v-if="selectedPredio == null">
-                                    Porfavor seleccionar una opcion.
-                                </div>
                             </div>
                         </div>
                         <!--Selecciona IdPredio-->
@@ -346,7 +337,7 @@ export default {
                         </div>
                         <div class="row">
                             <div class="col-auto mx-auto mt-4 fs-3">
-                                {{ this.selectedVia || '' }}
+                                {{ selectedVia || '' }}
                                 {{ " " + idNum + " " + letraVia + " " + prefijo + " " +
                                     letraPrefijo + " " + TipoCuadran + " " + NumViaG + " " + letraViaG + " " + sufijo + " "
                                     +
@@ -364,7 +355,7 @@ export default {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button @click="SendDirec()" class="btn btn-primary">Guardar cambios</button>
+                    <button @click="SendDirec()" class="btn btn-primary" >Guardar cambios</button>
                 </div>
 
 

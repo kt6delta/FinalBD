@@ -26,7 +26,7 @@ export default {
         <div class="col-sm-8" v-show=mostrarCorreo>
             <div class="form-group">
                 <span class="form-label">Correo</span>
-                <input class="form-control" type="email" placeholder="Correo" name="correo" required>
+                <input class="form-control" type="email" placeholder="Correo" name="correo">
             </div>
         </div>
         <div class="col-sm-8" v-show=!mostrarCorreo>
@@ -38,7 +38,7 @@ export default {
         <div class="col-sm-4">
             <div class="form-group">
                 <span class="form-label">Contacto</span>
-                <select id="tipos" class="form-control" name="tipoDoc" required="required" v-model="contacto"
+                <select id="tipos" class="form-control" name="tipoDoc" v-model="contacto"
                     @change="CambiarContacto()">
                     <option value="correo">correo</option>
                     <option value="numero">celular</option>
