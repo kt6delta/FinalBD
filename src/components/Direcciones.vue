@@ -243,10 +243,9 @@ export default {
                             <div class="input-group-text">{{ componentes[11][1] }}</div>
                             <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                 v-model="TipoCuadran2">
-                                <option value="ESTE">Este</option>
-                                <option value="NORTE">Norte</option>
-                                <option value="OESTE">Oeste</option>
-                                <option value="SUR">Sur</option>
+                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[12]" :value="i[0]">{{
+                                    i[2]
+                                }}</option>
                             </select>
                         </div>
                         <!--Selecciona Tipo Barrio-->
@@ -255,9 +254,9 @@ export default {
                             <div class="input-group-text">{{ componentes[12][1] }}</div>
                             <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                 v-model="TipoBarrio">
-                                <option value="BR">Barrio</option>
-                                <option value="CD">Ciudadela</option>
-                                <option value="SM">Supermanzana</option>
+                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[13]" :value="i[0]">{{
+                                    i[2]
+                                }}</option>
                             </select>
                         </div>
                         <!--Selecciona Name Barrio-->
@@ -273,13 +272,9 @@ export default {
                             <div class="input-group-text">{{ componentes[14][1] }}</div>
                             <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                 v-model="TipoManza">
-                                <option value="MZ">Manzana</option>
-                                <option value="CD">Interior</option>
-                                <option value="SM">Sector</option>
-                                <option value="ET">Etapa</option>
-                                <option value="ED">Edificio</option>
-                                <option value="MD">Modulo</option>
-                                <option value="TO">Torre</option>
+                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[15]" :value="i[0]">{{
+                                    i[2]
+                                }}</option>
                             </select>
                         </div>
                         <!--Selecciona Identificador Manzana-->
