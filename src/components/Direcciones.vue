@@ -26,7 +26,7 @@ export default {
         return {
             txtDireccion: "",
             direccion: {},
-            selectedVia: null,
+            selectedVia: "",
             idNum: "",
             prefijo: "",
             sufijo: "",
@@ -42,11 +42,11 @@ export default {
             NameBarrio: "",
             TipoManza: "",
             IdManzana: "",
-            selectedUrban: null,
+            selectedUrban: "",
             NameUrban: "",
-            selectedPredio: null,
+            selectedPredio: "",
             IdPredio: "",
-            selectedComple: null,
+            selectedComple: "",
             componentes: [],
             nomenclaturas: []
         };
@@ -63,6 +63,7 @@ export default {
             console.log(this.componentes)
         },
         ControlModal(bol) {
+            console.log(bol)
             let modal = new Modal(document.getElementById('direccionModal'));
             if (bol) {
                 modal.show();
@@ -95,16 +96,12 @@ export default {
                 IdPredio: this.IdPredio,
                 selectedComple: this.selectedComple,
             }
-            this.txtDireccion = this.txtDireccion = this.selectedVia || '' + " " + this.idNum + " " + this.letraVia + " " + this.prefijo + " " +
-            this.letraPrefijo + " " + this.TipoCuadran + " " + this.NumViaG + " " + this.letraViaG + " " + this.sufijo + " "
-                +
-                this.letraSufijo + " " +
-                this.NumPlaca + " " + this.TipoCuadran2 + " " + this.TipoBarrio + " " + this.NameBarrio + " " +
-                this.TipoManza + " " + this.IdManzana + " " + this.selectedUrban || '' + " " + this.NameUrban + " " + this.selectedPredio || '' +
-                " " + this.IdPredio + " " + this.selectedComple || '';
-            console.log(this.direccion);
+            this.txtDireccion = this.selectedVia + " " + this.idNum + " " + this.letraVia + " " + this.prefijo + " " +
+                this.letraPrefijo + " " + this.TipoCuadran + " " + this.NumViaG + " " + this.letraViaG + " " + this.sufijo + " "
+                + this.letraSufijo + " " + this.NumPlaca + " " + this.TipoCuadran2 + " " + this.TipoBarrio + " " + this.NameBarrio + " " +
+                this.TipoManza + " " + this.IdManzana + " " + this.selectedUrban + " " + this.NameUrban + " " + this.selectedPredio +
+                " " + this.IdPredio + " " + this.selectedComple;
             this.ControlModal(false);
-
         },
         obtenerNomenclaturas(index) {
             let lista = [];
@@ -114,6 +111,35 @@ export default {
             console.log('lol')
             console.log(lista)
             return lista;
+        },
+        enviarDatos() {
+            this.SendDirec()
+            let datos = {
+                1: [this.selectedVia, false],
+                2: [this.idNum, true],
+                3: [this.letraVia, true],
+                4: [this.prefijo, true],
+                5: [this.letraPrefijo, true],
+                6: [this.TipoCuadran, true],
+                7: [this.NumViaG, true],
+                8: [this.letraViaG, true],
+                9: [this.sufijo, true],
+                10: [this.letraSufijo, true],
+                11: [this.NumPlaca, true],
+                12: [this.TipoCuadran2, true],
+                13: [this.TipoBarrio, true],
+                14: [this.NameBarrio, true],
+                15: [this.TipoManza, true],
+                16: [this.IdManzana, true],
+                17: [this.selectedUrban, false],
+                18: [this.NameUrban, true],
+                19: [this.selectedPredio, false],
+                20: [this.IdPredio, true],
+                21: [this.selectedComple, false],
+            }
+
+            this.$emit('DatosDireccion', datos);
+            //this.$emit('datosPersona', this.personas);
         }
     },
     props: {
@@ -153,7 +179,7 @@ export default {
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[0][1] }}</div>
                                 <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="TipoCuadran">
+                                    v-model="selectedVia">
                                     <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[1]" :value="i[0]">{{
                                         i[2]
                                     }}</option>
@@ -289,7 +315,7 @@ export default {
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[16][1] }}</div>
                                 <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="TipoCuadran">
+                                    v-model="selectedUrban">
                                     <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[17]" :value="i[0]">{{
                                         i[2]
                                     }}</option>
@@ -309,7 +335,7 @@ export default {
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[18][1] }}</div>
                                 <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="TipoCuadran">
+                                    v-model="selectedPredio">
                                     <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[19]" :value="i[0]">{{
                                         i[2]
                                     }}</option>
@@ -328,7 +354,7 @@ export default {
                             <div class="input-group">
                                 <div class="input-group-text">Complemento</div>
                                 <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="TipoCuadran">
+                                    v-model="selectedComple">
                                     <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[21]" :value="i[0]">{{
                                         i[2]
                                     }}</option>
@@ -355,7 +381,7 @@ export default {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button @click="SendDirec()" class="btn btn-primary" >Guardar cambios</button>
+                    <button @click="enviarDatos()" data-bs-dismiss="modal" class="btn btn-primary">Guardar cambios</button>
                 </div>
 
 
