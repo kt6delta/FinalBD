@@ -1,10 +1,21 @@
 <script>
 export default {
+  async beforeMount() {
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/tipocontacto`);
+      const data = await response.json();
+      this.tipoContacto = data
+
+    } catch (error) {
+    }
+  },
   data() {
     return {
-      contacto: "correo",
+      contacto: '',
       mostrarCorreo: true,
-    };
+      tipoContacto: [],
+    }
   },
   methods: {
     CambiarContacto() {
@@ -14,7 +25,7 @@ export default {
         this.mostrarCorreo = false;
       }
     },
-    AgregarContacto() {
+    CambiarP() {
 
     }
   }
@@ -22,31 +33,23 @@ export default {
 </script>
 
 <template>
-    <div class="row">
-        <div class="col-sm-8" v-show=mostrarCorreo>
-            <div class="form-group">
-                <span class="form-label">Correo</span>
-                <input class="form-control" type="email" placeholder="Correo" name="correo">
-            </div>
-        </div>
-        <div class="col-sm-8" v-show=!mostrarCorreo>
-            <div class="form-group">
-                <span class="form-label">Celular</span>
-                <input class="form-control" type="number" name="celular" placeholder="Celular">
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="form-group">
-                <span class="form-label">Contacto</span>
-                <select id="tipos" class="form-control" name="tipoDoc" v-model="contacto"
-                    @change="CambiarContacto()">
-                    <option value="correo">correo</option>
-                    <option value="numero">celular</option>
-                </select>
-                <span class="select-arrow"></span>
-            </div>
-        </div>
+  <div class="row" v-if="tipoContacto.length != 0">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <span class="form-label">Datos</span>
+        <input class="form-control" type="email" :placeholder="`ingrese el ${contacto}` " name="correo">
+      </div>
     </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <span class="form-label">Contacto</span>
+        <select id="tipos" class="form-control" name="tipoDoc" v-model="contacto" @change="CambiarContacto()">
+          <option v-for="i in tipoContacto" :value="i[1]">{{ i[1] }}</option>
+        </select>
+        <span class="select-arrow"></span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style></style>

@@ -2,6 +2,16 @@
 import Contacto from './Contacto.vue';
 import Direcciones from './Direcciones.vue';
 export default {
+  async beforeMount() {
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/tipodoc`);
+      const data = await response.json();
+      this.tipoDoc = data
+
+    } catch (error) {
+    }
+  },
   data() {
     return {
       //atributos del formulario
@@ -14,7 +24,8 @@ export default {
       Name: "",
       Apellido: "",
       nDoc: "",
-      tipoDoc: "",
+      tipoDoc: [],
+      tipoDocPh: ''
     };
   },
   methods: {
@@ -106,10 +117,9 @@ export default {
         <div class="row">
           <div class="col-sm-8">
             <div class="form-group">
-              <span class="form-label">Tipo usuario</span>
+              <span class="form-label">Tipo de Persona</span>
               <select id="tipos" class="form-control" name="tipoDoc" v-model="TipeUser">
-                <option value="cliente">cliente</option>
-                <option value="provedor">provedor</option>
+                <option v-for="i in tipoDoc" :value="i[1]">{{ i[1] }}</option>
               </select>
               <span class="select-arrow"></span>
             </div>
@@ -146,16 +156,15 @@ export default {
           <div class="col-sm-8">
             <div class="form-group">
               <span class="form-label">Numero de documento</span>
-              <input class="form-control" type="text" name="nDoc" placeholder="Numero de documento" v-model="nDoc">
+              <input class="form-control" type="text" name="nDoc" :placeholder="`Numero de ${tipoDocPh}`" v-model="nDoc">
             </div>
           </div>
           <!--ingresar info de Tipo-->
           <div class="col-sm-4">
             <div class="form-group">
               <span class="form-label">Tipo</span>
-              <select id="tipos" class="form-control" name="tipoDoc" v-model="tipoDoc">
-                <option value="id">id</option>
-                <option value="cc">cc</option>
+              <select id="tipos" class="form-control" name="tipoDoc" v-model="tipoDocPh">
+                <option v-for="i in tipoDoc" :value="i[1]">{{ i[1] }}</option>
               </select>
               <span class="select-arrow"></span>
             </div>
