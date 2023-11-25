@@ -3,15 +3,24 @@ import { Modal } from 'bootstrap';
 export default {
     async beforeMount() {
 
-        const response = await fetch(`http://localhost:3000/api/direcciones/componente`);
         try {
+            const response = await fetch(`http://localhost:3000/api/direcciones/componente`);
             const data = await response.json();
-            this.componentes =  data
+            this.componentes = data
 
         } catch (error) {
         }
-
-        console.log(this.componentes)
+        try {
+            for (let i = 1; i <= 21; i++) {
+                const response = await fetch(`http://localhost:3000/api/direcciones/nomenclatura/${i}`);
+                if (response.status != 204) {
+                    const data = await response.json();
+                    this.nomenclaturas[i] = data
+                }
+            }
+        } catch (error) {
+        }
+        console.log(this.nomenclaturas)
     },
     data() {
         return {
@@ -38,7 +47,8 @@ export default {
             selectedPredio: null,
             IdPredio: "",
             selectedComple: null,
-            componentes: []
+            componentes: [],
+            nomenclaturas: []
         };
     },
     methods: {
@@ -145,14 +155,15 @@ export default {
                         <!--Selecciona # ó nombre Via-->
                         <div class="col-sm-2">
                             <label class="visually-hidden" for="txt">idNum</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[1][1]"
-                                v-model="idNum">
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[1][1]" v-model="idNum">
                         </div>
                         <!--Selecciona letra Via-->
                         <div class="col-sm-1">
                             <label class="visually-hidden" for="letra">letra</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[2][1]"
-                                v-model="letraVia" @input="this.letraVia = this.letraVia.replace(/[^a-zA-Z]/g, '');">
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[2][1]" v-model="letraVia"
+                                @input="this.letraVia = this.letraVia.replace(/[^a-zA-Z]/g, '');">
                         </div>
                         <!--Selecciona prefijo-->
                         <div class="col-sm-2">
@@ -167,8 +178,8 @@ export default {
                         <!--Selecciona letra prefijo-->
                         <div class="col-sm-1">
                             <label class="visually-hidden" for="letra prefijo">letra prefijo</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[4][1]"
-                                v-model="letraPrefijo"
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[4][1]" v-model="letraPrefijo"
                                 @input="this.letraPrefijo = this.letraPrefijo.replace(/[^a-zA-Z]/g, '');">
                         </div>
                         <!--Selecciona Tipo Cuadrante-->
@@ -193,8 +204,9 @@ export default {
                         <!--Selecciona letraViaG-->
                         <div class="col-sm-1">
                             <label class="visually-hidden" for="letra via generadora"></label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[7][1]"
-                                v-model="letraViaG" @input="this.letraViaG = this.letraViaG.replace(/[^a-zA-Z]/g, '');">
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[7][1]" v-model="letraViaG"
+                                @input="this.letraViaG = this.letraViaG.replace(/[^a-zA-Z]/g, '');">
                         </div>
                         <!--Selecciona sufijo-->
                         <div class="col-sm-2">
@@ -208,15 +220,16 @@ export default {
                         <!--Selecciona letra Sufijo-->
                         <div class="col-sm-1">
                             <label class="visually-hidden" for="letra prefijo">letra Sufijo</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[9][1]"
-                                v-model="letraSufijo"
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[9][1]" v-model="letraSufijo"
                                 @input="this.letraSufijo = this.letraSufijo.replace(/[^a-zA-Z]/g, '');">
                         </div>
                         <!--Selecciona # placa-->
                         <div class="col-sm-2">
                             <label class="visually-hidden" for="letra prefijo"># placa</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[10][1]"
-                                v-model="NumPlaca" @input="this.NumPlaca = this.NumPlaca.replace(/[^0-9]/g, '');">
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[10][1]" v-model="NumPlaca"
+                                @input="this.NumPlaca = this.NumPlaca.replace(/[^0-9]/g, '');">
                         </div>
                         <!--Selecciona Tipo Cuadrante-->
                         <div class="col-auto">
@@ -236,7 +249,7 @@ export default {
                             <div class="input-group-text">{{ componentes[12][1] }}</div>
                             <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                 v-model="TipoBarrio">
-                                <option value="BR" >Barrio</option>
+                                <option value="BR">Barrio</option>
                                 <option value="CD">Ciudadela</option>
                                 <option value="SM">Supermanzana</option>
                             </select>
@@ -244,8 +257,9 @@ export default {
                         <!--Selecciona Name Barrio-->
                         <div class="col-sm-2">
                             <label class="visually-hidden" for="letra prefijo">Nombre Barrio</label>
-                            <input type="text" class="form-control" id="specificSizeInputName" :placeholder="componentes[13][1]"
-                                v-model="NameBarrio" @input="this.NameBarrio = this.NameBarrio.replace(/[^a-zA-Z]/g, '');">
+                            <input type="text" class="form-control" id="specificSizeInputName"
+                                :placeholder="componentes[13][1]" v-model="NameBarrio"
+                                @input="this.NameBarrio = this.NameBarrio.replace(/[^a-zA-Z]/g, '');">
                         </div>
                         <!--Selecciona Tipo Manzana-->
                         <div class="col-auto">

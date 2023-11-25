@@ -31,7 +31,7 @@ direccionRouter.get('/nomenclatura/:pos', async (req, res) => {
     } finally {
         await db.cerrarConexion(connection)
         if (result.rows.length == 0) {
-            return res.send('no hay respuesta')
+            return res.status(204).json({ error: 'no hay respuesta' })
         } else {
             return res.send(result.rows)
         }
