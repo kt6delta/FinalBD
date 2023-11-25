@@ -152,9 +152,12 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">Tipo Via</label>
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[0][1] }}</div>
-                                <v-select id="via" aria-describedby="validationServer" :options="[]"
-                                    :reduce="Via => Via.code" label="Via" v-model="selectedVia">
-                                </v-select>
+                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                    v-model="TipoCuadran">
+                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[1]" :value="i[0]">{{
+                                        i[2]
+                                    }}</option>
+                                </select>
                                 <div class="invalid-feedback" v-if="selectedVia == null">
                                     Porfavor seleccionar una opcion.
                                 </div>
@@ -293,19 +296,12 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">Urbanizacion</label>
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[16][1] }}</div>
-                                <v-select id="urbanizacion" aria-describedby="validationServer" :options="
-                                    [
-                                        { code: 'BQ', Tipo: 'Bloque' },
-                                        { code: 'CU', Tipo: 'Celula' },
-                                        { code: 'CO', Tipo: 'Conjunto Residencial' },
-                                        { code: 'ET', Tipo: 'Etapa' },
-                                        { code: 'UR', Tipo: 'Urbanizacion' },
-                                        { code: 'SC', Tipo: 'Sector' },
-                                        { code: 'TO', Tipo: 'Torre' },
-                                        { code: 'ZN', Tipo: 'Zona' },
-                                    ]
-                                " :reduce="Tipo => Tipo.code" label="Tipo" v-model="selectedUrban">
-                                </v-select>
+                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                    v-model="TipoCuadran">
+                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[17]" :value="i[0]">{{
+                                        i[2]
+                                    }}</option>
+                                </select>
                                 <div class="invalid-feedback" v-if="selectedUrban == null">
                                     Porfavor seleccionar una opcion.
                                 </div>
@@ -323,35 +319,12 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">Predio</label>
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[18][1] }}</div>
-                                <v-select id="predio" aria-describedby="validationServer" :options="
-                                    [
-                                        { code: 'AL', Tipo: 'Altillo' },
-                                        { code: 'AP', Tipo: 'Apartamento' },
-                                        { code: 'BG', Tipo: 'Bodega' },
-                                        { code: 'CS', Tipo: 'Casa' },
-                                        { code: 'CN', Tipo: 'Consultorio' },
-                                        { code: 'DP', Tipo: 'Deposito' },
-                                        { code: 'DS', Tipo: 'Deposito Sotano' },
-                                        { code: 'GA', Tipo: 'Garaje' },
-                                        { code: 'GS', Tipo: 'Garaje Sotano' },
-                                        { code: 'LC', Tipo: 'Local' },
-                                        { code: 'LM', Tipo: 'Local Mezzanine' },
-                                        { code: 'LT', Tipo: 'Lote' },
-                                        { code: 'MIN', Tipo: 'Mezzanine' },
-                                        { code: 'OF', Tipo: 'Oficina' },
-                                        { code: 'PA', Tipo: 'Parqueadero' },
-                                        { code: 'PN', Tipo: 'Pent-House' },
-                                        { code: 'PL', Tipo: 'Planta' },
-                                        { code: 'PD', Tipo: 'Predio' },
-                                        { code: 'SS', Tipo: 'Semisotano' },
-                                        { code: 'SO', Tipo: 'Sotano' },
-                                        { code: 'ST', Tipo: 'Suite' },
-                                        { code: 'TZ', Tipo: 'Terraza' },
-                                        { code: 'UN', Tipo: 'Unidad' },
-                                        { code: 'UL', Tipo: 'Unidad Residencial' },
-                                    ]
-                                " :reduce="Tipo => Tipo.code" label="Tipo" v-model="selectedPredio">
-                                </v-select>
+                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                    v-model="TipoCuadran">
+                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[19]" :value="i[0]">{{
+                                        i[2]
+                                    }}</option>
+                                </select>
                                 <div class="invalid-feedback" v-if="selectedPredio == null">
                                     Porfavor seleccionar una opcion.
                                 </div>
@@ -368,64 +341,12 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">{{ componentes[20][1] }}</label>
                             <div class="input-group">
                                 <div class="input-group-text">Complemento</div>
-                                <v-select id="complemento" aria-describedby="validationServer" :options="
-                                    [
-                                        { code: 'AD', Tipo: 'Administracion' },
-                                        { code: 'AG', Tipo: 'Agrupacion' },
-                                        { code: 'AL', Tipo: 'Altillo' },
-                                        { code: 'AP', Tipo: 'Apartamento' },
-                                        { code: 'BR', Tipo: 'Barrio' },
-                                        { code: 'BQ', Tipo: 'Bloque' },
-                                        { code: 'BG', Tipo: 'Bodega' },
-                                        { code: 'CS', Tipo: 'Casa' },
-                                        { code: 'CU', Tipo: 'Celula' },
-                                        { code: 'CE', Tipo: 'Centro Comercial' },
-                                        { code: 'CD', Tipo: 'Ciudadela' },
-                                        { code: 'CO', Tipo: 'Conjunto Residencial' },
-                                        { code: 'CN', Tipo: 'Consultorio' },
-                                        { code: 'DP', Tipo: 'Deposito' },
-                                        { code: 'DS', Tipo: 'Deposito Sotano' },
-                                        { code: 'MD', Tipo: 'Modulo' },
-                                        { code: 'OF', Tipo: 'Oficina' },
-                                        { code: 'PQ', Tipo: 'Parque' },
-                                        { code: 'PA', Tipo: 'Parqueadero' },
-                                        { code: 'PN', Tipo: 'Pent-House' },
-                                        { code: 'PI', Tipo: 'Piso' },
-                                        { code: 'PL', Tipo: 'Planta' },
-                                        { code: 'PR', Tipo: 'Porteria' },
-                                        { code: 'PD', Tipo: 'Predio' },
-                                        { code: 'PU', Tipo: 'Puesto' },
-                                        { code: 'PR', Tipo: 'Round Point' },
-                                        { code: 'ED', Tipo: 'Edificio' },
-                                        { code: 'EN', Tipo: 'Entrada' },
-                                        { code: 'EQ', Tipo: 'Esquina' },
-                                        { code: 'ES', Tipo: 'Estacion' },
-                                        { code: 'ET', Tipo: 'Etapa' },
-                                        { code: 'EX', Tipo: 'Exterior' },
-                                        { code: 'FI', Tipo: 'Finca' },
-                                        { code: 'GA', Tipo: 'Garaje' },
-                                        { code: 'GS', Tipo: 'Garaje Sotano' },
-                                        { code: 'IN', Tipo: 'Interior' },
-                                        { code: 'KM', Tipo: 'Kilometro' },
-                                        { code: 'LC', Tipo: 'Local' },
-                                        { code: 'LM', Tipo: 'Local Mezzanine' },
-                                        { code: 'LT', Tipo: 'Lote' },
-                                        { code: 'MZ', Tipo: 'Manzana' },
-                                        { code: 'MN', Tipo: 'Mezzanine' },
-                                        { code: 'SC', Tipo: 'Sector' },
-                                        { code: 'SS', Tipo: 'Semisotano' },
-                                        { code: 'SO', Tipo: 'Sotano' },
-                                        { code: 'ST', Tipo: 'Suite' },
-                                        { code: 'SM', Tipo: 'Supermanzana' },
-                                        { code: 'TZ', Tipo: 'Terraza' },
-                                        { code: 'TO', Tipo: 'Torre' },
-                                        { code: 'UN', Tipo: 'Unidad' },
-                                        { code: 'UL', Tipo: 'Unidad Residencial' },
-                                        { code: 'UR', Tipo: 'Urbanizacion' },
-                                        { code: 'ZN', Tipo: 'Zona' },
-                                    ]
-                                " :reduce="Tipo => Tipo.code" label="Tipo" v-model="selectedComple">
-                                </v-select>
+                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                    v-model="TipoCuadran">
+                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[21]" :value="i[0]">{{
+                                        i[2]
+                                    }}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
