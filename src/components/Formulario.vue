@@ -62,7 +62,7 @@ export default {
 };
 </script>
 <template>
-  <div class="row mt-5">
+  <div class="bg-info row mt-5">
     <div class="col-md-7 col-md-push-5">
       <div class="booking-cta">
         <h1>Para Usar el Servicio</h1>

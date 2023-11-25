@@ -3,6 +3,8 @@ import './style.css'
 import App from './App.vue'
 import Formulario from './components/Formulario.vue'
 import Inicio from './components/Inicio.vue';
+import "vue-select/dist/vue-select.css";
+import vSelect from "vue-select"
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
@@ -23,4 +25,5 @@ const router = createRouter({
     routes
 })
 const app = createApp(App);
+app.component('v-select', vSelect);
 app.use(router).mount('#app');
