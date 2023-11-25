@@ -94,9 +94,11 @@ export default {
                         'Content-Type': 'application/json'
                     }
                 })
-            if (response.status === 400) {
-                window.alert(response.error)
-            } else {
+            if (response.status === 400 || response.status === 404 ) {
+                const error = await response.json()
+                window.alert(error.error)
+                console.log(error.error)              
+            } else if(response.status === 200) {
                 const blob = await response.blob();
                 // Crear un enlace temporal y hacer clic en él para iniciar la descarga         
                 const url = window.URL.createObjectURL(blob);

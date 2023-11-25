@@ -12,12 +12,11 @@ facturaRouter.post('/', async (req, res, next) => {
 
 
   const body = req.body; //trae el cuerpo de la petición
-  if (!body.tipoFac || !body.codEmpleado || !body.tipoPersona || !body.tipoDoc || !body.nDocumento) { //compueba si alguno de los campos de la petición estan vacios
+  if (!body.tipoFac || !body.codEmpleado || !body.tipoPersona || !body.tipoDoc || !body.nDocumento || body.cantidades.length === 0 || body.productos.length === 0) { //compueba si alguno de los campos de la petición estan vacios
     return res.status(400).json({
       error: 'información faltante'
     })
   }
-
   if (body.tipoFac == "DV" || body.tipoFac == "DC") {
     if (!body.nFacturaRef || !body.tipoFacRef) { //si es una devolucion debe incluir la factura que referencia
       return res.status(400).json({
@@ -25,7 +24,6 @@ facturaRouter.post('/', async (req, res, next) => {
       })
     }
   }
-
   let nFactura
   let result
 
@@ -91,9 +89,11 @@ facturaRouter.post('/', async (req, res, next) => {
     )
     await connection.execute(`commit`)
   } catch (err) {
-    console.log(err)
+    //console.log(err)
     if (err.message.includes('ORA-02291')) {
-      return res.status(404).send("La factura referenciada no existe")
+      return res.status(400).json({
+        error: 'La factura referenciada no existe'
+      })
     }
   } finally {
     await db.cerrarConexion(connection)
