@@ -30,7 +30,8 @@ export default {
             tabla: true,
             cargo: JSON.parse(localStorage.getItem('empleado'))[0][1],
             lisCant: [],
-            productoDiv: false
+            productoDiv: false,
+            ref: ''
         };
     },
     methods: {
@@ -48,7 +49,7 @@ export default {
             }
         },
         traerPersona(datos) {
-            this.persona = datos.personas[0]
+            this.persona = datos.personas
             this.productoDiv = datos.activacion
             console.log(this.persona)
 
@@ -58,16 +59,31 @@ export default {
             console.log(this.lisCant[0])
         },
         async crearFactura() {
-            const data = {
-                tipoFac: this.tipoFactura,
-                tipoPersona: this.persona[0][1],
-                tipoDoc: this.persona[0][2],
-                nDocumento: this.persona[0][3],
-                codEmpleado: JSON.parse(localStorage.getItem('empleado'))[0][0],
-                productos: this.listaProd,
-                cantidades: this.lisCant
-
-            };
+            let data
+            if (this.tipoFactura === 'DV' || this.tipoFactura === 'DC') {
+                let tipoRef = (this.tipoFactura === 'DV') ? 'VE' : 'CO'
+                data = {
+                    tipoFac: this.tipoFactura,
+                    tipoPersona: this.persona[0][1],
+                    tipoDoc: this.persona[0][2],
+                    nDocumento: this.persona[0][3],
+                    codEmpleado: JSON.parse(localStorage.getItem('empleado'))[0][0],
+                    productos: this.listaProd,
+                    cantidades: this.lisCant,
+                    nFacturaRef: this.ref,
+                    tipoFacRef: tipoRef
+                }
+            } else {
+                data = {
+                    tipoFac: this.tipoFactura,
+                    tipoPersona: this.persona[0][1],
+                    tipoDoc: this.persona[0][2],
+                    nDocumento: this.persona[0][3],
+                    codEmpleado: JSON.parse(localStorage.getItem('empleado'))[0][0],
+                    productos: this.listaProd,
+                    cantidades: this.lisCant
+                }
+            }
             const jsonData = JSON.stringify(data);
             console.log(jsonData)
             const response = await fetch("http://localhost:3000/api/facturas",
@@ -78,16 +94,22 @@ export default {
                         'Content-Type': 'application/json'
                     }
                 })
-            const blob = await response.blob();
-            // Crear un enlace temporal y hacer clic en él para iniciar la descarga         
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'documento.pdf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+            if (response.status === 400) {
+                window.alert(response.error)
+            } else {
+                const blob = await response.blob();
+                // Crear un enlace temporal y hacer clic en él para iniciar la descarga         
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'documento.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+
+            }
+
         }
     },
     components: {
@@ -119,27 +141,12 @@ export default {
                             <componenteDetProd @Codigo="traerProducto" />
                         </div>
                         <!--Barra Componente con noton total -->
-                        <div v-if="(localStorage.getItem('tipoFactura') == 'VE')||(localStorage.getItem('tipoFactura') == 'CO')" class="w-50 d-flex justify-content-center">
-                            <div class="w-100 px-4 ">
+                        <div class="w-50 d-flex justify-content-center">
+                            <div v-if="tipoFactura === 'DV' || tipoFactura === 'DC'" class="w-100 px-4 ">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Ref</span>
-                                    <input type="text" class="form-control" placeholder="Codigo producto"
-                                        aria-label="Codigo producto" aria-describedby="basic-addon2">
-                                </div>
-                            </div>
-                            <!--Boton de totalizar-->
-                            <div class="w-25 ">
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn btn-warning w-100" @click="crearFactura()">Total</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-if="(localStorage.getItem('tipoFactura') == 'DC')||(localStorage.getItem('tipoFactura') == 'DV')" class="w-50 d-flex justify-content-center">
-                            <div class="w-100 px-4 ">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Ref</span>
-                                    <input type="text" class="form-control" placeholder="Codigo producto"
-                                        aria-label="Codigo producto" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" placeholder="Codigo Factura"
+                                        aria-label="Codigo producto" aria-describedby="basic-addon2" v-model="ref">
                                 </div>
                             </div>
                             <!--Boton de totalizar-->

@@ -13,15 +13,15 @@ facturaRouter.post('/', async (req, res, next) => {
 
   const body = req.body; //trae el cuerpo de la petición
   if (!body.tipoFac || !body.codEmpleado || !body.tipoPersona || !body.tipoDoc || !body.nDocumento) { //compueba si alguno de los campos de la petición estan vacios
-    return res.status(404).json({
+    return res.status(400).json({
       error: 'información faltante'
     })
   }
 
-  if (body.tipoFac == "DE" || body.tipoFac == "DC") {
+  if (body.tipoFac == "DV" || body.tipoFac == "DC") {
     if (!body.nFacturaRef || !body.tipoFacRef) { //si es una devolucion debe incluir la factura que referencia
       return res.status(400).json({
-        error: 'información faltante'
+        error: 'falta numero factura referencia'
       })
     }
   }
@@ -75,6 +75,11 @@ facturaRouter.post('/', async (req, res, next) => {
   }
 
   //Se insertan los valores en la tabla factura
+  console.log(`insert into factura values (
+    '${body.tipoFac}','${nFactura}','${body.tipoPersona}',
+    '${body.tipoDoc}','${body.nDocumento}',${tipoFacRef},
+    ${nFacturaRef},'${body.codEmpleado}',SYSDATE,${total}
+  )`)
   try {
     connection = await db.abrirConexion()
     result = await connection.execute(
