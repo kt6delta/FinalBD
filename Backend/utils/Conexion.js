@@ -7,7 +7,7 @@ abrirConexion = async () => {
 
     try {
         const connection = await oracledb.getConnection({
-            user: "prueba2",
+            user: "BD182",
             password: password,
             connectString: "localhost:1521/xe"
         });
