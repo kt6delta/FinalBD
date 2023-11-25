@@ -186,4 +186,108 @@ export default {
 p#text {
   font-size: 20px;
 }
+
+/* color del form*/
+.booking-form {
+    background-color: #fff;
+    -webkit-box-shadow: 0 5px 20px -5px rgba(0, 0, 0, .3);
+    box-shadow: 0 5px 20px -5px rgba(0, 0, 0, .3);
+    border-radius: 4px
+}
+/* btn del form*/
+.booking-form .form-group {
+    position: relative;
+    margin-bottom: 30px
+}
+/* marco externo form*/
+.booking-form .form-control {
+    background-color: #ebecee;
+    border-radius: 4px;
+    border: none;
+    height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #3e485c;
+    font-size: 14px
+}
+
+/* inputs form*/
+.booking-form .form-control::-webkit-input-placeholder {
+    color: rgba(62, 72, 92, .3)
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+    color: rgba(62, 72, 92, .3)
+}
+
+.booking-form .form-control::placeholder {
+    color: rgba(62, 72, 92, .3)
+}
+
+.booking-form input[type=date].form-control:invalid {
+    color: rgba(62, 72, 92, .3)
+}
+
+.booking-form select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+/* flechas del select form*/
+.booking-form select.form-control+.select-arrow {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    width: 32px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    pointer-events: none;
+    color: rgba(62, 72, 92, .3);
+    font-size: 14px
+}
+
+.booking-form select.form-control+.select-arrow:after {
+    content: '\279C';
+    display: block;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+/* labels form*/
+.booking-form .form-label {
+    display: inline-block;
+    color: #3e485c;
+    font-weight: 700;
+    margin-bottom: 6px;
+    margin-left: 7px
+}
+/* btn form*/
+.booking-form .submit-btn {
+    display: inline-block;
+    color: #fff;
+    background-color: #1e62d8;
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: none;
+    -webkit-transition: .2s all;
+    transition: .2s all
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+    opacity: .9
+}
+/* titulo del form*/
+.booking-cta h1 {
+    font-size: 52px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700
+}
+/* text del form*/
+.booking-cta p {
+    font-size: 16px;
+    color: #fff;
+}
 </style>

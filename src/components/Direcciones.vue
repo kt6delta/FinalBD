@@ -131,9 +131,9 @@ export default {
                         <!--Selecciona via-->
                         <div class="col-sm-3">
                             <label class="visually-hidden" for="specificSizeSelect">Tipo Via</label>
-                            <div class="input-group" id="1">
+                            <div class="input-group" >
                                 <div class="input-group-text">{{ componentes[0][1] }}</div>
-                                <v-select style="width: 68%;" aria-describedby="validationServer" :options="[
+                                <v-select id="via" aria-describedby="validationServer" :options="[
                                     { code: 'AU', Via: 'Autopista' },
                                 ]" :reduce="Via => Via.code" label="Via" v-model="selectedVia">
                                 </v-select>
@@ -273,7 +273,7 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">Urbanizacion</label>
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[16][1] }}</div>
-                                <v-select style="width: 55%;" aria-describedby="validationServer" :options="[
+                                <v-select id="urbanizacion" aria-describedby="validationServer" :options="[
                                     { code: 'BQ', Tipo: 'Bloque' },
                                     { code: 'CU', Tipo: 'Celula' },
                                     { code: 'CO', Tipo: 'Conjunto Residencial' },
@@ -301,7 +301,7 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">Predio</label>
                             <div class="input-group">
                                 <div class="input-group-text">{{ componentes[18][1] }}</div>
-                                <v-select style="width: 70%;" aria-describedby="validationServer" :options="[
+                                <v-select id="predio" aria-describedby="validationServer" :options="[
                                     { code: 'AL', Tipo: 'Altillo' },
                                     { code: 'AP', Tipo: 'Apartamento' },
                                     { code: 'BG', Tipo: 'Bodega' },
@@ -344,7 +344,7 @@ export default {
                             <label class="visually-hidden" for="specificSizeSelect">{{ componentes[20][1] }}</label>
                             <div class="input-group">
                                 <div class="input-group-text">Complemento</div>
-                                <v-select style="width: 60%;" aria-describedby="validationServer" :options="[
+                                <v-select id="complemento" aria-describedby="validationServer" :options="[
                                     { code: 'AD', Tipo: 'Administracion' },
                                     { code: 'AG', Tipo: 'Agrupacion' },
                                     { code: 'AL', Tipo: 'Altillo' },
@@ -431,4 +431,17 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style>
+v-select#via {
+    width: 60%;
+}
+v-select#urbanizacion {
+    width: 50%;
+}
+v-select#complemento {
+    width: 55%;
+}
+v-select#predio {
+    width: 60%;
+}
+</style>
