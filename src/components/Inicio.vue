@@ -44,22 +44,24 @@ export default {
 
 <template>
     <div class="bg-info d-flex justify-content-center align-items-center vh-100">
-            <div class="bg-light shadow-lg py-5 h-50 w-25 rounded-5">
-                <div class="pb-3">
-                    <div class="d-flex  justify-content-center pb-1">
-                        <img src="../assets/login-icon.svg" alt="login-icon" style="height: 10rem"/>
+            <div class="bg-light shadow-lg h-75 w-25 rounded-5 d-flex justify-content-center align-items-center">
+                <div>
+                    <div class="pb-3">
+                        <div class="d-flex  justify-content-center pb-1">
+                            <img src="../assets/login-icon.svg" alt="login-icon" style="height: 10rem"/>
+                        </div>
+                        <div class="text-secondary">
+                            <p class="text-center fs-1 fw-bold">Inicio de sesion</p>
+                        </div>
                     </div>
-                    <div class="text-secondary">
-                        <p class="text-center fs-1 fw-bold">Inicio de sesion</p>
-                    </div>
-                </div>
-                <div class="px-5">
-                    <div>
-                        <input class="form-control form-control-lg text-center mt-2" type="text" placeholder="codigo Empleado"
-                        aria-label=".form-control-lg example" v-model="codigo">
-                    </div>
-                    <div class="pt-2 d-flex justify-content-center">
-                        <button @click="EnviarData" class="btn btn-info text-white w-100">Ingresar</button>
+                    <div class="px-5">
+                        <div>
+                            <input class="form-control form-control-lg text-center mt-2" type="text" placeholder="codigo Empleado"
+                            aria-label=".form-control-lg example" v-model="codigo">
+                        </div>
+                        <div class="pt-2 d-flex justify-content-center">
+                            <button @click="EnviarData" class="btn btn-info text-white w-100">Ingresar</button>
+                        </div>
                     </div>
                 </div>
             </div>

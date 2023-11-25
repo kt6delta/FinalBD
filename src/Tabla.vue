@@ -114,22 +114,39 @@ export default {
                 <!--parte de agregacion de productos-->
                 <div class="d-flex justify-content-center pb-4">
                     <div class="w-75 d-flex justify-content-center">
+                        <!--Funcion de agregaion de productos-->
                         <div class="w-50">
                             <componenteDetProd @Codigo="traerProducto" />
                         </div>
-                        <div class="w-50 d-flex justify-content-center">
-                            <div class="w-50 ">
+                        <!--Barra Componente con noton total -->
+                        <div v-if="(localStorage.getItem('tipoFactura') == 'VE')||(localStorage.getItem('tipoFactura') == 'CO')" class="w-50 d-flex justify-content-center">
+                            <div class="w-100 px-4 ">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">@</span>
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingInputGroup1"
-                                            placeholder="Username">
-                                        <label for="floatingInputGroup1">Username</label>
-                                    </div>
+                                    <span class="input-group-text">Ref</span>
+                                    <input type="text" class="form-control" placeholder="Codigo producto"
+                                        aria-label="Codigo producto" aria-describedby="basic-addon2">
                                 </div>
                             </div>
-                            <div class="w-50 d-flex justify-content-center">
-                                <button class="btn btn-warning w-25" @click="crearFactura()">Total</button>
+                            <!--Boton de totalizar-->
+                            <div class="w-25 ">
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-warning w-100" @click="crearFactura()">Total</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="(localStorage.getItem('tipoFactura') == 'DC')||(localStorage.getItem('tipoFactura') == 'DV')" class="w-50 d-flex justify-content-center">
+                            <div class="w-100 px-4 ">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Ref</span>
+                                    <input type="text" class="form-control" placeholder="Codigo producto"
+                                        aria-label="Codigo producto" aria-describedby="basic-addon2">
+                                </div>
+                            </div>
+                            <!--Boton de totalizar-->
+                            <div class="w-25 ">
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-warning w-100" @click="crearFactura()">Total</button>
+                                </div>
                             </div>
                         </div>
                     </div>
