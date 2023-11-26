@@ -56,7 +56,7 @@ export default {
       }
     },
     //actualiza info a la bd
-    Bd_put() {
+    enrutarTabla() {
       console.log('put');
       this.$router.push('/Tabla');
     },
@@ -147,7 +147,7 @@ export default {
         <strong>¡Peligro!</strong> El usuario ya existe,
         ¿desea
         actulizar?
-        <a @click="Bd_put()" class="alert-link text-center">SI</a>
+        <a @click="enrutarTabla()" class="alert-link text-center">SI</a>
         <br>En caso contrario por
         favor ingrese un documento que no este repetido.
       </div>
@@ -225,7 +225,7 @@ export default {
 
         <div class="form-btn text-center">
           <button @click="Bd_post()" class="submit-btn me-3">Agregar</button>
-          <button tag="button" class="submit-btn">Volver</button>
+          <button @click="enrutarTabla()" tag="button" class="submit-btn">Volver</button>
         </div>
 
       </div>

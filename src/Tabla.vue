@@ -2,7 +2,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import Barra_busqueda from './components/Barra_busqueda.vue';
-import ComponentePer from './components/ComponentePer.vue';
 import componenteDetProd from './components/componenteDetProd.vue';
 import componenteProducto from './components/componenteProducto.vue';
 import { onMounted, ref } from 'vue';
@@ -121,7 +120,6 @@ export default {
         }
     },
     components: {
-        ComponentePer,
         Barra_busqueda,
         componenteDetProd,
         componenteProducto
