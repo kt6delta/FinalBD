@@ -40,7 +40,7 @@ export default {
                 const data = await response.json();
                 this.productos.push(data)
                 this.listaProd.push(datos)
-
+                this.lisCant.push(0)
             } catch (error) {
 
                 window.alert('El producto no existe');

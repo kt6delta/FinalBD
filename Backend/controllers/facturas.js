@@ -41,6 +41,7 @@ facturaRouter.post('/', async (req, res, next) => {
   }
 
   let precios = []
+  let preciosU = []
   let total = 0
   //Se calcula el precio total de la factura
   try {
@@ -53,6 +54,7 @@ facturaRouter.post('/', async (req, res, next) => {
           refProductoFK = ${producto}`
       )
       precios[i] = +result.rows[0] * body.cantidades[i]
+      preciosU[i] = +result.rows[0]
     });
   } catch (err) {
     return res.send(err.message);
@@ -100,7 +102,7 @@ facturaRouter.post('/', async (req, res, next) => {
     console.log(result)
   }
 
-  let datosFactura
+  let datosFactura, y
   try {
     connection = await db.abrirConexion()
     datosFactura = await connection.execute(
@@ -114,6 +116,7 @@ facturaRouter.post('/', async (req, res, next) => {
       P.idTipoDocFK = F.idTipoDocFK and
       P.nDocumento = F.nDocumentoFK and
       TF.idTipoFac = F.idTipoFacFK and
+      E.codEmpleado = F.codEmpleadoFK and
       F.nFactura = ${nFactura}`
     )
   } catch (err) {
@@ -122,102 +125,142 @@ facturaRouter.post('/', async (req, res, next) => {
     await db.cerrarConexion(connection)
     if (datosFactura.rows.length != 0) {
       datosFactura = datosFactura.rows[0]
-      let y = 50
-      doc.fontSize(20).text(`Factura ${datosFactura[0]} N°${datosFactura[1]}`, 50, y);
+      y = 50
+      doc.fontSize(20).text(`Factura N°${datosFactura[1]} - ${datosFactura[0]} `, 50, y);
       y = y + 60
-      doc.fontSize(17).text(`${datosFactura[2]}: ${datosFactura[3]} / ${datosFactura[4]} ${datosFactura[5]}`, 50, y);
+      doc.fontSize(15).text(`${datosFactura[2]}: ${datosFactura[3]} / ${datosFactura[4]} ${datosFactura[5]}`, 50, y);
       y = y + 30
       if (datosFactura[6] != null) {
-        doc.fontSize(17).text(`Devolución de factura: ${datosFactura[6]} ${datosFactura[7]}`, 50, y);
+        doc.fontSize(15).text(`Devolución de factura: ${datosFactura[6]} ${datosFactura[7]}`, 50, y);
         y = y + 30
       }
-      doc.fontSize(17).text(`Empleado: ${datosFactura[8]}`, 50, y);
+      doc.fontSize(15).text(`Empleado: ${datosFactura[8]}`, 50, y);
       y = y + 30
-      doc.fontSize(17).text(`Fecha: ${datosFactura[9]}`, 50, y);
-      y = y + 30
-      doc.fontSize(17).text(`Total: $${datosFactura[10]}`, 50, y);
+      doc.fontSize(15).text(`Fecha: ${datosFactura[9]}`, 50, y);
     }
   }
-
+  let productosPDF = []
   let categoria, consecutivo, salen, entran, existencia, inventarioRef
   try {
     for (let i = 0; i < body.productos.length; i++) {
       const producto = body.productos[i]//se recorre cada producto
-      connection = await db.abrirConexion()
-      categoria = await connection.execute(
-        `SELECT idCatProductoFK
-          FROM Producto
-          WHERE refProducto = ${producto}`
-      )
-      //se añade registro en DetalleFactura
-      result = await connection.execute(
-        `insert into DetalleFactura values (
-          '${body.tipoFac}','${nFactura}','${i + 1}',
-          ${i + 1},'${categoria.rows[0][0]}','${producto}',
-          ${body.cantidades[i]},${precios[i]}
-        )`
-      )
-
-      await connection.execute(`commit`)
-      await db.cerrarConexion(connection)
-
-      connection = await db.abrirConexion()
-
-      //Busca la existencia actual del producto
-      r = await connection.execute(
-        `SELECT existencia
-          FROM Inventario
-          WHERE refProductoFK = ${producto} and
-          consecInven = (SELECT max(consecInven)
-                        FROM Inventario
-                        WHERE refProductoFK = ${producto})`
-      )
-      existencia = 0
-      if (r.rows.length != 0) {
-        existencia = +r.rows[0]
-      }
-
-      if (body.tipoFac == "VE" || body.tipoFac == "DC") {
-        //si es venta o devolución compra los productos salen del inventario
-        salen = body.cantidades[i]
-        entran = 'NULL'
-        existencia = existencia - salen
-      }
-      else {
-        //si es compra o devolución venta los productos entran al inventario
-        entran = body.cantidades[i]
-        salen = 'NULL'
-        existencia = existencia + entran
-      }
-
-      inventarioRef = 'NULL'
-      if (body.nFacturaRef) {
-        //Si es devolucion se debe buscar el inventario al que modifica 
-        r = await connection.execute(
-          `SELECT consecInven
-            FROM Inventario
-            WHERE facturaFK = ${nFacturaRef} and
-            tipoFacFK = ${tipoFacRef} and
-            refProductoFK = ${producto}`
+      if (body.cantidades[i] != 0) {
+        connection = await db.abrirConexion()
+        categoria = await connection.execute(
+          `SELECT idCatProductoFK, nomproducto
+            FROM Producto
+            WHERE refProducto = ${producto}`
         )
-        inventarioRef = `'${r.rows[0][0]}'`
+        productosPDF.push({ nombre: categoria.rows[0][1], cantidad: body.cantidades[i], precio: precios[i] })
+
+
+        //se añade registro en DetalleFactura
+        result = await connection.execute(
+          `insert into DetalleFactura values (
+            '${body.tipoFac}','${nFactura}','${i + 1}',
+            ${i + 1},'${categoria.rows[0][0]}','${producto}',
+            ${body.cantidades[i]},${precios[i]}
+          )`
+        )
+
+        await connection.execute(`commit`)
+        await db.cerrarConexion(connection)
+
+        connection = await db.abrirConexion()
+
+        //Busca la existencia actual del producto
+        r = await connection.execute(
+          `SELECT existencia
+            FROM Inventario
+            WHERE refProductoFK = ${producto} and
+            consecInven = (SELECT max(consecInven)
+                          FROM Inventario
+                          WHERE refProductoFK = ${producto})`
+        )
+        existencia = 0
+        if (r.rows.length != 0) {
+          existencia = +r.rows[0]
+        }
+
+        if (body.tipoFac == "VE" || body.tipoFac == "DC") {
+          //si es venta o devolución compra los productos salen del inventario
+          salen = body.cantidades[i]
+          entran = 'NULL'
+          existencia = existencia - salen
+        }
+        else {
+          //si es compra o devolución venta los productos entran al inventario
+          entran = body.cantidades[i]
+          salen = 'NULL'
+          existencia = existencia + entran
+        }
+
+        inventarioRef = 'NULL'
+        if (body.nFacturaRef) {
+          //Si es devolucion se debe buscar el inventario al que modifica 
+          r = await connection.execute(
+            `SELECT consecInven
+              FROM Inventario
+              WHERE facturaFK = ${nFacturaRef} and
+              tipoFacFK = ${tipoFacRef} and
+              refProductoFK = ${producto}`
+          )
+          inventarioRef = `'${r.rows[0][0]}'`
+        }
+
+        //Se calcula el consecutivo de inventario
+        consecutivo = await connection.execute(`SELECT nvl(max(consecInven),0) FROM Inventario`)
+        //Se añade registro a inventario
+        console.log(`insert into inventario values (${+consecutivo.rows[0] + 1},'${categoria.rows[0][0]}','${producto}','${body.tipoFac}','${nFactura}','${i + 1}',${inventarioRef},sysdate, ${salen},${entran},${existencia})`)
+        result = await connection.execute(
+          `insert into inventario values (
+            ${+consecutivo.rows[0] + 1},'${categoria.rows[0][0]}','${producto}',
+            '${body.tipoFac}','${nFactura}','${i + 1}',${inventarioRef},
+            sysdate, ${salen},${entran},${existencia}
+          )`
+        )
+
+        await connection.execute(`commit`)
       }
-
-      //Se calcula el consecutivo de inventario
-      consecutivo = await connection.execute(`SELECT nvl(max(consecInven),0) FROM Inventario`)
-      //Se añade registro a inventario
-      console.log(`insert into inventario values (${+consecutivo.rows[0] + 1},'${categoria.rows[0][0]}','${producto}','${body.tipoFac}','${nFactura}','${i + 1}',${inventarioRef},sysdate, ${salen},${entran},${existencia})`)
-      result = await connection.execute(
-        `insert into inventario values (
-          ${+consecutivo.rows[0] + 1},'${categoria.rows[0][0]}','${producto}',
-          '${body.tipoFac}','${nFactura}','${i + 1}',${inventarioRef},
-          sysdate, ${salen},${entran},${existencia}
-        )`
-      )
-
-      await connection.execute(`commit`)
       await db.cerrarConexion(connection)
     };
+
+    let tableTop = y + 40; // Ajusta la posición inicial de la tabla
+    const rowHeight = 30;
+    const col1 = 50; // Ajusta la posición de la primera columna
+    const col2 = 250; // Ajusta la posición de la segunda columna
+    const col3 = 350; // Ajusta la posición de la tercera columna
+    const col4 = 450; // Ajusta la posición de la tercera columna
+
+    // Encabezados de la tabla
+    doc
+      .fontSize(15)
+      .text('Producto', col1, tableTop)
+      .text('Cantidad', col2, tableTop)
+      .text('Precio/U', col3, tableTop)
+      .text('Total', col4, tableTop);
+    let lineY = doc.y + 10;
+    doc.moveTo(50, lineY).lineTo(550, lineY).stroke();
+    tableTop = tableTop + 15
+    // Contenido de la tabla
+    productosPDF.forEach((producto, index) => {
+      y = tableTop + (index + 1) * rowHeight;
+      doc
+        .fontSize(12)
+        .text(producto.nombre, col1, y)
+        .text(producto.cantidad.toString(), col2, y)
+        .text(`$${preciosU[index].toFixed(2)}`, col3, y)
+        .text(`$${producto.precio.toFixed(2)}`, col4, y);
+    });
+
+    lineY = doc.y + 10;
+    doc.moveTo(50, lineY).lineTo(550, lineY).stroke();
+
+    // Total
+    doc
+      .fontSize(12)  // Ajusta la posición del texto
+      .text(`$${total.toFixed(2)}`, col4, lineY + 15);  // Ajusta la posición del total
+
   } catch (err) {
     return res.send(err.message);
   } finally {
