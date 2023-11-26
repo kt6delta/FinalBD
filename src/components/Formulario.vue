@@ -18,7 +18,7 @@ export default {
       cont: 1,
       cont2: 1,
       direccion: {},
-      contacto: {},
+      contactos: [],
 
       TipeUser: "",
       Name: "",
@@ -61,13 +61,66 @@ export default {
       this.$router.push('/Tabla');
     },
     //envia info a la bd
-    Bd_post() {
-      console.log('post');
-      this.$router.push('/Tabla');
+    async Bd_post() {
+      const data = {
+        nombre: this.Name,
+        apellido: this.Apellido,
+        tipoPersona: (localStorage.getItem('tipoPersona') == "Cliente") ? "CL" : "PR",
+        tipoDoc: this.tipoDocPh,
+        nDocumento: this.nDoc
+      }
+      const jsonData = JSON.stringify(data);
+      console.log(jsonData)
+      const response = await fetch("http://localhost:3000/api/personas",
+        {
+          method: "POST",
+          body: jsonData,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+      if (response.status !== 201) {
+        const error = await response.json()
+        window.alert(error.error)
+        console.log(error.error)
+      }
+      let response2
+      for (const contacto of this.contactos) {
+        console.log(contacto)
+        const data = {
+          tipoContacto: contacto[1][0],
+          descTipoContacto: contacto[1][1],
+          tipoPersona: (localStorage.getItem('tipoPersona') == "Cliente") ? "CL" : "PR",
+          tipoDoc: this.tipoDocPh,
+          nDocumento: this.nDoc,
+          descContacto: contacto[0]
+        }
+        const jsonData = JSON.stringify(data);
+        console.log(jsonData)
+        response2 = await fetch("http://localhost:3000/api/contactos",
+          {
+            method: "POST",
+            body: jsonData,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+        if (response2.status !== 201) {
+          const error = await response2.json()
+          window.alert(error.error)
+          console.log(error.error)
+        }
+      }
+
+
     },
     traerDireccion(datos) {
       this.direccion = datos
       console.log(datos)
+    },
+    traerContactos(datos) {
+      this.contactos[datos[0]] = [datos[1], datos[2]]
+      console.log(this.contactos)
     }
   },
   components: {
@@ -110,20 +163,11 @@ export default {
 
         <!--agrega en el html varios espacios de direccion-->
         <div v-for="i in cont2" v-bind:key="i">
-          <Direcciones :cont2Pop="i" @datosDireccion="traerDireccion" />
+          <Direcciones :cont2Pop="i" @datosDireccion="traerDireccion" :index="i" />
         </div>
 
         <!--ingresar info de tipo Usuario-->
         <div class="row">
-          <div class="col-sm-8">
-            <div class="form-group">
-              <span class="form-label">Tipo de Persona</span>
-              <select id="tipos" class="form-control" name="tipoDoc" v-model="TipeUser">
-                <option v-for="i in tipoDoc" :value="i[1]">{{ i[1] }}</option>
-              </select>
-              <span class="select-arrow"></span>
-            </div>
-          </div>
           <!--botones para controlar cantidad de direcciones-->
           <div class="col-sm-4 d-flex justify-content-center align-items-start">
             <div class="form-group">
@@ -164,7 +208,7 @@ export default {
             <div class="form-group">
               <span class="form-label">Tipo</span>
               <select id="tipos" class="form-control" name="tipoDoc" v-model="tipoDocPh">
-                <option v-for="i in tipoDoc" :value="i[1]">{{ i[1] }}</option>
+                <option v-for="i in tipoDoc" :value="i[0]">{{ i[1] }}</option>
               </select>
               <span class="select-arrow"></span>
             </div>
@@ -172,7 +216,7 @@ export default {
         </div>
         <!--agrega en el html varios espacios de contacto-->
         <div v-for="i in cont" v-bind:key="i">
-          <Contacto />
+          <Contacto :index="(i - 1)" @datoContacto="traerContactos" />
         </div>
         <div id="add" class="form-btn text-end mb-2">
           <button type="button" class="btn btn-primary me-2 fs-4 px-2 py-0" @click="AgregarContacto()">+</button>

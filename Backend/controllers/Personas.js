@@ -38,14 +38,16 @@ personaRouter.post('/', async (req, res, next) => {
     } catch (err) {
         console.log(err)
         if (err.message.includes('ORA-00001')) {
-            console.log('Entrada duplicada, el registro ya existe.')
+            await db.cerrarConexion(connection)
+            return res.status(409).json({
+                error: 'La persona ya existe'
+            })
         }
     } finally {
         await db.cerrarConexion(connection)
-        if (!result) {
-            return res.status(409).send("La persona ya existe")
+        if (result) {
+            res.status(201).send("Persona creada correctamente")
         }
-        res.status(201).send("Persona creada correctamente")
     }
 })
 

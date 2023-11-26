@@ -13,20 +13,21 @@ export default {
   data() {
     return {
       contacto: '',
+      dato: '',
       mostrarCorreo: true,
       tipoContacto: [],
     }
   },
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
   methods: {
-    CambiarContacto() {
-      if (this.contacto == "correo") {
-        this.mostrarCorreo = true;
-      } else {
-        this.mostrarCorreo = false;
-      }
-    },
-    CambiarP() {
-
+    enviarDatos() {
+      let lisContacto = [this.index, this.dato, this.contacto]
+      this.$emit('datoContacto', lisContacto)
     }
   }
 };
@@ -37,14 +38,15 @@ export default {
     <div class="col-sm-8">
       <div class="form-group">
         <span class="form-label">Datos</span>
-        <input class="form-control" type="email" :placeholder="`ingrese el ${contacto}` " name="correo">
+        <input class="form-control" type="email" :placeholder="`ingrese el dato de contacto`" v-model="dato" name="correo"
+          @change="enviarDatos()">
       </div>
     </div>
     <div class="col-sm-4">
       <div class="form-group">
         <span class="form-label">Contacto</span>
-        <select id="tipos" class="form-control" name="tipoDoc" v-model="contacto" @change="CambiarContacto()">
-          <option v-for="i in tipoContacto" :value="i[1]">{{ i[1] }}</option>
+        <select id="tipos" class="form-control" name="tipoDoc" v-model="contacto">
+          <option v-for="i in tipoContacto" :value="[i[0], i[1]]">{{ i[1] }}</option>
         </select>
         <span class="select-arrow"></span>
       </div>

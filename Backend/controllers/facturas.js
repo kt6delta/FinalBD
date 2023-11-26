@@ -141,14 +141,14 @@ facturaRouter.post('/', async (req, res, next) => {
 
   let categoria, consecutivo, salen, entran, existencia, inventarioRef
   try {
-    body.productos.forEach(async (producto, i) => {//se recorre cada producto
+    for (let i = 0; i < body.productos.length; i++) {
+      const producto = body.productos[i]//se recorre cada producto
       connection = await db.abrirConexion()
       categoria = await connection.execute(
         `SELECT idCatProductoFK
           FROM Producto
           WHERE refProducto = ${producto}`
       )
-
       //se añade registro en DetalleFactura
       result = await connection.execute(
         `insert into DetalleFactura values (
@@ -217,7 +217,7 @@ facturaRouter.post('/', async (req, res, next) => {
 
       await connection.execute(`commit`)
       await db.cerrarConexion(connection)
-    });
+    };
   } catch (err) {
     return res.send(err.message);
   } finally {

@@ -25,22 +25,6 @@ contactoRouter.post('/', async (req, res, next) => {
     let result;
     let consecutivo = 0;
 
-    try {
-        connection = await db.abrirConexion()
-        result = await connection.execute(`SELECT max(consecContacto) FROM Contacto`)
-    } catch (err) {
-        return res.send(err.message);
-    } finally {
-        await db.cerrarConexion(connection)
-        if (result.rows.length == 0) {
-        } else {
-            console.log(result.rows[0])
-            if(result.rows[0] != null){
-                consecutivo = +result.rows[0] + 1
-            }
-        }
-    }
-
     const body = req.body; //trae el cuerpo de la petición
     if (!body.tipoContacto || !body.descTipoContacto || !body.tipoPersona || !body.tipoDoc || !body.nDocumento || !body.descContacto) { //compueba si alguno de los campos de la petición estan vacios
         console.log(body)
@@ -49,7 +33,23 @@ contactoRouter.post('/', async (req, res, next) => {
         })
     }
 
-    
+    try {
+        connection = await db.abrirConexion()
+        result = await connection.execute(`SELECT max(consecContacto) FROM Contacto`)
+    } catch (err) {
+        await db.cerrarConexion(connection)
+        return res.send(err.message);
+    } finally {
+        await db.cerrarConexion(connection)
+        if (result.rows.length == 0) {
+        } else {
+            console.log(result.rows[0])
+            if (result.rows[0][0] != null) {
+                consecutivo = +result.rows[0] + 1
+            }
+        }
+    }
+
     try {
         connection = await db.abrirConexion()
         console.log(consecutivo)

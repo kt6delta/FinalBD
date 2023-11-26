@@ -64,7 +64,7 @@ export default {
         },
         ControlModal(bol) {
             console.log(bol)
-            let modal = new Modal(document.getElementById('direccionModal'));
+            let modal = new Modal(document.getElementById(`direccionModal${this.index}`));
             if (bol) {
                 modal.show();
             } else {
@@ -108,8 +108,6 @@ export default {
             this.nomenclaturas[index].forEach(element => {
                 lista.push({ code: element[0], Via: element[1] });
             });
-            console.log('lol')
-            console.log(lista)
             return lista;
         },
         enviarDatos() {
@@ -139,13 +137,16 @@ export default {
             }
 
             this.$emit('DatosDireccion', datos);
-            //this.$emit('datosPersona', this.personas);
         }
     },
     props: {
         cont2Pop: {
             type: Number,
             required: true,
+        },
+        index: {
+            type: Number,
+            required: true
         }
     },
 };
@@ -164,7 +165,8 @@ export default {
     </div>
 
     <!-- Subpestaña -->
-    <div class="modal fade" id="direccionModal" tabindex="-1" aria-labelledby="direccionModalLabel" aria-hidden="true">
+    <div class="modal fade" :id="`direccionModal${this.index}`" tabindex="-1" aria-labelledby="direccionModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">

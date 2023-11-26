@@ -94,20 +94,26 @@ export default {
                         'Content-Type': 'application/json'
                     }
                 })
-            if (response.status === 400 || response.status === 404 ) {
+            if (response.status === 400 || response.status === 404) {
                 const error = await response.json()
                 window.alert(error.error)
-                console.log(error.error)              
-            } else if(response.status === 200) {
+                console.log(error.error)
+            } else if (response.status === 200) {
                 const blob = await response.blob();
                 // Crear un enlace temporal y hacer clic en él para iniciar la descarga         
                 const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
+                /*const a = document.createElement('a');
                 a.href = url;
-                a.download = 'documento.pdf';
+                a.download = `Factura.pdf`
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                const blob = await response.blob();
+                */
+
+                window.open(url, 'Factura');
+                // Revocar el objeto URL después de abrir el enlace
                 window.URL.revokeObjectURL(url);
 
             }
