@@ -3,7 +3,6 @@ import Contacto from './Contacto.vue';
 import Direcciones from './Direcciones.vue';
 export default {
   async beforeMount() {
-
     try {
       const response = await fetch(`http://localhost:3000/api/tipodoc`);
       const data = await response.json();
@@ -31,10 +30,6 @@ export default {
   methods: {
     AddDireccion() {
       this.cont2 = this.cont2 + 1;
-      // this.direccion.push({
-      //   
-      //   
-      // });
     },
     //se encarga de agregar varios contactos
     LessDireccion() {
@@ -44,10 +39,6 @@ export default {
     },
     AgregarContacto() {
       this.cont = this.cont + 1;
-      // this.contacto.push({
-      //   contacto: 'correo',
-      //   mostrarCorreo: true,
-      // });
     },
     //se encarga de agregar varios contactos
     QuitarContacto() {
@@ -62,6 +53,7 @@ export default {
     },
     //envia info a la bd
     async Bd_post() {
+      let e = true
       const data = {
         nombre: this.Name,
         apellido: this.Apellido,
@@ -83,6 +75,7 @@ export default {
         const error = await response.json()
         window.alert(error.error)
         console.log(error.error)
+        e = false
       }
       let response2
       for (const contacto of this.contactos) {
@@ -109,10 +102,50 @@ export default {
           const error = await response2.json()
           window.alert(error.error)
           console.log(error.error)
+          e = false
         }
       }
-
-
+      let posAnterior = 0
+      for (let i = 1; i < 21; i++) {
+        const direccion = this.direccion[i]
+        if (direccion[0] != "") {
+          let dir = {
+            posicion: i,
+            tipoPersona: (localStorage.getItem('tipoPersona') == "Cliente") ? "CL" : "PR",
+            tipoDoc: this.tipoDocPh,
+            nDocumento: this.nDoc
+          }
+          if (direccion[1] === true) {
+            dir.valor = direccion[0]
+          }
+          else {
+            dir.nomenclatura = direccion[0]
+          }
+          if (posAnterior != 0) {
+            dir.posicionRef = posAnterior
+          }
+          const jsonDir = JSON.stringify(dir);
+          console.log(jsonDir)
+          const response3 = await fetch("http://localhost:3000/api/direcciones",
+            {
+              method: "POST",
+              body: jsonDir,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+          if (response3.status !== 201) {
+            const error = await response2.json()
+            window.alert(error.error)
+            console.log(error.error)
+            e = false
+          }
+          posAnterior = i
+        }
+      }
+      if (e) {
+        window.alert("Persona añadida correctamente")
+      }
     },
     traerDireccion(datos) {
       this.direccion = datos
@@ -130,35 +163,9 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-info row mt-5">
-    <div class="col-md-7 col-md-push-5">
-      <div class="booking-cta">
-        <h1>Para Usar el Servicio</h1>
-        <p id="text">Porfavor llenar el siguiente formulario para ingresar o actualizar datos en la
-          base de datos, en caso
-          de que exista el ususario se le dara un aviso
-        </p>
-      </div>
-      <!--Muestra todas las alertas-->
-      <div class="alert alert-danger alerta" id="alerta-d" role="alert"><strong>¡Error!</strong>
-        Información faltante
-      </div>
-      <div class="alert alert-warning alerta" id="alerta-w" role="alert">
-        <strong>¡Peligro!</strong> El usuario ya existe,
-        ¿desea
-        actulizar?
-        <a @click="enrutarTabla()" class="alert-link text-center">SI</a>
-        <br>En caso contrario por
-        favor ingrese un documento que no este repetido.
-      </div>
-      <div class="alert alert-success alerta" id="alerta-s" role="alert">
-        <strong>¡Exito!</strong>
-        Persona creada correctamente
-      </div>
-
-    </div>
-    <div class="col-md-5 col-md-pull-7">
-      <div class="booking-form px-4 py-3">
+  <div class="bg-info vh-100">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100 ">
+      <div class="booking-form px-4 py-3 rounded-5">
         <!--Formulario para ingresar/actualizar la info-->
 
         <!--agrega en el html varios espacios de direccion-->
@@ -224,8 +231,8 @@ export default {
         </div>
 
         <div class="form-btn text-center">
-          <button @click="Bd_post()" class="submit-btn me-3">Agregar</button>
-          <button @click="enrutarTabla()" tag="button" class="submit-btn">Volver</button>
+          <button @click="Bd_post()" class="btn btn-outline-primary me-3">Agregar</button>
+          <button @click="enrutarTabla()" tag="button" class="btn btn-outline-primary">Volver</button>
         </div>
 
       </div>
