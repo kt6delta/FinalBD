@@ -151,7 +151,7 @@ facturaRouter.post('/', async (req, res, next) => {
             FROM Producto
             WHERE refProducto = ${producto}`
         )
-        productosPDF.push({ nombre: categoria.rows[0][1], cantidad: body.cantidades[i], precio: precios[i] })
+        productosPDF.push({ nombre: categoria.rows[0][1], cantidad: body.cantidades[i], precio: precios[i], precioU: preciosU[i] })
 
 
         //se añade registro en DetalleFactura
@@ -249,7 +249,7 @@ facturaRouter.post('/', async (req, res, next) => {
         .fontSize(12)
         .text(producto.nombre, col1, y)
         .text(producto.cantidad.toString(), col2, y)
-        .text(`$${preciosU[index].toFixed(2)}`, col3, y)
+        .text(`$${producto.precioU.toFixed(2)}`, col3, y)
         .text(`$${producto.precio.toFixed(2)}`, col4, y);
     });
 
