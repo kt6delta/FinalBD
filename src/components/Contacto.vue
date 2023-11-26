@@ -39,7 +39,7 @@ export default {
       <div class="form-group">
         <span class="form-label">Datos</span>
         <input class="form-control" type="email" :placeholder="`ingrese el dato de contacto`" v-model="dato" name="correo"
-          @change="enviarDatos()">
+          @change="enviarDatos()" :disabled="(this.contacto === '')  ? true:false">
       </div>
     </div>
     <div class="col-sm-4">
