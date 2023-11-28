@@ -153,12 +153,11 @@ export default {
 </script>
 <template>
     <!--ingresar info de Direccion-->
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="form-group">
-                <span class="form-label" v-if="this.cont2Pop == 1">Direccion</span>
+    <div class="w-100 py-1">
+        <div class="w-100">
+            <div class="w-100 form-group ">
                 <!-- Input que abre la subpestaña -->
-                <input class="form-control" type="text" name="direccion" placeholder="Direccion" @click="ControlModal(true)"
+                <input class="w-100 form-control" type="text" name="direccion" placeholder="Direccion " @click="ControlModal(true)"
                     v-model="txtDireccion" readonly>
             </div>
         </div>
@@ -168,215 +167,226 @@ export default {
     <div class="modal fade" :id="`direccionModal${this.index}`" tabindex="-1" aria-labelledby="direccionModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-xl">
-            <div class="modal-content">
+            <div class="modal-content bg-info">
                 <div class="modal-header">
                     <h5 class="modal-title" id="direccionModalLabel">Direccion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="modal-body">
-                    <form v-if="componentes.length != 0" class="row gx-3 gy-2 align-items-center">
-                        <!--Selecciona via-->
-                        <div class="col-sm-3">
-                            <label class="visually-hidden" for="specificSizeSelect">Tipo Via</label>
-                            <div class="input-group">
-                                <div class="input-group-text">{{ componentes[0][1] }}</div>
-                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="selectedVia">
-                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[1]" :value="i[0]">{{
-                                        i[2]
-                                    }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--Selecciona # ó nombre Via-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="txt">idNum</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[1][1]" v-model="idNum">
-                        </div>
-                        <!--Selecciona letra Via-->
-                        <div class="col-sm-1">
-                            <label class="visually-hidden" for="letra">letra</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[2][1]" v-model="letraVia"
-                                @input="this.letraVia = this.letraVia.replace(/[^a-zA-Z]/g, '');">
-                        </div>
-                        <!--Selecciona prefijo-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="prefijo">prefijo</label>
-                            <div class="input-group">
-                                <div class="input-group-text">{{ componentes[3][1] }}</div>
-                                <input type="text" class="form-control" id="specificSizeInputName" v-model="prefijo"
-                                    @input="this.prefijo = this.prefijo.toUpperCase();">
-                            </div>
-                        </div>
+                <div class="w-100 modal-body">
+                    <form v-if="componentes.length != 0" class="w-100">
 
-                        <!--Selecciona letra prefijo-->
-                        <div class="col-sm-1">
-                            <label class="visually-hidden" for="letra prefijo">letra prefijo</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[4][1]" v-model="letraPrefijo"
-                                @input="this.letraPrefijo = this.letraPrefijo.replace(/[^a-zA-Z]/g, '');">
-                        </div>
-                        <!--Selecciona Tipo Cuadrante-->
-                        <div class="col-auto">
-                            <label class="visually-hidden" for="specificSizeSelect">Cuadrante</label>
-                            <div class="input-group-text">{{ componentes[5][1] }}</div>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                v-model="TipoCuadran">
-                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[6]" :value="i[0]">{{ i[2]
-                                }}</option>
-                            </select>
-                        </div>
-                        <!--Selecciona # via generadora-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="letra"># via generadora</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[6][1]" v-model="NumViaG"
-                                @input="this.NumViaG = this.NumViaG.replace(/[^0-9]/g, '');">
-                        </div>
-                        <!--Selecciona letraViaG-->
-                        <div class="col-sm-1">
-                            <label class="visually-hidden" for="letra via generadora"></label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[7][1]" v-model="letraViaG"
-                                @input="this.letraViaG = this.letraViaG.replace(/[^a-zA-Z]/g, '');">
-                        </div>
-                        <!--Selecciona sufijo-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="letra prefijo">{{ componentes[8][1] }}</label>
-                            <div class="input-group">
-                                <div class="input-group-text">Sufijo</div>
-                                <input type="text" class="form-control" id="specificSizeInputName" v-model="sufijo"
-                                    @input="this.sufijo = this.sufijo.toUpperCase();">
-                            </div>
-                        </div>
-                        <!--Selecciona letra Sufijo-->
-                        <div class="col-sm-1">
-                            <label class="visually-hidden" for="letra prefijo">letra Sufijo</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[9][1]" v-model="letraSufijo"
-                                @input="this.letraSufijo = this.letraSufijo.replace(/[^a-zA-Z]/g, '');">
-                        </div>
-                        <!--Selecciona # placa-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="letra prefijo"># placa</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[10][1]" v-model="NumPlaca"
-                                @input="this.NumPlaca = this.NumPlaca.replace(/[^0-9]/g, '');">
-                        </div>
-                        <!--Selecciona Tipo Cuadrante-->
-                        <div class="col-auto">
-                            <label class="visually-hidden" for="specificSizeSelect">Cuadrante</label>
-                            <div class="input-group-text">{{ componentes[11][1] }}</div>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                v-model="TipoCuadran2">
-                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[12]" :value="i[0]">{{
-                                    i[2]
-                                }}</option>
-                            </select>
-                        </div>
-                        <!--Selecciona Tipo Barrio-->
-                        <div class="col-auto">
-                            <label class="visually-hidden" for="specificSizeSelect">Barrio</label>
-                            <div class="input-group-text">{{ componentes[12][1] }}</div>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                v-model="TipoBarrio">
-                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[13]" :value="i[0]">{{
-                                    i[2]
-                                }}</option>
-                            </select>
-                        </div>
-                        <!--Selecciona Name Barrio-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="letra prefijo">Nombre Barrio</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[13][1]" v-model="NameBarrio"
-                                @input="this.NameBarrio = this.NameBarrio.replace(/[^a-zA-Z]/g, '');">
-                        </div>
-                        <!--Selecciona Tipo Manzana-->
-                        <div class="col-auto">
-                            <label class="visually-hidden" for="specificSizeSelect">Manzana</label>
-                            <div class="input-group-text">{{ componentes[14][1] }}</div>
-                            <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                v-model="TipoManza">
-                                <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[15]" :value="i[0]">{{
-                                    i[2]
-                                }}</option>
-                            </select>
-                        </div>
-                        <!--Selecciona Identificador Manzana-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="txt">IdManzana</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[15][1]" v-model="IdManzana">
-                        </div>
-                        <!--Selecciona Tipo Urbanizacion-->
-                        <div class="col-sm-3">
-                            <label class="visually-hidden" for="specificSizeSelect">Urbanizacion</label>
-                            <div class="input-group">
-                                <div class="input-group-text">{{ componentes[16][1] }}</div>
-                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="selectedUrban">
-                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[17]" :value="i[0]">{{
-                                        i[2]
-                                    }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--Selecciona Urbanizacion-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="letra prefijo">Nombre Urbanizacion</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[17][1]" v-model="NameUrban"
-                                @input="this.NameUrban = this.NameUrban.replace(/[^a-zA-Z]/g, '');">
-                        </div>
-                        <!--Selecciona Tipo Predio-->
-                        <div class="col-sm-3">
-                            <label class="visually-hidden" for="specificSizeSelect">Predio</label>
-                            <div class="input-group">
-                                <div class="input-group-text">{{ componentes[18][1] }}</div>
-                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="selectedPredio">
-                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[19]" :value="i[0]">{{
-                                        i[2]
-                                    }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--Selecciona IdPredio-->
-                        <div class="col-sm-2">
-                            <label class="visually-hidden" for="txt">IdPredio</label>
-                            <input type="text" class="form-control" id="specificSizeInputName"
-                                :placeholder="componentes[19][1]" v-model="IdPredio">
-                        </div>
-                        <!--Selecciona Tipo Complemento-->
-                        <div class="col-sm-4">
-                            <label class="visually-hidden" for="specificSizeSelect">{{ componentes[20][1] }}</label>
-                            <div class="input-group">
-                                <div class="input-group-text">Complemento</div>
-                                <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
-                                    v-model="selectedComple">
-                                    <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[21]" :value="i[0]">{{
-                                        i[2]
-                                    }}</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="row">
-                            <div class="col-auto mx-auto mt-4 fs-3">
-                                {{ selectedVia || '' }}
-                                {{ " " + idNum + " " + letraVia + " " + prefijo + " " +
-                                    letraPrefijo + " " + TipoCuadran + " " + NumViaG + " " + letraViaG + " " + sufijo + " "
-                                    +
-                                    letraSufijo + " " +
-                                    NumPlaca + " " + TipoCuadran2 + " " + TipoBarrio + " " + NameBarrio + " " +
-                                    TipoManza + " " + IdManzana + " " }}
-                                {{ selectedUrban || '' }}
-                                {{ " " + NameUrban + " " }}
-                                {{ selectedPredio || '' }}
-                                {{ " " + IdPredio + " " }}
-                                {{ selectedComple || '' }}
+                            <!--Selecciona via-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">Tipo Via</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[0][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="selectedVia">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[1]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona # ó nombre Via-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="txt">idNum</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[1][1]" v-model="idNum">
+                            </div>
+                            <!--Selecciona letra Via-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="letra">letra</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[2][1]" v-model="letraVia"
+                                    @input="this.letraVia = this.letraVia.replace(/[^a-zA-Z]/g, '');">
+                            </div>
+                            <!--Selecciona prefijo-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="prefijo">prefijo</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[3][1] }}</div>
+                                    <input type="text" class="form-control" id="specificSizeInputName" v-model="prefijo"
+                                        @input="this.prefijo = this.prefijo.toUpperCase();">
+                                </div>
+                            </div>
+    
+                            <!--Selecciona letra prefijo-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="letra prefijo">letra prefijo</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[4][1]" v-model="letraPrefijo"
+                                    @input="this.letraPrefijo = this.letraPrefijo.replace(/[^a-zA-Z]/g, '');">
+                            </div>
+                            <!--Selecciona Tipo Cuadrante-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">Cuadrante</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[5][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="TipoCuadran">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[6]" :value="i[0]">{{ i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona # via generadora-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="letra"># via generadora</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[6][1]" v-model="NumViaG"
+                                    @input="this.NumViaG = this.NumViaG.replace(/[^0-9]/g, '');">
+                            </div>
+                            <!--Selecciona letraViaG-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="letra via generadora"></label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[7][1]" v-model="letraViaG"
+                                    @input="this.letraViaG = this.letraViaG.replace(/[^a-zA-Z]/g, '');">
+                            </div>
+                            <!--Selecciona sufijo-->
+                            <div class="col-3">
+                                <label class="visually-hidden" for="letra prefijo">{{ componentes[8][1] }}</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">Sufijo</div>
+                                    <input type="text" class="form-control" id="specificSizeInputName" v-model="sufijo"
+                                        @input="this.sufijo = this.sufijo.toUpperCase();">
+                                </div>
+                            </div>
+                            <!--Selecciona letra Sufijo-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="letra prefijo">letra Sufijo</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[9][1]" v-model="letraSufijo"
+                                    @input="this.letraSufijo = this.letraSufijo.replace(/[^a-zA-Z]/g, '');">
+                            </div>
+                            <!--Selecciona # placa-->
+                            <div class="col-1">
+                                <label class="visually-hidden" for="letra prefijo"># placa</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[10][1]" v-model="NumPlaca"
+                                    @input="this.NumPlaca = this.NumPlaca.replace(/[^0-9]/g, '');">
+                            </div>
+                            <!--Selecciona Tipo Cuadrante-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">Cuadrante</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[11][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="TipoCuadran2">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[12]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona Tipo Barrio-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">Barrio</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[12][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="TipoBarrio">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[13]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona Name Barrio-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="letra prefijo">Nombre Barrio</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[13][1]" v-model="NameBarrio"
+                                    @input="this.NameBarrio = this.NameBarrio.replace(/[^a-zA-Z]/g, '');">
+                            </div>
+                            <!--Selecciona Tipo Manzana-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">Manzana</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[14][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="TipoManza">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[15]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona Identificador Manzana-->
+                            <div class="col-2">
+                                <label class="visually-hidden" for="txt">IdManzana</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[15][1]" v-model="IdManzana">
+                            </div>
+                            <!--Selecciona Tipo Urbanizacion-->
+                            <div class="col-3">
+                                <label class="visually-hidden" for="specificSizeSelect">Urbanizacion</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[16][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="selectedUrban">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[17]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona Urbanizacion-->
+                            <div class="col-3">
+                                <label class="visually-hidden" for="letra prefijo">Nombre Urbanizacion</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[17][1]" v-model="NameUrban"
+                                    @input="this.NameUrban = this.NameUrban.replace(/[^a-zA-Z]/g, '');">
+                            </div>
+                            <!--Selecciona Tipo Predio-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">Predio</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">{{ componentes[18][1] }}</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="selectedPredio">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[19]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Selecciona IdPredio-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="txt">IdPredio</label>
+                                <input type="text" class="form-control" id="specificSizeInputName"
+                                    :placeholder="componentes[19][1]" v-model="IdPredio">
+                            </div>
+                            <!--Selecciona Tipo Complemento-->
+                            <div class="col-4">
+                                <label class="visually-hidden" for="specificSizeSelect">{{ componentes[20][1] }}</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">Complemento</div>
+                                    <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
+                                        v-model="selectedComple">
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[21]" :value="i[0]">{{
+                                            i[2]
+                                        }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex d-flex justify-content-center align-items-center">
+                                <div class="w-50 fs-2 m-0 text-center">
+                                    {{ selectedVia || '' }}
+                                    {{ " " + idNum + " " + letraVia + " " + prefijo + " " +
+                                        letraPrefijo + " " + TipoCuadran + " " + NumViaG + " " + letraViaG + " " + sufijo + " "
+                                        +
+                                        letraSufijo + " " +
+                                        NumPlaca + " " + TipoCuadran2 + " " + TipoBarrio + " " + NameBarrio + " " +
+                                        TipoManza + " " + IdManzana + " " }}
+                                    {{ selectedUrban || '' }}
+                                    {{ " " + NameUrban + " " }}
+                                    {{ selectedPredio || '' }}
+                                    {{ " " + IdPredio + " " }}
+                                    {{ selectedComple || '' }}
+                                </div>
                             </div>
                         </div>
                     </form>
