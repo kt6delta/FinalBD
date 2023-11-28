@@ -163,6 +163,15 @@ export default {
 };
 </script>
 <template>
+
+  <div class="bg-danger d-flex justify-content-center align-items-center vh-100">
+    <div class="bg-info h-75 w-50 rounded-5 d-flex justify-content-center align-items-center">
+      <div class="bg-success ">
+
+      </div>
+    </div>
+
+  </div>
   <div class="bg-info vh-100">
     <div class="d-flex justify-content-center align-items-center w-100 h-100 ">
       <div class="booking-form px-4 py-3 rounded-5">
