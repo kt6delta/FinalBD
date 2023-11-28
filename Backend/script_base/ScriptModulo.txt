@@ -43,24 +43,24 @@ INSERT INTO EmpleadoCargo VALUES ('12', '7', '12');
 INSERT INTO EmpleadoCargo VALUES ('13', '7', '13');
 
 -- Incluir en ComponenteDirec y nomencaltura el esquema publicado por el IGAC
-INSERT INTO ComponenteDirec VALUES ('1', 'Tipo vía', 1);
-INSERT INTO ComponenteDirec VALUES ('2', 'Número o nombre comun vía principal', 1);
-INSERT INTO ComponenteDirec VALUES ('3', 'Letra/s asociadas a la vía principal', 0);
+INSERT INTO ComponenteDirec VALUES ('1', 'Tipo via', 1);
+INSERT INTO ComponenteDirec VALUES ('2', 'Numero o nombre comun via principal', 1);
+INSERT INTO ComponenteDirec VALUES ('3', 'Letra/s asociadas a la via principal', 0);
 INSERT INTO ComponenteDirec VALUES ('4', 'Prefijo (BIS)', 0);
 INSERT INTO ComponenteDirec VALUES ('5', 'Letra/s prefijo', 0);
 INSERT INTO ComponenteDirec VALUES ('6', 'Cuadrante', 0);
-INSERT INTO ComponenteDirec VALUES ('7', 'Número vía generadora', 0);
-INSERT INTO ComponenteDirec VALUES ('8', 'Letra/s asociadas a vía generadora', 0);
-INSERT INTO ComponenteDirec VALUES ('9', 'Letra/s asociadas a la vía principal', 0);
+INSERT INTO ComponenteDirec VALUES ('7', 'Numero via generadora', 0);
+INSERT INTO ComponenteDirec VALUES ('8', 'Letra/s asociadas a via generadora', 0);
+INSERT INTO ComponenteDirec VALUES ('9', 'Letra/s asociadas a la via principal', 0);
 INSERT INTO ComponenteDirec VALUES ('10', 'Letra/s sufijo', 0);
-INSERT INTO ComponenteDirec VALUES ('11', 'Número de placa', 0);
+INSERT INTO ComponenteDirec VALUES ('11', 'Numero de placa', 0);
 INSERT INTO ComponenteDirec VALUES ('12', 'Cuadrante', 0);
 INSERT INTO ComponenteDirec VALUES ('13', 'Barrio (BR)', 0);
 INSERT INTO ComponenteDirec VALUES ('14', 'Nombre barrio', 0);
 INSERT INTO ComponenteDirec VALUES ('15', 'Manzana', 0);
 INSERT INTO ComponenteDirec VALUES ('16', 'identificador de manzana', 0);
-INSERT INTO ComponenteDirec VALUES ('17', 'Urbanización', 0);
-INSERT INTO ComponenteDirec VALUES ('18', 'Nombre urbanización', 0);
+INSERT INTO ComponenteDirec VALUES ('17', 'Urbanizacion', 0);
+INSERT INTO ComponenteDirec VALUES ('18', 'Nombre urbanizacion', 0);
 INSERT INTO ComponenteDirec VALUES ('19', 'Tipo predio', 0);
 INSERT INTO ComponenteDirec VALUES ('20', 'identificador de predio', 0);
 INSERT INTO ComponenteDirec VALUES ('21', 'Complemento', 0);
@@ -83,7 +83,7 @@ INSERT INTO Nomenclatura VALUES ('PT', '1', 'Peatonal');
 INSERT INTO Nomenclatura VALUES ('TV', '1', 'Transversal');
 INSERT INTO Nomenclatura VALUES ('TC', '1', 'Troncal');
 INSERT INTO Nomenclatura VALUES ('VT', '1', 'Variante');
-INSERT INTO Nomenclatura VALUES ('VI', '1', 'Vía');
+INSERT INTO Nomenclatura VALUES ('VI', '1', 'Via');
 
 INSERT INTO Nomenclatura VALUES ('ESTE', '6', 'Este');
 INSERT INTO Nomenclatura VALUES ('NORTE', '6', 'Norte');
@@ -104,14 +104,14 @@ INSERT INTO Nomenclatura VALUES ('IN', '15', 'Inferior');
 INSERT INTO Nomenclatura VALUES ('SC', '15', 'Sector');
 INSERT INTO Nomenclatura VALUES ('ET', '15', 'Etapa');
 INSERT INTO Nomenclatura VALUES ('ED', '15', 'Edificio');
-INSERT INTO Nomenclatura VALUES ('MD', '15', 'Módulo');
+INSERT INTO Nomenclatura VALUES ('MD', '15', 'Modulo');
 INSERT INTO Nomenclatura VALUES ('TO', '15', 'Torre');
 
 INSERT INTO Nomenclatura VALUES ('BQ', '17', 'Bloque');
-INSERT INTO Nomenclatura VALUES ('CU', '17', 'Célula');
+INSERT INTO Nomenclatura VALUES ('CU', '17', 'Celula');
 INSERT INTO Nomenclatura VALUES ('CO', '17', 'Conjunto residencial');
 INSERT INTO Nomenclatura VALUES ('ET2', '17', 'Etapa');
-INSERT INTO Nomenclatura VALUES ('UR', '17', 'Urbanización');
+INSERT INTO Nomenclatura VALUES ('UR', '17', 'Urbanizacion');
 INSERT INTO Nomenclatura VALUES ('SC2', '17', 'Sector');
 INSERT INTO Nomenclatura VALUES ('TO2', '17', 'Torre');
 INSERT INTO Nomenclatura VALUES ('ZN', '17', 'Zona');
@@ -122,9 +122,9 @@ INSERT INTO Nomenclatura VALUES ('BG', '19', 'Bodega');
 INSERT INTO Nomenclatura VALUES ('CS', '19', 'Casa');
 INSERT INTO Nomenclatura VALUES ('CN', '19', 'Consultorio');
 INSERT INTO Nomenclatura VALUES ('DP', '19', 'Deposito');
-INSERT INTO Nomenclatura VALUES ('DS', '19', 'Deposito Sótano');
+INSERT INTO Nomenclatura VALUES ('DS', '19', 'Deposito Sotano');
 INSERT INTO Nomenclatura VALUES ('GA', '19', 'Garaje');
-INSERT INTO Nomenclatura VALUES ('GS', '19', 'Garaje Sótano');
+INSERT INTO Nomenclatura VALUES ('GS', '19', 'Garaje Sotano');
 INSERT INTO Nomenclatura VALUES ('LC', '19', 'Local');
 INSERT INTO Nomenclatura VALUES ('LM', '19', 'Local Mezzanine');
 INSERT INTO Nomenclatura VALUES ('LT', '19', 'Lote');
@@ -134,43 +134,43 @@ INSERT INTO Nomenclatura VALUES ('PA', '19', 'Parqueadero');
 INSERT INTO Nomenclatura VALUES ('PN', '19', 'Pent-House');
 INSERT INTO Nomenclatura VALUES ('PL', '19', 'Planta');
 INSERT INTO Nomenclatura VALUES ('PD', '19', 'Predio');
-INSERT INTO Nomenclatura VALUES ('SS', '19', 'Semisótano');
-INSERT INTO Nomenclatura VALUES ('SO', '19', 'Sótano');
+INSERT INTO Nomenclatura VALUES ('SS', '19', 'Semisotano');
+INSERT INTO Nomenclatura VALUES ('SO', '19', 'Sotano');
 INSERT INTO Nomenclatura VALUES ('ST', '19', 'Suite');
 INSERT INTO Nomenclatura VALUES ('TZ', '19', 'Terraza');
 INSERT INTO Nomenclatura VALUES ('UN', '19', 'Unidad');
 INSERT INTO Nomenclatura VALUES ('UL', '19', 'Unidad Residencia');
 
-INSERT INTO Nomenclatura VALUES ('AD', '21', 'Administración');
-INSERT INTO Nomenclatura VALUES ('AG', '21', 'Agrupación');
+INSERT INTO Nomenclatura VALUES ('AD', '21', 'Administracion');
+INSERT INTO Nomenclatura VALUES ('AG', '21', 'Agrupacion');
 INSERT INTO Nomenclatura VALUES ('CE', '21', 'Centro Comercial');
 INSERT INTO Nomenclatura VALUES ('CD2', '21', 'Ciudadela');
 INSERT INTO Nomenclatura VALUES ('CO2', '21', 'Conjunto Residencial');
 INSERT INTO Nomenclatura VALUES ('ED2', '21', 'Edificio');
 INSERT INTO Nomenclatura VALUES ('EN', '21', 'Entrada');
 INSERT INTO Nomenclatura VALUES ('EQ', '21', 'Esquina');
-INSERT INTO Nomenclatura VALUES ('ES', '21', 'Estación');
+INSERT INTO Nomenclatura VALUES ('ES', '21', 'Estacion');
 INSERT INTO Nomenclatura VALUES ('ET3', '21', 'Etapa');
 INSERT INTO Nomenclatura VALUES ('EX', '21', 'Exterior');
 INSERT INTO Nomenclatura VALUES ('FI', '21', 'Finca');
 INSERT INTO Nomenclatura VALUES ('IN2', '21', 'Interior');
-INSERT INTO Nomenclatura VALUES ('KM', '21', 'Kilómetro');
+INSERT INTO Nomenclatura VALUES ('KM', '21', 'Kilometro');
 INSERT INTO Nomenclatura VALUES ('PQ', '21', 'Parque');
 INSERT INTO Nomenclatura VALUES ('PI', '21', 'Piso');
 INSERT INTO Nomenclatura VALUES ('PR', '21', 'Porteria');
 INSERT INTO Nomenclatura VALUES ('PU', '21', 'Puesto');
 INSERT INTO Nomenclatura VALUES ('RP', '21', 'Round Point');
 INSERT INTO Nomenclatura VALUES ('TO3', '21', 'Torre');
-INSERT INTO Nomenclatura VALUES ('UR2', '21', 'Urbanización');
+INSERT INTO Nomenclatura VALUES ('UR2', '21', 'Urbanizacion');
 INSERT INTO Nomenclatura VALUES ('ZN2', '21', 'Zona');
 
--- Incluir las categorías y subcategorías
+-- Incluir las categorias y subcategorias
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('1', 'Alimentos');
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('2', 'Licores');
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('3', 'Automotriz');
-INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('4', 'Electrónicos');
+INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('4', 'Electronicos');
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('5', 'Moda y accesorios');
-INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('6', 'Ferretería');
+INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('6', 'Ferreteria');
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('7', 'Salud y Belleza');
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('8', 'Oficina');
 INSERT INTO CatProducto (idCatProducto, desCatProducto) VALUES ('9', 'Exteriores');
@@ -182,14 +182,14 @@ INSERT INTO CatProducto VALUES ('13','1','Chocolates');
 INSERT INTO CatProducto VALUES ('14','1','Chicles');
 INSERT INTO CatProducto VALUES ('15','1','Snacks');
 INSERT INTO CatProducto VALUES ('16','1','Cereales y Granolas');
-INSERT INTO CatProducto VALUES ('17','1','Café y Té');
+INSERT INTO CatProducto VALUES ('17','1','Cafe y Te');
 INSERT INTO CatProducto VALUES ('18','1','Aceites');
 INSERT INTO CatProducto VALUES ('19','1','Arinas');
 INSERT INTO CatProducto VALUES ('20','1','Condimentos');
 INSERT INTO CatProducto VALUES ('21','1','Frutas');
 INSERT INTO CatProducto VALUES ('22','1','Vegetales');
 
--- Incluir 3 precios por cada producto, solo el último precio de cada producto con fechaFin en null
+-- Incluir 3 precios por cada producto, solo el ultimo precio de cada producto con fechaFin en null
 INSERT INTO Producto VALUES ('2', '1', 'Cerveza artesanal');
 INSERT INTO Producto VALUES ('2', '2', 'Vino blanco');
 INSERT INTO Producto VALUES ('2', '3', 'Vino tinto');
@@ -205,60 +205,60 @@ INSERT INTO Producto VALUES ('6', '12', 'Destornillador');
 INSERT INTO Producto VALUES ('7', '13', 'Crema antiarrugas');
 INSERT INTO Producto VALUES ('7', '14', 'Perfume floral');
 INSERT INTO Producto VALUES ('8', '15', 'Papel para impresora');
-INSERT INTO Producto VALUES ('8', '16', 'Lápices de colores');
-INSERT INTO Producto VALUES ('9', '17', 'Silla de jardín');
-INSERT INTO Producto VALUES ('9', '18', 'Manguera de jardín');
-INSERT INTO Producto VALUES ('10', '19', 'Sofá modular');
+INSERT INTO Producto VALUES ('8', '16', 'Lapices de colores');
+INSERT INTO Producto VALUES ('9', '17', 'Silla de jardin');
+INSERT INTO Producto VALUES ('9', '18', 'Manguera de jardin');
+INSERT INTO Producto VALUES ('10', '19', 'Sofa modular');
 INSERT INTO Producto VALUES ('10', '20', 'Mesa de centro');
 INSERT INTO Producto VALUES ('11', '21', 'Juego de toallas');
 INSERT INTO Producto VALUES ('11', '22', 'Vaso decorativo');
--- Subcategoría 'Dulces'
+-- Subcategoria 'Dulces'
 INSERT INTO Producto VALUES ('12', '23', 'Galletas');
 INSERT INTO Producto VALUES ('12', '24', 'Yogur natural');
-INSERT INTO Producto VALUES ('12', '25', 'Miel orgánica');
--- Subcategoría 'Chocolates'
+INSERT INTO Producto VALUES ('12', '25', 'Miel organica');
+-- Subcategoria 'Chocolates'
 INSERT INTO Producto VALUES ('13', '26', 'Chocolate con leche');
 INSERT INTO Producto VALUES ('13', '27', 'Chocolate amargo');
 INSERT INTO Producto VALUES ('13', '28', 'Chocolate blanco');
--- Subcategoría 'Chicles'
+-- Subcategoria 'Chicles'
 INSERT INTO Producto VALUES ('14', '29', 'Chicle de menta');
 INSERT INTO Producto VALUES ('14', '30', 'Chicle de fresa');
-INSERT INTO Producto VALUES ('14', '31', 'Chicle de sandía');
--- Subcategoría 'Snacks'
+INSERT INTO Producto VALUES ('14', '31', 'Chicle de sandia');
+-- Subcategoria 'Snacks'
 INSERT INTO Producto VALUES ('15', '32', 'Papas fritas');
 INSERT INTO Producto VALUES ('15', '33', 'Nachos de queso');
-INSERT INTO Producto VALUES ('15', '34', 'Snack de maíz');
--- Subcategoría 'Cereales y Granolas'
+INSERT INTO Producto VALUES ('15', '34', 'Snack de maiz');
+-- Subcategoria 'Cereales y Granolas'
 INSERT INTO Producto VALUES ('16', '35', 'Granola de frutas');
 INSERT INTO Producto VALUES ('16', '36', 'Cereal de avena');
 INSERT INTO Producto VALUES ('16', '37', 'Barra de cereales');
--- Subcategoría ' Café y Té'
-INSERT INTO Producto VALUES ('17', '38', 'Café colombiano');
-INSERT INTO Producto VALUES ('17', '39', 'Té negro inglés');
-INSERT INTO Producto VALUES ('17', '40', 'Té verde japonés');
--- Subcategoría 'Aceites'
+-- Subcategoria ' Cafe y Te'
+INSERT INTO Producto VALUES ('17', '38', 'Cafe colombiano');
+INSERT INTO Producto VALUES ('17', '39', 'Te negro ingles');
+INSERT INTO Producto VALUES ('17', '40', 'Te verde japones');
+-- Subcategoria 'Aceites'
 INSERT INTO Producto VALUES ('18', '41', 'Aceite de oliva extra virgen');
 INSERT INTO Producto VALUES ('18', '42', 'Aceite de coco');
 INSERT INTO Producto VALUES ('18', '43', 'Aceite de girasol');
--- Subcategoría 'Arinas'
+-- Subcategoria 'Arinas'
 INSERT INTO Producto VALUES ('19', '44', 'Harina de trigo');
-INSERT INTO Producto VALUES ('19', '45', 'Harina de maíz');
+INSERT INTO Producto VALUES ('19', '45', 'Harina de maiz');
 INSERT INTO Producto VALUES ('19', '46', 'Harina de avena');
--- Subcategoría 'Condimentos'
+-- Subcategoria 'Condimentos'
 INSERT INTO Producto VALUES ('20', '47', 'Sal de mar');
 INSERT INTO Producto VALUES ('20', '48', 'Pimienta negra');
 INSERT INTO Producto VALUES ('20', '49', 'Salsa de soja');
--- Subcategoría 'Frutas'
+-- Subcategoria 'Frutas'
 INSERT INTO Producto VALUES ('21', '50', 'Manzana verde');
 INSERT INTO Producto VALUES ('21', '51', 'Banana madura');
 INSERT INTO Producto VALUES ('21', '52', 'Uvas rojas');
--- Subcategoría 'Vegetales'
+-- Subcategoria 'Vegetales'
 INSERT INTO Producto VALUES ('22', '53', 'Tomates frescos');
-INSERT INTO Producto VALUES ('22', '54', 'Zanahorias orgánicas');
+INSERT INTO Producto VALUES ('22', '54', 'Zanahorias organicas');
 INSERT INTO Producto VALUES ('22', '55', 'Pimientos rojos');
 
 -- Precios
--- Categoría 'Licores'
+-- Categoria 'Licores'
 -- Cerveza artesanal
 INSERT INTO HistoricoPrecio VALUES ('2', '1', '1', '01-01-2023', '15-01-2023', 5000);
 INSERT INTO HistoricoPrecio VALUES ('2', '1', '2', '16-01-2023', '28-02-2023', 5500);
@@ -279,7 +279,7 @@ INSERT INTO HistoricoPrecio VALUES ('2', '4', '1', '01-01-2023', '15-01-2023', 3
 INSERT INTO HistoricoPrecio VALUES ('2', '4', '2', '16-01-2023', '28-02-2023', 32000);
 INSERT INTO HistoricoPrecio VALUES ('2', '4', '3', '01-03-2023', NULL, 34000);
 
--- Categoría 'Automotriz'
+-- Categoria 'Automotriz'
 -- Aceite para motor
 INSERT INTO HistoricoPrecio VALUES ('3', '5', '1', '01-01-2023', '15-01-2023', 25000);
 INSERT INTO HistoricoPrecio VALUES ('3', '5', '2', '16-01-2023', '28-02-2023', 26000);
@@ -290,7 +290,7 @@ INSERT INTO HistoricoPrecio VALUES ('3', '6', '1', '01-01-2023', '15-01-2023', 1
 INSERT INTO HistoricoPrecio VALUES ('3', '6', '2', '16-01-2023', '28-02-2023', 155000);
 INSERT INTO HistoricoPrecio VALUES ('3', '6', '3', '01-03-2023', NULL, 160000);
 
--- Categoría 'Electrónicos'
+-- Categoria 'Electronicos'
 -- Smartphone
 INSERT INTO HistoricoPrecio VALUES ('4', '7', '1', '01-01-2023', '15-01-2023', 800000);
 INSERT INTO HistoricoPrecio VALUES ('4', '7', '2', '16-01-2023', '28-02-2023', 820000);
@@ -301,7 +301,7 @@ INSERT INTO HistoricoPrecio VALUES ('4', '8', '1', '01-01-2023', '15-01-2023', 1
 INSERT INTO HistoricoPrecio VALUES ('4', '8', '2', '16-01-2023', '28-02-2023', 1550000);
 INSERT INTO HistoricoPrecio VALUES ('4', '8', '3', '01-03-2023', NULL, 1600000);
 
--- Categoría 'Moda y accesorios'
+-- Categoria 'Moda y accesorios'
 -- Vestido elegante
 INSERT INTO HistoricoPrecio VALUES ('5', '9', '1', '01-01-2023', '15-01-2023', 80000);
 INSERT INTO HistoricoPrecio VALUES ('5', '9', '2', '16-01-2023', '28-02-2023', 85000);
@@ -312,7 +312,7 @@ INSERT INTO HistoricoPrecio VALUES ('5', '10', '1', '01-01-2023', '15-01-2023', 
 INSERT INTO HistoricoPrecio VALUES ('5', '10', '2', '16-01-2023', '28-02-2023', 55000);
 INSERT INTO HistoricoPrecio VALUES ('5', '10', '3', '01-03-2023', NULL, 60000);
 
--- Categoría 'Ferretería'
+-- Categoria 'Ferreteria'
 -- Martillo
 INSERT INTO HistoricoPrecio VALUES ('6', '11', '1', '01-01-2023', '15-01-2023', 15000);
 INSERT INTO HistoricoPrecio VALUES ('6', '11', '2', '16-01-2023', '28-02-2023', 16000);
@@ -323,7 +323,7 @@ INSERT INTO HistoricoPrecio VALUES ('6', '12', '1', '01-01-2023', '15-01-2023', 
 INSERT INTO HistoricoPrecio VALUES ('6', '12', '2', '16-01-2023', '28-02-2023', 11000);
 INSERT INTO HistoricoPrecio VALUES ('6', '12', '3', '01-03-2023', NULL, 12000);
 
--- Categoría 'Salud y Belleza'
+-- Categoria 'Salud y Belleza'
 -- Crema antiarrugas
 INSERT INTO HistoricoPrecio VALUES ('7', '13', '1', '01-01-2023', '15-01-2023', 30000);
 INSERT INTO HistoricoPrecio VALUES ('7', '13', '2', '16-01-2023', '28-02-2023', 32000);
@@ -334,30 +334,30 @@ INSERT INTO HistoricoPrecio VALUES ('7', '14', '1', '01-01-2023', '15-01-2023', 
 INSERT INTO HistoricoPrecio VALUES ('7', '14', '2', '16-01-2023', '28-02-2023', 55000);
 INSERT INTO HistoricoPrecio VALUES ('7', '14', '3', '01-03-2023', NULL, 60000);
 
--- Subcategoría 'Oficina'
+-- Subcategoria 'Oficina'
 -- Papel para impresora
 INSERT INTO HistoricoPrecio VALUES ('8', '15', '1', '01-01-2023', '15-01-2023', 5000);
 INSERT INTO HistoricoPrecio VALUES ('8', '15', '2', '16-01-2023', '28-02-2023', 5500);
 INSERT INTO HistoricoPrecio VALUES ('8', '15', '3', '01-03-2023', NULL, 6000);
 
--- Lápices de colores
+-- Lapices de colores
 INSERT INTO HistoricoPrecio VALUES ('8', '16', '1', '01-01-2023', '15-01-2023', 2000);
 INSERT INTO HistoricoPrecio VALUES ('8', '16', '2', '16-01-2023', '28-02-2023', 2200);
 INSERT INTO HistoricoPrecio VALUES ('8', '16', '3', '01-03-2023', NULL, 2500);
 
--- Subcategoría 'Exteriores'
--- Silla de jardín
+-- Subcategoria 'Exteriores'
+-- Silla de jardin
 INSERT INTO HistoricoPrecio VALUES ('9', '17', '1', '01-01-2023', '15-01-2023', 80000);
 INSERT INTO HistoricoPrecio VALUES ('9', '17', '2', '16-01-2023', '28-02-2023', 85000);
 INSERT INTO HistoricoPrecio VALUES ('9', '17', '3', '01-03-2023', NULL, 90000);
 
--- Manguera de jardín
+-- Manguera de jardin
 INSERT INTO HistoricoPrecio VALUES ('9', '18', '1', '01-01-2023', '15-01-2023', 30000);
 INSERT INTO HistoricoPrecio VALUES ('9', '18', '2', '16-01-2023', '28-02-2023', 32000);
 INSERT INTO HistoricoPrecio VALUES ('9', '18', '3', '01-03-2023', NULL, 34000);
 
--- Categoría 'Muebles'
--- Sofá modular
+-- Categoria 'Muebles'
+-- Sofa modular
 INSERT INTO HistoricoPrecio VALUES ('10', '19', '1', '01-01-2023', '15-01-2023', 500000);
 INSERT INTO HistoricoPrecio VALUES ('10', '19', '2', '16-01-2023', '28-02-2023', 520000);
 INSERT INTO HistoricoPrecio VALUES ('10', '19', '3', '01-03-2023', NULL, 550000);
@@ -367,7 +367,7 @@ INSERT INTO HistoricoPrecio VALUES ('10', '20', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('10', '20', '2', '16-01-2023', '28-02-2023', 320000);
 INSERT INTO HistoricoPrecio VALUES ('10', '20', '3', '01-03-2023', NULL, 340000);
 
--- Categoría 'Hogar'
+-- Categoria 'Hogar'
 -- Juego de toallas
 INSERT INTO HistoricoPrecio VALUES ('11', '21', '1', '01-01-2023', '15-01-2023', 15000);
 INSERT INTO HistoricoPrecio VALUES ('11', '21', '2', '16-01-2023', '28-02-2023', 16000);
@@ -378,7 +378,7 @@ INSERT INTO HistoricoPrecio VALUES ('11', '22', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('11', '22', '2', '16-01-2023', '28-02-2023', 5500);
 INSERT INTO HistoricoPrecio VALUES ('11', '22', '3', '01-03-2023', NULL, 6000);
 
--- Subcategoría 'Dulces'
+-- Subcategoria 'Dulces'
 -- Galletas
 INSERT INTO HistoricoPrecio VALUES ('12', '23', '1', '01-01-2023', '15-01-2023', 3000);
 INSERT INTO HistoricoPrecio VALUES ('12', '23', '2', '16-01-2023', '28-02-2023', 3200);
@@ -389,12 +389,12 @@ INSERT INTO HistoricoPrecio VALUES ('12', '24', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('12', '24', '2', '16-01-2023', '28-02-2023', 2600);
 INSERT INTO HistoricoPrecio VALUES ('12', '24', '3', '01-03-2023', NULL, 2700);
 
--- Miel orgánica
+-- Miel organica
 INSERT INTO HistoricoPrecio VALUES ('12', '25', '1', '01-01-2023', '15-01-2023', 8000);
 INSERT INTO HistoricoPrecio VALUES ('12', '25', '2', '16-01-2023', '28-02-2023', 8500);
 INSERT INTO HistoricoPrecio VALUES ('12', '25', '3', '01-03-2023', NULL, 9000);
 
--- Subcategoría 'Chocolates'
+-- Subcategoria 'Chocolates'
 -- Chocolate con leche
 INSERT INTO HistoricoPrecio VALUES ('13', '26', '1', '01-01-2023', '15-01-2023', 4000);
 INSERT INTO HistoricoPrecio VALUES ('13', '26', '2', '16-01-2023', '28-02-2023', 4200);
@@ -410,7 +410,7 @@ INSERT INTO HistoricoPrecio VALUES ('13', '28', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('13', '28', '2', '16-01-2023', '28-02-2023', 5800);
 INSERT INTO HistoricoPrecio VALUES ('13', '28', '3', '01-03-2023', NULL, 6000);
 
--- Subcategoría 'Chicles'
+-- Subcategoria 'Chicles'
 -- Chicle de menta
 INSERT INTO HistoricoPrecio VALUES ('14', '29', '1', '01-01-2023', '15-01-2023', 500);
 INSERT INTO HistoricoPrecio VALUES ('14', '29', '2', '16-01-2023', '28-02-2023', 550);
@@ -421,12 +421,12 @@ INSERT INTO HistoricoPrecio VALUES ('14', '30', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('14', '30', '2', '16-01-2023', '28-02-2023', 500);
 INSERT INTO HistoricoPrecio VALUES ('14', '30', '3', '01-03-2023', NULL, 550);
 
--- Chicle de sandía
+-- Chicle de sandia
 INSERT INTO HistoricoPrecio VALUES ('14', '31', '1', '01-01-2023', '15-01-2023', 600);
 INSERT INTO HistoricoPrecio VALUES ('14', '31', '2', '16-01-2023', '28-02-2023', 650);
 INSERT INTO HistoricoPrecio VALUES ('14', '31', '3', '01-03-2023', NULL, 700);
 
--- Subcategoría 'Snacks'
+-- Subcategoria 'Snacks'
 -- Papas fritas
 INSERT INTO HistoricoPrecio VALUES ('15', '32', '1', '01-01-2023', '15-01-2023', 2000);
 INSERT INTO HistoricoPrecio VALUES ('15', '32', '2', '16-01-2023', '28-02-2023', 2200);
@@ -437,12 +437,12 @@ INSERT INTO HistoricoPrecio VALUES ('15', '33', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('15', '33', '2', '16-01-2023', '28-02-2023', 2000);
 INSERT INTO HistoricoPrecio VALUES ('15', '33', '3', '01-03-2023', NULL, 2200);
 
--- Snack de maíz
+-- Snack de maiz
 INSERT INTO HistoricoPrecio VALUES ('15', '34', '1', '01-01-2023', '15-01-2023', 1500);
 INSERT INTO HistoricoPrecio VALUES ('15', '34', '2', '16-01-2023', '28-02-2023', 1600);
 INSERT INTO HistoricoPrecio VALUES ('15', '34', '3', '01-03-2023', NULL, 1700);
 
--- Subcategoría 'Cereales y Granolas'
+-- Subcategoria 'Cereales y Granolas'
 -- Granola de frutas
 INSERT INTO HistoricoPrecio VALUES ('16', '35', '1', '01-01-2023', '15-01-2023', 3000);
 INSERT INTO HistoricoPrecio VALUES ('16', '35', '2', '16-01-2023', '28-02-2023', 3200);
@@ -458,23 +458,23 @@ INSERT INTO HistoricoPrecio VALUES ('16', '37', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('16', '37', '2', '16-01-2023', '28-02-2023', 2200);
 INSERT INTO HistoricoPrecio VALUES ('16', '37', '3', '01-03-2023', NULL, 2500);
 
--- Subcategoría 'Café y Té'
--- Café colombiano
+-- Subcategoria 'Cafe y Te'
+-- Cafe colombiano
 INSERT INTO HistoricoPrecio VALUES ('17', '38', '1', '01-01-2023', '15-01-2023', 15000);
 INSERT INTO HistoricoPrecio VALUES ('17', '38', '2', '16-01-2023', '28-02-2023', 16000);
 INSERT INTO HistoricoPrecio VALUES ('17', '38', '3', '01-03-2023', NULL, 17000);
 
--- Té negro inglés
+-- Te negro ingles
 INSERT INTO HistoricoPrecio VALUES ('17', '39', '1', '01-01-2023', '15-01-2023', 12000);
 INSERT INTO HistoricoPrecio VALUES ('17', '39', '2', '16-01-2023', '28-02-2023', 12500);
 INSERT INTO HistoricoPrecio VALUES ('17', '39', '3', '01-03-2023', NULL, 13000);
 
--- Té verde japonés
+-- Te verde japones
 INSERT INTO HistoricoPrecio VALUES ('17', '40', '1', '01-01-2023', '15-01-2023', 10000);
 INSERT INTO HistoricoPrecio VALUES ('17', '40', '2', '16-01-2023', '28-02-2023', 11000);
 INSERT INTO HistoricoPrecio VALUES ('17', '40', '3', '01-03-2023', NULL, 12000);
 
--- Subcategoría 'Aceites'
+-- Subcategoria 'Aceites'
 -- Aceite de oliva extra virgen
 INSERT INTO HistoricoPrecio VALUES ('18', '41', '1', '01-01-2023', '15-01-2023', 25000);
 INSERT INTO HistoricoPrecio VALUES ('18', '41', '2', '16-01-2023', '28-02-2023', 26000);
@@ -490,13 +490,13 @@ INSERT INTO HistoricoPrecio VALUES ('18', '43', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('18', '43', '2', '16-01-2023', '28-02-2023', 16000);
 INSERT INTO HistoricoPrecio VALUES ('18', '43', '3', '01-03-2023', NULL, 17000);
 
--- Subcategoría 'Arinas'
+-- Subcategoria 'Arinas'
 -- Harina de trigo
 INSERT INTO HistoricoPrecio VALUES ('19', '44', '1', '01-01-2023', '15-01-2023', 3000);
 INSERT INTO HistoricoPrecio VALUES ('19', '44', '2', '16-01-2023', '28-02-2023', 3200);
 INSERT INTO HistoricoPrecio VALUES ('19', '44', '3', '01-03-2023', NULL, 3400);
 
--- Harina de maíz
+-- Harina de maiz
 INSERT INTO HistoricoPrecio VALUES ('19', '45', '1', '01-01-2023', '15-01-2023', 2500);
 INSERT INTO HistoricoPrecio VALUES ('19', '45', '2', '16-01-2023', '28-02-2023', 2600);
 INSERT INTO HistoricoPrecio VALUES ('19', '45', '3', '01-03-2023', NULL, 2700);
@@ -506,7 +506,7 @@ INSERT INTO HistoricoPrecio VALUES ('19', '46', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('19', '46', '2', '16-01-2023', '28-02-2023', 2200);
 INSERT INTO HistoricoPrecio VALUES ('19', '46', '3', '01-03-2023', NULL, 2500);
 
--- Subcategoría 'Condimentos'
+-- Subcategoria 'Condimentos'
 -- Sal de mar
 INSERT INTO HistoricoPrecio VALUES ('20', '47', '1', '01-01-2023', '15-01-2023', 1000);
 INSERT INTO HistoricoPrecio VALUES ('20', '47', '2', '16-01-2023', '28-02-2023', 1100);
@@ -522,7 +522,7 @@ INSERT INTO HistoricoPrecio VALUES ('20', '49', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('20', '49', '2', '16-01-2023', '28-02-2023', 1600);
 INSERT INTO HistoricoPrecio VALUES ('20', '49', '3', '01-03-2023', NULL, 1700);
 
--- Subcategoría 'Frutas'
+-- Subcategoria 'Frutas'
 -- Manzana verde
 INSERT INTO HistoricoPrecio VALUES ('21', '50', '1', '01-01-2023', '15-01-2023', 3000);
 INSERT INTO HistoricoPrecio VALUES ('21', '50', '2', '16-01-2023', '28-02-2023', 3200);
@@ -538,13 +538,13 @@ INSERT INTO HistoricoPrecio VALUES ('21', '52', '1', '01-01-2023', '15-01-2023',
 INSERT INTO HistoricoPrecio VALUES ('21', '52', '2', '16-01-2023', '28-02-2023', 2200);
 INSERT INTO HistoricoPrecio VALUES ('21', '52', '3', '01-03-2023', NULL, 2500);
 
--- Subcategoría 'Vegetales'
+-- Subcategoria 'Vegetales'
 -- Tomates frescos
 INSERT INTO HistoricoPrecio VALUES ('22', '53', '1', '01-01-2023', '15-01-2023', 1500);
 INSERT INTO HistoricoPrecio VALUES ('22', '53', '2', '16-01-2023', '28-02-2023', 1600);
 INSERT INTO HistoricoPrecio VALUES ('22', '53', '3', '01-03-2023', NULL, 1700);
 
--- Zanahorias orgánicas
+-- Zanahorias organicas
 INSERT INTO HistoricoPrecio VALUES ('22', '54', '1', '01-01-2023', '15-01-2023', 1200);
 INSERT INTO HistoricoPrecio VALUES ('22', '54', '2', '16-01-2023', '28-02-2023', 1300);
 INSERT INTO HistoricoPrecio VALUES ('22', '54', '3', '01-03-2023', NULL, 1400);
@@ -555,11 +555,11 @@ INSERT INTO HistoricoPrecio VALUES ('22', '55', '2', '16-01-2023', '28-02-2023',
 INSERT INTO HistoricoPrecio VALUES ('22', '55', '3', '01-03-2023', NULL, 1200);
 
 
--- Incluir en TipoFac asi: VE Venta; CO Compra; DV Devolución venta; DC Devolución Compra
+-- Incluir en TipoFac asi: VE Venta; CO Compra; DV Devolucion venta; DC Devolucion Compra
 INSERT INTO TipoFactura VALUES ('VE', 'Venta');
 INSERT INTO TipoFactura VALUES ('CO', 'Compra');
-INSERT INTO TipoFactura VALUES ('DV', 'Devolución venta');
-INSERT INTO TipoFactura VALUES ('DC', 'Devolución compra');
+INSERT INTO TipoFactura VALUES ('DV', 'Devolucion venta');
+INSERT INTO TipoFactura VALUES ('DC', 'Devolucion compra');
 
 
 -- otros
@@ -576,13 +576,14 @@ INSERT INTO TipoDoc values ('NIT','Nit');
 INSERT INTO TipoDoc values ('PAS','Pasaporte');
 
 -- Tipo contacto
-INSERT INTO TipoContacto VALUES ('TF', 'Teléfono Fijo');
+INSERT INTO TipoContacto VALUES ('TF', 'Telefono Fijo');
 INSERT INTO TipoContacto VALUES ('CL','Celular');
-INSERT INTO TipoContacto VALUES ('CE', 'Correo Electrónico');
+INSERT INTO TipoContacto VALUES ('CE', 'Correo Electronico');
 INSERT INTO TipoContacto VALUES ('WA', 'WhatsApp');
 INSERT INTO TipoContacto VALUES ('LI', 'LinkedIn');
 INSERT INTO TipoContacto VALUES ('IG', 'Instagram');
 
+commit;
 
 
 

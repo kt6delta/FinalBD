@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     11/17/2023 11:20:21 AM                       */
+/* Created on:     11/27/2023 8:21:28 PM                        */
 /*==============================================================*/
 
 
@@ -27,9 +27,6 @@ alter table DETALLEFACTURA
 
 alter table DIRECCION
    drop constraint FK_DIRECCIO_COMPONENE_COMPONEN;
-
-alter table DIRECCION
-   drop constraint FK_DIRECCIO_DIRECCION_DIRECCIO;
 
 alter table DIRECCION
    drop constraint FK_DIRECCIO_NOMENCLAT_NOMENCLA;
@@ -108,8 +105,6 @@ drop table DETALLEFACTURA cascade constraints;
 drop index RELATIONSHIP_26_FK;
 
 drop index RELATIONSHIP_24_FK;
-
-drop index DIRECCIONDIRECCION_FK;
 
 drop index PERSONADIRECCION_FK;
 
@@ -301,8 +296,6 @@ create table DIRECCION (
    IDTIPOPERSONAFK      VARCHAR2(2)           not null,
    IDTIPODOCFK          VARCHAR2(3)           not null,
    NDOCUMENTOFK         VARCHAR2(12)          not null,
-   IDDIRECCIONREF       NUMBER(3,0),
-   POSICIONREF          NUMBER(2),
    VALORDIREC           VARCHAR2(15),
    IDNOMENFK            VARCHAR2(6),
    constraint PK_DIRECCION primary key (IDDIRECCION, POSICION)
@@ -315,14 +308,6 @@ create index PERSONADIRECCION_FK on DIRECCION (
    IDTIPOPERSONAFK ASC,
    IDTIPODOCFK ASC,
    NDOCUMENTOFK ASC
-);
-
-/*==============================================================*/
-/* Index: DIRECCIONDIRECCION_FK                                 */
-/*==============================================================*/
-create index DIRECCIONDIRECCION_FK on DIRECCION (
-   IDDIRECCIONREF ASC,
-   POSICIONREF ASC
 );
 
 /*==============================================================*/
@@ -612,10 +597,6 @@ alter table DETALLEFACTURA
 alter table DIRECCION
    add constraint FK_DIRECCIO_COMPONENE_COMPONEN foreign key (POSICION)
       references COMPONENTEDIREC (IDCOMPDIRECCION);
-
-alter table DIRECCION
-   add constraint FK_DIRECCIO_DIRECCION_DIRECCIO foreign key (IDDIRECCIONREF, POSICIONREF)
-      references DIRECCION (IDDIRECCION, POSICION);
 
 alter table DIRECCION
    add constraint FK_DIRECCIO_NOMENCLAT_NOMENCLA foreign key (IDNOMENFK)

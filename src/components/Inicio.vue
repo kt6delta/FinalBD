@@ -29,13 +29,19 @@ export default {
                 } else if (cargo == 'Vendedor') {
                     tipoFactura = 'VE'
                 }
-                localStorage.setItem('tipoPersona', tipoPersona);
-                localStorage.setItem('tipoFactura', tipoFactura);
+                if (tipoFactura != undefined) {
+                    localStorage.setItem('tipoPersona', tipoPersona);
+                    localStorage.setItem('tipoFactura', tipoFactura);
 
-                prueba = true
-                this.$router.push('./Tabla')
+                    prueba = true
+                    this.$router.push('./Tabla')
+                }
+                else {
+                    window.alert(`${cargo} no tiene opciones disponibles`)
+                }
             } catch (error) {
-                window.alert(error)
+                console.log(error)
+                window.alert("Usuario no encontrado")
             }
         }
     }
@@ -44,29 +50,28 @@ export default {
 
 <template>
     <div class="bg-info d-flex justify-content-center align-items-center vh-100">
-            <div class="bg-light shadow-lg h-75 w-25 rounded-5 d-flex justify-content-center align-items-center">
-                <div>
-                    <div class="pb-3">
-                        <div class="d-flex  justify-content-center pb-1">
-                            <img src="../assets/login-icon.svg" alt="login-icon" style="height: 10rem"/>
-                        </div>
-                        <div class="text-secondary">
-                            <p class="text-center fs-1 fw-bold">Inicio de sesion</p>
-                        </div>
+        <div class="bg-light shadow-lg h-75 w-25 rounded-5 d-flex justify-content-center align-items-center">
+            <div>
+                <div class="pb-3">
+                    <div class="d-flex  justify-content-center pb-1">
+                        <img src="../assets/login-icon.svg" alt="login-icon" style="height: 10rem" />
                     </div>
-                    <div class="px-5">
-                        <div>
-                            <input class="form-control form-control-lg text-center mt-2" type="text" placeholder="codigo Empleado"
-                            aria-label=".form-control-lg example" v-model="codigo">
-                        </div>
-                        <div class="pt-2 d-flex justify-content-center">
-                            <button @click="EnviarData" class="btn btn-info text-white w-100">Ingresar</button>
-                        </div>
+                    <div class="text-secondary">
+                        <p class="text-center fs-1 fw-bold">Inicio de sesion</p>
+                    </div>
+                </div>
+                <div class="px-5">
+                    <div>
+                        <input class="form-control form-control-lg text-center mt-2" type="text"
+                            placeholder="codigo Empleado" aria-label=".form-control-lg example" v-model="codigo">
+                    </div>
+                    <div class="pt-2 d-flex justify-content-center">
+                        <button @click="EnviarData" class="btn btn-info text-white w-100">Ingresar</button>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
