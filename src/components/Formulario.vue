@@ -16,7 +16,7 @@ export default {
       //atributos del formulario
       cont: 1,
       cont2: 1,
-      direccion: {},
+      direccion: [],
       contactos: [],
 
       TipeUser: "",
@@ -105,42 +105,39 @@ export default {
           e = false
         }
       }
-      let posAnterior = 0
-      for (let i = 1; i < 21; i++) {
-        const direccion = this.direccion[i]
-        if (direccion[0] != "") {
-          let dir = {
-            posicion: i,
-            tipoPersona: (localStorage.getItem('tipoPersona') == "Cliente") ? "CL" : "PR",
-            tipoDoc: this.tipoDocPh,
-            nDocumento: this.nDoc
+      for (const dir of this.direccion) {
+        for (let i = 1; i < 21; i++) {
+          const direccion = dir[i]
+          if (direccion[0] != "") {
+            let dir = {
+              posicion: i,
+              tipoPersona: (localStorage.getItem('tipoPersona') == "Cliente") ? "CL" : "PR",
+              tipoDoc: this.tipoDocPh,
+              nDocumento: this.nDoc
+            }
+            if (direccion[1] === true) {
+              dir.valor = direccion[0]
+            }
+            else {
+              dir.nomenclatura = direccion[0]
+            }
+            const jsonDir = JSON.stringify(dir);
+            console.log(jsonDir)
+            const response3 = await fetch("http://localhost:3000/api/direcciones",
+              {
+                method: "POST",
+                body: jsonDir,
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              })
+            if (response3.status !== 201) {
+              const error = await response2.json()
+              window.alert(error.error)
+              console.log(error.error)
+              e = false
+            }
           }
-          if (direccion[1] === true) {
-            dir.valor = direccion[0]
-          }
-          else {
-            dir.nomenclatura = direccion[0]
-          }
-          if (posAnterior != 0) {
-            dir.posicionRef = posAnterior
-          }
-          const jsonDir = JSON.stringify(dir);
-          console.log(jsonDir)
-          const response3 = await fetch("http://localhost:3000/api/direcciones",
-            {
-              method: "POST",
-              body: jsonDir,
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            })
-          if (response3.status !== 201) {
-            const error = await response2.json()
-            window.alert(error.error)
-            console.log(error.error)
-            e = false
-          }
-          posAnterior = i
         }
       }
       if (e) {
@@ -148,7 +145,7 @@ export default {
       }
     },
     traerDireccion(datos) {
-      this.direccion = datos
+      this.direccion[datos[0]] = datos[1]
       console.log(datos)
     },
     traerContactos(datos) {
@@ -254,7 +251,7 @@ export default {
                 style="max-height: 100px;">
                 <div class="w-100">
                   <div v-for="i in cont2" v-bind:key="i" class="w-100">
-                    <Direcciones :cont2Pop="i" @datosDireccion="traerDireccion" :index="i" class="w-100" />
+                    <Direcciones :cont2Pop="i" @datosDireccion="traerDireccion" :index="(i - 1)" class="w-100" />
                   </div>
                 </div>
               </div>

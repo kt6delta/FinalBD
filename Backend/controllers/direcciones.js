@@ -63,7 +63,7 @@ direccionRouter.post('/', async (req, res, next) => {
 
     try {
         connection = await db.abrirConexion()
-        result = await connection.execute(`SELECT MAX(idDireccion) FROM Direccion WHERE idDireccionRef IS NULL`)
+        result = await connection.execute(`SELECT MAX(idDireccion) FROM Direccion`)
     } catch (err) {
         return res.send(err.message);
     } finally {
@@ -94,12 +94,9 @@ direccionRouter.post('/', async (req, res, next) => {
     }
     try {
         connection = await db.abrirConexion()
-        if (body.posicionRef) {
-            id = id - 1
-            result = await connection.execute(`insert into direccion values (${id},${body.posicion},'${body.tipoPersona}','${body.tipoDoc}','${body.nDocumento}',${id}, ${body.posicionRef}, ${valor}, ${nomenclatura})`)
-        } else {
-            result = await connection.execute(`insert into direccion values (${id},${body.posicion},'${body.tipoPersona}','${body.tipoDoc}','${body.nDocumento}', NULL, NULL, ${valor}, ${nomenclatura})`)
-        }
+        id = (body.posicion != 1) ? id - 1 : id
+        result = await connection.execute(`insert into direccion values (${id},${body.posicion},'${body.tipoPersona}','${body.tipoDoc}','${body.nDocumento}', ${valor}, ${nomenclatura})`)
+
         await connection.execute(`commit`)
     } catch (err) {
         console.log(err)

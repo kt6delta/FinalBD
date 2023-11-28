@@ -136,7 +136,7 @@ export default {
                 21: [this.selectedComple, false],
             }
 
-            this.$emit('DatosDireccion', datos);
+            this.$emit('DatosDireccion', [this.index, datos]);
         }
     },
     props: {
@@ -157,8 +157,8 @@ export default {
         <div class="w-100">
             <div class="w-100 form-group ">
                 <!-- Input que abre la subpestaña -->
-                <input class="w-100 form-control" type="text" name="direccion" placeholder="Direccion " @click="ControlModal(true)"
-                    v-model="txtDireccion" readonly>
+                <input class="w-100 form-control" type="text" name="direccion" placeholder="Direccion "
+                    @click="ControlModal(true)" v-model="txtDireccion" readonly>
             </div>
         </div>
     </div>
@@ -183,9 +183,10 @@ export default {
                                     <div class="input-group-text">{{ componentes[0][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="selectedVia">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[1]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[1]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -211,7 +212,7 @@ export default {
                                         @input="this.prefijo = this.prefijo.toUpperCase();">
                                 </div>
                             </div>
-    
+
                             <!--Selecciona letra prefijo-->
                             <div class="col-1">
                                 <label class="visually-hidden" for="letra prefijo">letra prefijo</label>
@@ -226,8 +227,9 @@ export default {
                                     <div class="input-group-text">{{ componentes[5][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="TipoCuadran">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[6]" :value="i[0]">{{ i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[6]"
+                                            :value="i[0]">{{ i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -275,9 +277,10 @@ export default {
                                     <div class="input-group-text">{{ componentes[11][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="TipoCuadran2">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[12]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[12]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -288,9 +291,10 @@ export default {
                                     <div class="input-group-text">{{ componentes[12][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="TipoBarrio">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[13]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[13]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -308,9 +312,10 @@ export default {
                                     <div class="input-group-text">{{ componentes[14][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="TipoManza">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[15]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[15]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -327,9 +332,10 @@ export default {
                                     <div class="input-group-text">{{ componentes[16][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="selectedUrban">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[17]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[17]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -347,9 +353,10 @@ export default {
                                     <div class="input-group-text">{{ componentes[18][1] }}</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="selectedPredio">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[19]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[19]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -366,9 +373,10 @@ export default {
                                     <div class="input-group-text">Complemento</div>
                                     <select class="form-select" id="specificSizeSelect" aria-describedby="validationServer"
                                         v-model="selectedComple">
-                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[21]" :value="i[0]">{{
-                                            i[2]
-                                        }}</option>
+                                        <option v-if="nomenclaturas.length != 0" v-for="i in nomenclaturas[21]"
+                                            :value="i[0]">{{
+                                                i[2]
+                                            }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -417,5 +425,4 @@ v-select#complemento {
 
 v-select#predio {
     width: 60%;
-}
-</style>
+}</style>
