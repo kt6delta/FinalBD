@@ -163,80 +163,172 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-info vh-100">
-    <div class="d-flex justify-content-center align-items-center w-100 h-100 ">
-      <div class="booking-form px-4 py-3 rounded-5">
-        <!--Formulario para ingresar/actualizar la info-->
+  <div class="bg-info d-flex justify-content-center align-items-center vh-100">
 
-        <!--agrega en el html varios espacios de direccion-->
-        <div v-for="i in cont2" v-bind:key="i">
-          <Direcciones :cont2Pop="i" @datosDireccion="traerDireccion" :index="i" />
+    <!--Formulario para ingresar/actualizar la info-->
+
+    <div class="p-5 bg-light shadow-lg rounded-5 h-75 w-50 rounded-5 d-flex justify-content-center align-items-center">
+      <div class=" w-100 h-100">
+        <p class="w-100 fs-1 m-0 text-center fw-bold text-secondary">Formulario</p>
+
+        <!--ingresar info de Nombre-->
+        <div class="w-100">
+          <div class="d-flex justify-content-center align-items-center">
+
+            <div class="w-50 d-flex justify-content-center align-items-center p-1">
+              <div class="w-100 form-group">
+                <p class="w-25 fs-4 m-0 text-secondary">Nombre</p>
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre" v-model="Name">
+              </div>
+            </div>
+
+            <!--ingresar info de Apellido-->
+
+            <div class="w-50 d-flex justify-content-center align-items-center p-1">
+              <div class="w-100 form-group">
+                <p class="w-25 fs-4 m-0 text-secondary">Apellido</p>
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" v-model="Apellido">
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        <!--ingresar info de tipo Usuario-->
-        <div class="row">
-          <!--botones para controlar cantidad de direcciones-->
-          <div class="col-sm-4 d-flex justify-content-center align-items-start">
-            <div class="form-group">
-              <div id="add" class="form-btn text-end">
-                <button type="button" class="btn btn-primary me-2 fs-4 px-2 py-0" @click="AddDireccion()">+</button>
-                <button type="button" class="btn btn-primary fs-4 px-2 py-0" @click="LessDireccion()">-</button>
+        <!--ingresar info de Numero de Doc y tipoDoc-->
+
+        <div class="w-100">
+          <div class="d-flex justify-content-center align-items-center">
+
+            <!-- Numero de doc -->
+
+            <div class="w-50 d-flex justify-content-center align-items-center p-1">
+              <div class="w-100 form-group">
+                <p class="w-100 fs-4 m-0 text-secondary">Numero de documento</p>
+                <input class="form-control" type="text" name="nDoc" :placeholder="`Numero de ${tipoDocPh}`"
+                  v-model="nDoc">
+              </div>
+            </div>
+
+            <!--ingresar info de Tipo-->
+
+            <div class="w-50 d-flex justify-content-center align-items-center p-1">
+              <div class="w-100 form-group">
+                <p class="w-25 fs-4 m-0 text-secondary">Tipo</p>
+                <select id="tipos" class="form-control" name="tipoDoc" v-model="tipoDocPh">
+                  <option v-for="i in tipoDoc" :value="i[0]">{{ i[1] }}</option>
+                </select>
+                <span class="select-arrow"></span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!--agrega en el html varios espacios de direccion-->
+        <div class="w-100 p-1">
+
+          <div class="d-flex justify-content-center align-items-center">
+            <p class="w-50 fs-4 m-0 text-secondary">Direcciones</p>
+            <!--botones para controlar cantidad de direcciones-->
+            <div class="w-50">
+              <div class="w-100 d-flex justify-content-center align-items-center">
+                <div class="form-group">
+                  <div id="add" class="form-btn text-end">
+                    <button type="button" class="w-50 btn btn-outline-info" @click="AddDireccion()">+</button>
+                    <button type="button" class="w-50 btn btn-outline-info" @click="LessDireccion()">-</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+
+          <!-- direcciones -->
+          <div class="w-100">
+
+            <div class="d-flex justify-content-center align-items-center">
+
+              <div class="w-100 overflow-auto d-flex justify-content-center align-items-center"
+                style="max-height: 100px;">
+                <div class="w-100">
+                  <div v-for="i in cont2" v-bind:key="i" class="w-100">
+                    <Direcciones :cont2Pop="i" @datosDireccion="traerDireccion" :index="i" class="w-100" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <!--ingresar info de Nombre-->
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <span class="form-label">Nombre</span>
-              <input class="form-control" type="text" placeholder="Nombre" name="nombre" v-model="Name">
-            </div>
-          </div>
-          <!--ingresar info de Apellido-->
-          <div class="col-sm-6">
-            <div class="form-group">
-              <span class="form-label">Apellido</span>
-              <input class="form-control" type="text" placeholder="Apellido" name="apellido" v-model="Apellido">
-            </div>
-          </div>
-        </div>
-        <!--ingresar info de Numero de Doc-->
-        <div class="row">
-          <div class="col-sm-8">
-            <div class="form-group">
-              <span class="form-label">Numero de documento</span>
-              <input class="form-control" type="text" name="nDoc" :placeholder="`Numero de ${tipoDocPh}`" v-model="nDoc">
-            </div>
-          </div>
-          <!--ingresar info de Tipo-->
-          <div class="col-sm-4">
-            <div class="form-group">
-              <span class="form-label">Tipo</span>
-              <select id="tipos" class="form-control" name="tipoDoc" v-model="tipoDocPh">
-                <option v-for="i in tipoDoc" :value="i[0]">{{ i[1] }}</option>
-              </select>
-              <span class="select-arrow"></span>
-            </div>
-          </div>
-        </div>
+
         <!--agrega en el html varios espacios de contacto-->
-        <div v-for="i in cont" v-bind:key="i">
-          <Contacto :index="(i - 1)" @datoContacto="traerContactos" />
-        </div>
-        <div id="add" class="form-btn text-end mb-2">
-          <button type="button" class="btn btn-primary me-2 fs-4 px-2 py-0" @click="AgregarContacto()">+</button>
-          <button type="button" class="btn btn-primary fs-4 px-2 py-0" @click="QuitarContacto()">-</button>
+        <div class="w-100 p-1">
+
+          <div class="d-flex justify-content-center align-items-center">
+            <p class="w-50 fs-4 m-0 text-secondary">Contactos</p>
+            <!--botones para controlar cantidad de direcciones-->
+            <div class="w-50">
+              <div class="w-100 d-flex justify-content-center align-items-center">
+                <div class="form-group">
+                  <div id="add" class="form-btn text-end">
+                    <button type="button" class="w-50 btn btn-outline-info " @click="AgregarContacto()">+</button>
+                    <button type="button" class="w-50 btn btn-outline-info  " @click="QuitarContacto()">-</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Contactos -->
+          <div class="w-100">
+
+            <div class="d-flex justify-content-center align-items-center">
+
+              <div class="w-100 overflow-auto d-flex justify-content-center align-items-center"
+                style="max-height: 150px;">
+                <div class="w-100">
+                  <div v-for="i in cont" v-bind:key="i">
+                    <Contacto :index="(i - 1)" @datoContacto="traerContactos" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="form-btn text-center">
-          <button @click="Bd_post()" class="btn btn-outline-primary me-3">Agregar</button>
-          <button @click="enrutarTabla()" tag="button" class="btn btn-outline-primary">Volver</button>
+        <!-- botones de salida -->
+        <div class="w-100 py-3">
+          <div class="d-flex justify-content-center align-items-center">
+
+            <!-- boton 1 -->
+
+            <div class="w-50 d-flex justify-content-center align-items-center">
+              <button @click="Bd_post()" class="w-50 btn btn-success text-white">Agregar</button>
+            </div>
+
+            <!-- boton 2 -->
+
+            <div class="w-50 d-flex justify-content-center align-items-center">
+              <button @click="enrutarTabla()" tag="button" class=" w-50 btn btn-info text-white">Volver</button>
+            </div>
+
+          </div>
         </div>
+
+
 
       </div>
     </div>
+
   </div>
 </template>
 
